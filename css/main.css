@@ -1,0 +1,22 @@
+/*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
+body {
+   background-color: black;
+}
+
+*:link {
+   
+}
+
+
+header {
+   float: left;
+   z-index: 2;
+}
+
+header div {
+   margin-bottom: 3px;
+}
+
+header img {
+   height: 15px;
+}
