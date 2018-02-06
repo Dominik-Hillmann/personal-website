@@ -1,22 +1,45 @@
 /*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
 body {
    background-color: black;
+   margin: 0;
+
 }
 
-*:link {
-   
+a:link {
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
 }
 
 
 header {
    float: left;
    z-index: 2;
+   position: fixed;
+   background-color: green;
+   height: 100%;
+   color: white;
+   padding-left: 10px;
+   padding-right: 10px;
+   display: table;
 }
 
-header div {
+#menuwrapper { }
+
+header div div {
    margin-bottom: 3px;
+}
+
+header div div a {
+   color: white;
+   vertical-align: middle;
 }
 
 header img {
    height: 15px;
+   margin-right: 10px;
+   vertical-align: middle;
+   background-image: url("images/hollow_circle.png"); /* HIER WEITERMACHEN */
 }
