@@ -25,9 +25,9 @@
       <div id="menuwrapper">
 
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
-         <div><img src="images/blank.png"><a href="#">START</a></div>
-         <div><img src="images/blank.png"><a href="#">SKILLS</a></div>
-         <div><img src="images/blank.png"><a href="#">KONTAKT</a></div>
+         <div><img src="images/hollow_circle.png"><a href="#">START</a></div>
+         <div><img src="images/hollow_circle.png"><a href="#">SKILLS</a></div>
+         <div><img src="images/hollow_circle.png"><a href="#">KONTAKT</a></div>
          <!--später blank.png, mit css hollow und full änder per CSS-->
 
       </div>
