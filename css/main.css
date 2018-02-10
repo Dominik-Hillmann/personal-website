@@ -2,7 +2,7 @@
 body {
    background-color: black;
    margin: 0;
-
+   color: white;
 }
 
 a:link {
@@ -19,41 +19,71 @@ header {
    float: left;
    z-index: 2;
    position: fixed;
-   background-color: green;
+   background-color: orange;
    height: 100%;
    color: white;
    padding-left: 10px;
    padding-right: 10px;
 
    transition: opacity 0.25s ease-in-out;
-   opacity: 0.0;
 }
 
-header:hover {
-   opacity: 1.0;
-}
 
-#menuwrapper { }
-
-header div div {
-   margin-bottom: 3px;
-}
-
-header div div a {
-   color: white;
-   vertical-align: middle;
+#menuwrapper {
+   display: block;
    font-size: 20px;
-   margin-bottom: 5px;
-   display: inline-block;
-   width: 50px;
-
-
+   border: white dashed 1px;
+   font-size: 15px;
+   vertical-align: middle;
 }
 
-header img {
-   height: 20px;
-   margin-right: 10px;
-   margin-bottom: 5px;
+#menuwrapper div {
+   margin-top: 5px;
+   border: 1px dashed red;
+}
+
+
+#menuwrapper div:first-child {
+   margin-top: 0;
+}
+
+#menuwrapper div a.unshown {
    vertical-align: middle;
-   background-image: url("images/hollow_circle.png"); /* HIER WEITERMACHEN */
+   display: inline-block;
+
+   opacity: 0.0;
+   animation-name: unshown;
+   animation-duration: 0.6s;
+}
+
+@keyframes unshown {
+   from {
+      opacity: 1.0;
+   } to {
+      opacity: 0.0;
+   }
+}
+
+/* animation class added via JS*/
+#menuwrapper div a.shown {
+   vertical-align: middle;
+   display: inline-block;
+
+   opacity: 1.0;
+   animation-name: shown;
+   animation-duration: 0.5s;
+}
+
+@keyframes shown {
+   from {
+      opacity: 0.0;
+   } to {
+      opacity: 1.0;
+   }
+}
+
+#menuwrapper img {
+   height: 18px;
+   margin-right: 10px;
+   vertical-align: middle;
 }
