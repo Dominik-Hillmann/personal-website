@@ -13,6 +13,7 @@
 
 <!-- CSS links -->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mobile.css">
 
 <!-- Favicon -->
     <link rel="icon" type="image/png" href="">
@@ -35,11 +36,24 @@
    </header>
 
 
+   <div>
+      <div id="sketch-holder"></div>
+      <h1>DOMINIK HILLMANN</h1>
+   </div>
+   
+   <div id="test"></div>
+
+
 
 <!-- End of Page Layout -->
 </body>
 
 <script type="text/javascript" src="js/menu.js"></script>
+
+<!-- spaeter herunterladen und gleich auf dem Server zur Verfügung stellen -->
+<script type="text/javascript" src="js/libraries/p5.js"></script>
+<script type="text/javascript" src="js/sphere.classes.js"></script>
+<script type="text/javascript" src="js/sphere.sketch.js"></script>
 
 </html>
 

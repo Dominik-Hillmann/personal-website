@@ -44,14 +44,14 @@ var imgs = [];
 
 for(var i = 0; i < menuDivs.length; i++)
    imgs.push(menuDivs[i].getElementsByTagName("img"));
-console.log(menuDivs);
-console.log("images: ", imgs);
 
-for(var i = 0; i < imgs.length; i++)
-{
-   var img = imgs[i];
-   menuDivs[i].addEventListener("mouseover", function()
-   {
-      imgs.src = "";
-   });
-}
+
+// why not just loop over the array index? Problems with creating functions within loop referencing wrong index
+menuDivs[0].addEventListener("mouseover", function() { imgs[0][0].src = "images/circle_full.png"; });
+menuDivs[0].addEventListener("mouseleave", function() { imgs[0][0].src = "images/hollow_circle.png"; });
+
+menuDivs[1].addEventListener("mouseover", function() { imgs[1][0].src = "images/circle_full.png"; });
+menuDivs[1].addEventListener("mouseleave", function() { imgs[1][0].src = "images/hollow_circle.png"; });
+
+menuDivs[2].addEventListener("mouseover", function() { imgs[2][0].src = "images/circle_full.png"; });
+menuDivs[2].addEventListener("mouseleave", function() { imgs[2][0].src = "images/hollow_circle.png"; });
