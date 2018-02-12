@@ -166,9 +166,12 @@ class Layer
          {
             this.points.push(new CirclePos
             (
-               map(Math.random(), 0, 1, selectedAreas[0], selectedAreas[1]),
-               this.left.y
-            ));
+               map(Math.random(),
+               0,
+               1,
+               selectedAreas[0],
+               selectedAreas[1]
+            ), this.left.y));
          }
       } // else
    } // newPointsOnLayer

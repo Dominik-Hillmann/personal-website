@@ -16,9 +16,8 @@ window.addEventListener("resize", adaptmenu); // every time the window size is c
 // secondly: animations when hovering
 // let all a's transition if one transitions
 var header = document.getElementsByTagName("header")[0];
-//var menu = document.getElementById("menuwrapper");
 var menuLinks = menu.getElementsByTagName("a");
-
+// show menu options when hovering above header
 header.addEventListener("mouseover", function()
 {
    for(link of menuLinks)
@@ -27,7 +26,7 @@ header.addEventListener("mouseover", function()
       link.classList.add("shown");
    }
 });
-
+// hide menu options when the cursor leaves the header
 header.addEventListener("mouseleave", function()
 {
    for(link of menuLinks)
@@ -44,7 +43,6 @@ var imgs = [];
 
 for(var i = 0; i < menuDivs.length; i++)
    imgs.push(menuDivs[i].getElementsByTagName("img"));
-
 
 // why not just loop over the array index? Problems with creating functions within loop referencing wrong index
 menuDivs[0].addEventListener("mouseover", function() { imgs[0][0].src = "images/circle_full.png"; });

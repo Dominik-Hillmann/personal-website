@@ -17,7 +17,12 @@ const COLOR_GRADIENTS =
 // vars for DOM
 var width;
 var height;
-var canvas;                                          // reference to canvas here, to be styled
+var canvas;                                     // reference to canvas here, to be styled
+
+var imgHeight;
+var imgWidth;
+var imgOpacity = 255;
+var arrow;
 
 function windowResized() // event: resizing canvas so that it fits into resized window
 {
@@ -30,22 +35,15 @@ function windowResized() // event: resizing canvas so that it fits into resized 
 
 function setup()
 {
-
-   width = windowWidth;
+   /*width = windowWidth;
    height = windowHeight;
    sphereRadius = Math.round(0.5 * windowWidth); // new window size --> new radius
    sphereRadius -= Math.round(0.1 * windowWidth);
    middlePoint = new Position(width / 2, height / 2);
 
    canvas = createCanvas(width - (0.01 * width), height);
-
-
    canvas.parent("sketch-holder");
-   //canvas.style("z-index", "-1");
-   // canvas.parent("sketch-holder");
-
-
-
+   */
    sphereRadius = Math.round(0.5 * windowWidth); // new window size --> new radius
    sphereRadius -= Math.round(0.2 * windowWidth);                           // few px less wide because otherwiese points missing at sphere's "equator"
    layers = [];                                  // therefore clear all layers
@@ -55,8 +53,11 @@ function setup()
 
    canvas = createCanvas(width - (0.02 * width), height);        // reset old canvas
    canvas.parent("sketch-holder");
-
-
+   /*
+   arrow = loadImage("images/arrow_down.png");
+   imgHeight = 2 * sphereRadius;
+   imgWidth = 2 * sphereRadius;
+   */
    cursor = new Cursor(winMouseX, winMouseY, width);
 
    // frist collect all points possible, and for each of them the distance to the middle point
@@ -156,6 +157,22 @@ function draw()
       layers[i].movePoints(cursor);
       layers[i].drawPoints(1, 7, width);
    }
+   /*
+   tint(255, imgOpacity);
+   if(imgOpacity >= 0)
+   {
+      imgOpacity -= 15;
+      image
+      (
+         arrow,
+         (width / 2) - (imgWidth / 2),
+         (height / 2) - (imgHeight / 2),
+         imgWidth,
+         imgHeight
+      );
+
+   }
+   */
 }
 
 // This is a setup function that is called if the browser window is being resized.
@@ -177,7 +194,8 @@ function setupOnResize()
    canvas.parent("sketch-holder");
    // canvas.position(0, 0);
    // canvas.style("z-index", "-1");               // entirely new resized canvas too
-
+   imgHeight = 2 * sphereRadius;
+   imgWidth = 2 * sphereRadius;
    cursor = new Cursor(winMouseX, winMouseY, width);
 
    // frist collect all points possible, and for each of them the distance to the middle point

@@ -35,12 +35,10 @@
       </div>
    </header>
 
+   <div id="sketch-holder"></div>
 
-   <div>
-      <div id="sketch-holder"></div>
-      <h1>DOMINIK HILLMANN</h1>
-   </div>
-   
+
+
    <div id="test"></div>
 
 
