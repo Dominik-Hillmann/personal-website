@@ -105,3 +105,24 @@ header {
    height:200px;
    background-color:green;
 }
+
+
+/***** SKILLS *****/
+
+.heading {
+   background-color: blue;
+   width: 30%;
+}
+
+.content {
+   width: 60%;
+   background-color: green;
+}
+
+#skills {
+   width: 100%;
+   /*height: 300px;*/
+   background-color: red;
+   margin-top: -19px;
+   background-color: red;
+}

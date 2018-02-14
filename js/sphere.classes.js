@@ -83,8 +83,7 @@ class CirclePos extends Position
 // a layer represents a line on which the points can move
 class Layer
 {
-   constructor(x1, y1, x2, y2)
-   {
+   constructor(x1, y1, x2, y2) {
       if(y1 != y2)
          console.error("Borders in layer do not have same height!");
 
@@ -95,8 +94,7 @@ class Layer
    }
 
    // new point that will move along this layer's height between left.x and right.x
-   addPoints(amount)
-   {
+   addPoints(amount) {
       // first decide, how many points there will be on this layer
       var layerLen = this.layerLen;
       // top to bottom: each layer is divided into unequal parts:
@@ -162,11 +160,9 @@ class Layer
       }
       else // so area 3 is selected --> no need to decide between left or right area
       {
-         for(var i = 1; i <= amount; i++)
-         {
-            this.points.push(new CirclePos
-            (
-               map(Math.random(),
+         for(var i = 1; i <= amount; i++) {
+            this.points.push(new CirclePos(map(
+               Math.random(),
                0,
                1,
                selectedAreas[0],

@@ -41,6 +41,16 @@
 
    <div id="test"></div>
 
+   <div id="skills">
+      <div class="heading">
+         <h2>SKILLS</h2>
+      </div>
+
+      <div class="content">
+
+      </div>
+   </div>
+
 
 
 <!-- End of Page Layout -->
