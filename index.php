@@ -51,6 +51,23 @@
       </div>
    </div>
 
+   <div id="contact">
+      <div class="heading">
+         <h2>CONTACT</h2>
+      </div>
+      <div class="content">
+         <form action="contact.php" method="post">
+            <p>Vorname <input name="firstname" value="Test"></p>
+            <p>Nachname <input name="lastname"></p>
+            <p>Ihre E-Mailadresse <input name="adress"></p>
+            <p>Betreff <input name="subject"></p>
+            <p>Nachricht <input name="text"></p>
+
+            <p><input type="submit"><input type="reset"></p>
+         </form>
+      </div>
+   </div>
+
 
 
 <!-- End of Page Layout -->
