@@ -61,8 +61,7 @@
             <p>Nachname <input name="lastname"></p>
             <p>Ihre E-Mailadresse <input name="adress"></p>
             <p>Betreff <input name="subject"></p>
-            <p>Nachricht <input name="text"></p>
-
+            <p>Nachricht <textarea name="message"></textarea></p>
             <p><input type="submit"><input type="reset"></p>
          </form>
       </div>

@@ -20,8 +20,17 @@
 
 <body>
    <?php
-   
+   $success = imap_mail(
+      "dominik.hillmann@gmx.de", // to
+      $_POST["subject"] . " from " . $_POST["firstname"] . $_POST["lastname"], // subject
+      $_POST["message"] . "\nReply to " . $_POST["adress"] // message text
+   );
 
+
+   if($success)
+      echo '<p>Thank you for your message. I\'ll reply as soon as possible.</p>'
+   else
+      echo '<p>Something has gone wrong. Please try again later.</p>';
    ?>
 </body>
 
