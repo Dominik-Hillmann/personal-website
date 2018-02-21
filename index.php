@@ -67,6 +67,25 @@
       </div>
    </div>
 
+   <div id="currently">
+      <div id="reading">
+         <div class="heading">
+         </div>
+         <div class="content">
+         </div>
+      </div>
+      <div id="working">
+         <div class="heading">
+         </div>
+         <div class="content">
+         </div>
+      </div>
+   </div>
+
+   <div id="notebook">
+      <div class="heading"></div>
+   </div>
+
 
 
 <!-- End of Page Layout -->
