@@ -57,33 +57,52 @@
       </div>
       <div class="content">
          <form action="contact.php" method="post">
-            <p>Vorname <input name="firstname" value="Test"></p>
-            <p>Nachname <input name="lastname"></p>
-            <p>Ihre E-Mailadresse <input name="adress"></p>
-            <p>Betreff <input name="subject"></p>
-            <p>Nachricht <textarea name="message"></textarea></p>
+            <h2>Say hello!</h2>
+            <p>Vorname<input name="firstname" value="Test"></p>
+            <p>Nachname<input name="lastname"></p>
+            <p>Ihre E-Mailadresse<input name="address"></p>
+            <p>Betreff<input name="subject"></p>
+            <p>Nachricht<textarea name="message"></textarea></p>
             <p><input type="submit"><input type="reset"></p>
          </form>
       </div>
    </div>
 
    <div id="currently">
-      <div id="reading">
-         <div class="heading">
+
+
+      <div class="heading"><h2>Currently...</h2></div>
+      <div class="content">
+
+         <div id="reading">
+            <div class="heading"><h2>... reading</h2></div>
+            <div class="content">
+
+            </div>
          </div>
-         <div class="content">
+
+
+         <div id="working">
+            <div class="heading"><h2>... working on</h2></div>
+            <div class="content">
+
+            </div>
          </div>
+
       </div>
-      <div id="working">
-         <div class="heading">
-         </div>
-         <div class="content">
-         </div>
-      </div>
+
    </div>
+
+
+   <div id="resume">
+      <div class="heading"><h2>Resumé</h2></div>
+      <div class="content"></div>
+   </div>
+
 
    <div id="notebook">
       <div class="heading"></div>
+      <div class="content"></div>
    </div>
 
 
