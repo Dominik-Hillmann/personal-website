@@ -20,36 +20,42 @@
 
 <body>
    <?php
-   /*$success = imap_mail(
-      "dominik.hillmann@gmx.de", // to
-      $_POST["subject"] . " from " . $_POST["firstname"] . $_POST["lastname"], // subject
-      $_POST["message"] . "\nReply to " . $_POST["adress"] // message text
-   );
+   $receiver = "dominik.hillmann.website@gmail.com";
+   $subject = $_POST["subject"];
+   $message = $_POST["message"];
 
+   echo "TO: " . $receiver;
+   foreach($_POST as $ele) {
+      echo $ele . "<br>";
+   }
 
-   if($success)
-      echo '<p>Thank you for your message. I\'ll reply as soon as possible.</p>'
-   else
-      echo '<p>Something has gone wrong. Please try again later.</p>';
-   echo $_POST["firstname"] . " " . $_POST["lastname"]. "\n";
-   echo $_POST["address"] . "\n";
-   echo $_POST["message"];*/
-
-
-   $receiver = 'dominik.hillmann.wzl@gmail.com';
-   $subject = 'Der Betreff';
-   $message = 'Hallo';
-
-   $headers = "From: vweb09.nitrado.net\r\n";
-   $headers .= "Reply-To: Dominik Hillmann <dominik.hillmann@gmx.de>\r\n";
+   $message .= "\nvon" . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
+   //$headers = "From: vweb09.nitrado.net\r\n";
+   $headers = "Reply-To: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";//"Reply-To: Dominik Hillmann <dominik.hillmann@gmx.de>\r\n";
+   $headers .= "Return-Path: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
    $headers .= "MIME-Version: 1.0\r\n";
    $headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
    $headers .= "X-Priority: 3\r\n";
-   $headers .= "X-Mailer: PHP". phpversion() ."\r\n";
+   $headers .= "X-Mailer: PHP" . phpversion() . "\r\n";
 
-   $success = mail($receiver, $subject, $message, $headers);
+   $allSet = TRUE;
+   foreach($_POST as $ele) {
+      if(!isset($ele)) {
+         $allSet = FALSE;
+         break;
+      }
+   }
 
-   echo ($success ? "<h1>JA</h1>" : "<h1>NEIN</h1>");
+   $success;
+   if($allSet)
+      $success = mail($receiver, $subject, $message, $headers);
+   else
+      echo "<h1>ACHTUNG</h1><p>Fehler</p><br>";
+
+   echo($success ? "<h1>JA</h1>" : "<h1>NEIN</h1>");
+   //echo "Reply-To: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
+   echo  $_POST["address"];
+   echo "ISSET: " . isset($_POST["address"]);
 
   //$headers .= "Reply-To: The Sender <sender@sender.com>\r\n";
   //$headers .= "Return-Path: The Sender <sender@sender.com>\r\n";
