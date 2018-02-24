@@ -4,8 +4,7 @@
 // first: positioning the menu correctly
 var menu = document.getElementById("menuwrapper");
 
-function adaptmenu()
-{
+function adaptmenu() {
    menu.style.marginTop = ((window.innerHeight / 2) - menu.offsetHeight / 2) + "px";
 }
 
@@ -27,10 +26,8 @@ header.addEventListener("mouseover", function()
    }
 });
 // hide menu options when the cursor leaves the header
-header.addEventListener("mouseleave", function()
-{
-   for(link of menuLinks)
-   {
+header.addEventListener("mouseleave", function() {
+   for(link of menuLinks) {
       link.classList.remove("shown");
       link.classList.add("unshown");
    }

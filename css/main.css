@@ -46,7 +46,6 @@ header {
    border: 1px dashed red;
 }
 
-
 #menuwrapper div:first-child {
    margin-top: 0;
 }
@@ -98,7 +97,6 @@ header {
 #sketch-holder {
    border: 1px white dashed;
 }
-
 
 #test {
    width: 100%;
