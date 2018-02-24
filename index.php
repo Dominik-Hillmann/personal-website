@@ -20,6 +20,37 @@
 
 </head>
 <body>
+   <?php
+      // get weather data if it is older than two hours
+      // get weather JSON --> save it as JSON, time with it
+      // someone calls index.php: check last update of weather.json
+      // if older than 2h --> call API and update weather.json then use it, else use current weather.json
+      // api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9fe71167771b980192490c2eb67c98bf
+
+      $currentCity = "London,uk";
+      $APPID = "9fe71167771b980192490c2eb67c98bf";
+      // $url = "api.openweathermap.org/data/2.5/weather?q=" . $currentCity . "&APPID=" . $APPID;
+      $url = "http://www.api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9fe71167771b980192490c2eb67c98bf";
+      echo $url . "<br>";
+
+      $response = file_get_contents($url);
+
+      echo "<p>RESPONSE: " . $response . "</p>";
+
+
+      /***** GROUPON EXAMPLE *****//*
+      $apikey = "client_id=abcd1234567890";
+      $division = "division_id=chicago";
+      $url = "http://api.groupon.com/v2/deals?" . implode("&", array($apikey, $division));
+      $response = file_get_contents($url);
+      $deals = json_decode($response, true);
+
+      foreach($deals['deals'] as $deal){
+          $format = 'Deal: <a href="%s">%s</a><br/>';
+          echo sprintf( $format, $deal['dealURL'], $deal['announcementTitle']);
+      }*/
+
+   ?>
 
 <!-- Page Layout -->
 
