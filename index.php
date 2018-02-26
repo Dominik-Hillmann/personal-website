@@ -21,58 +21,38 @@
 </head>
 <body>
    <?php
-      // get weather data if it is older than two hours
-      // get weather JSON --> save it as JSON, time with it
-      // someone calls index.php: check last update of weather.json
-      // if older than 2h --> call API and update weather.json then use it, else use current weather.json
-
       // configurations for contacting the OpenWeatherMap API
-      $appid = "9fe71167771b980192490c2eb67c98bf"; // key
+      $appid = "9fe71167771b980192490c2eb67c98bf";
       $city = "Mannheim";
 
-      //$now = time();
-      //echo date("d.m.Y H:i:s", $now) . "<br>";
-      //echo var_dump($now) . "<br>";
-      //echo var_dump(date("d.m.Y H:i:s", $now)) . "<br>";
-      //time / 60 / 60 - now /60 / 60 > 20 --> Abstand in Stunden > 2 --> neuer file, anosnten daten nutzen
-      //echo "<br><br>";
-
       $nowTime = time() / (60 * 60); // get hours by dividing by 60 * 60
-      // check the last time the weather was updated
-      $lastTimeTxt = fopen("./data/lastTime.txt", "r");
+      $lastTimeTxt = fopen("./data/lastTime.txt", "r"); // check the last time the weather was updated
       $lastTime = ((int) fgets($lastTimeTxt)) / (60 * 60);
       fclose($lastTimeTxt);
       echo ($nowTime - $lastTime) . "<br>";
 
-      //if(!$lastTime)
-         //exit("Couldn't open lastTime.txt.");
-
       // get weather data from API or JSON dependend on how long ago the last update happened (1 hour)
       $weather;
-      // less than one hour ago --> use the JSON
-      if(($nowTime - $lastTime) <= 1.0)
+      if (($nowTime - $lastTime) <= 1.0) // less than one hour ago --> use the JSON
       {
          echo "Nehme alte Datei.<br>";
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
       }
-      else
+      else // more than one hour ago --> contact weather API
       {
          echo "Kontaktiere API<br>";
-         // more than one hour ago --> contact weather API
          $url = "http://api.openweathermap.org/data/2.5/weather?q=" . $city . "&appid=" . $appid;
-         // echo "QUERY: " . $url . "<br>";
          $curl = curl_init();
          curl_setopt($curl, CURLOPT_URL, $url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-         $wJson = curl_exec($curl);
+         $jsonW = curl_exec($curl);
+         curl_close($curl);
 
-         // if successfully contacted the API --> give data to weather and write into weather.json
-         if(isset($wJson))
+         if (isset($jsonW)) // if successfully contacted the API --> give data to weather and write into weather.json
          {
-            echo "Contacted Weather API. " . "JSON: " . $wJson . "<br>";
-            $weather = json_decode($wJson);
+            echo "Contacted Weather API. " . "JSON: " . $jsonW . "<br>";
+            $weather = json_decode($jsonW);
             file_put_contents("./data/weather.json", json_encode($weather));
-            echo $writeSuccess . "<br>";
 
             // update lastTime.txt because weather was just updated
             $lastTime = fopen("./data/lastTime.txt", "w");
@@ -86,9 +66,51 @@
             $weather = json_decode(file_get_contents("./data/weather.json", "r"));
          }
       }
-      //var_dump($weather);
 
-      echo "<br>current conditions in " . $city . ": " . $weather->weather[0]->description;
+      echo "<br>current conditions in " . $city . ": " . $weather->weather[0]->description . "<br>";
+
+
+      /***** GitHub API *****/
+      function github_request($url)
+      {
+          $ch = curl_init();
+
+          // Basic Authentication with token
+          // https://developer.github.com/v3/auth/
+          // https://github.com/blog/1509-personal-api-tokens
+          // https://github.com/settings/tokens
+          $access = "d55c9cbf5f475177c79c39e31cf1fae3b63b7f9a";
+
+          curl_setopt($ch, CURLOPT_URL, $url);
+          //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
+          curl_setopt($ch, CURLOPT_USERAGENT, "Dominik-Hillmann");
+          curl_setopt($ch, CURLOPT_HEADER, 0);
+          curl_setopt($ch, CURLOPT_USERPWD, $access);
+          curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+          $output = curl_exec($ch);
+          curl_close($ch);
+          $result = json_decode(trim($output), true);
+          return $result;
+      }
+
+      $urlRepos = "http://api.github.com/users/Dominik-Hillmann";
+      $gitcurl = curl_init();
+      curl_setopt($gitcurl, CURLOPT_URL, $urlRepos);
+      curl_setopt($gitcurl, CURLOPT_RETURNTRANSFER, true);
+      //curl_setopt($gitcurl, CURLOPT_USERAGENT, "Dominik-Hillmann https://api.github.com/Dominik-Hillmann");
+      $jsonR = curl_exec($gitcurl);
+      var_dump($jsonR);
+      curl_close($gitcurl);
+      // "d55c9cbf5f475177c79c39e31cf1fae3b63b7f9a"
+      echo $jsonR . "HALLO<br>";
+
+      var_dump(github_request($urlRepos));
+
+
+      //echo (string) github_request("http://api.github.com/users/Dominik-Hillmann/repos");
    ?>
 
 <!-- Page Layout -->
