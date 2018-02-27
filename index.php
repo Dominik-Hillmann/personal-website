@@ -21,6 +21,9 @@
 </head>
 <body>
    <?php
+
+
+
       // configurations for contacting the OpenWeatherMap API
       $appid = "9fe71167771b980192490c2eb67c98bf";
       $city = "Mannheim";
@@ -33,13 +36,12 @@
 
       // get weather data from API or JSON dependend on how long ago the last update happened (1 hour)
       $weather;
-      if (($nowTime - $lastTime) <= 1.0) // less than one hour ago --> use the JSON
-      {
+      if (($nowTime - $lastTime) <= 1.0) { // less than one hour ago --> use the JSON
+
          echo "Nehme alte Datei.<br>";
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
-      }
-      else // more than one hour ago --> contact weather API
-      {
+      } else { // more than one hour ago --> contact weather API
+
          echo "Kontaktiere API<br>";
          $url = "http://api.openweathermap.org/data/2.5/weather?q=" . $city . "&appid=" . $appid;
          $curl = curl_init();
@@ -48,8 +50,7 @@
          $jsonW = curl_exec($curl);
          curl_close($curl);
 
-         if (isset($jsonW)) // if successfully contacted the API --> give data to weather and write into weather.json
-         {
+         if (isset($jsonW)) { // if successfully contacted the API --> give data to weather and write into weather.json
             echo "Contacted Weather API. " . "JSON: " . $jsonW . "<br>";
             $weather = json_decode($jsonW);
             file_put_contents("./data/weather.json", json_encode($weather));
@@ -59,9 +60,7 @@
             $writeSuccess = fputs($lastTime, (string) time());
             fclose($lastTime);
             $writeSuccess ? "TIME successfully saved<br>" : "ERRORs<br>";
-         }
-         else
-         {
+         } else {
             echo "Could NOT contact Weather API.<br>";
             $weather = json_decode(file_get_contents("./data/weather.json", "r"));
          }
@@ -71,46 +70,46 @@
 
 
       /***** GitHub API *****/
-      function github_request($url)
-      {
-          $ch = curl_init();
 
-          // Basic Authentication with token
-          // https://developer.github.com/v3/auth/
-          // https://github.com/blog/1509-personal-api-tokens
-          // https://github.com/settings/tokens
-          $access = "d55c9cbf5f475177c79c39e31cf1fae3b63b7f9a";
+      $github_url = "https://api.github.com/users/Dominik-Hillmann/repos";
 
-          curl_setopt($ch, CURLOPT_URL, $url);
-          //curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
-          curl_setopt($ch, CURLOPT_USERAGENT, "Dominik-Hillmann");
-          curl_setopt($ch, CURLOPT_HEADER, 0);
-          curl_setopt($ch, CURLOPT_USERPWD, $access);
-          curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-          $output = curl_exec($ch);
-          curl_close($ch);
-          $result = json_decode(trim($output), true);
-          return $result;
+      $user = "Dominik-Hillmann";
+      $token = "";
+      $curl_url = "https://api.github.com/users/Dominik-Hillmann/repos";
+
+      $curl_token_auth = "Authorization: token " . $token;
+
+      $ch = curl_init($curl_url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $curl_token_auth]);
+      $outputs = curl_exec($ch);
+      curl_close($ch);
+
+      $outputs = json_decode($outputs);
+
+      foreach ($outputs as $output) {
+         var_dump($output);
+         echo "<br><br>";
       }
 
-      $urlRepos = "http://api.github.com/users/Dominik-Hillmann";
-      $gitcurl = curl_init();
-      curl_setopt($gitcurl, CURLOPT_URL, $urlRepos);
-      curl_setopt($gitcurl, CURLOPT_RETURNTRANSFER, true);
-      //curl_setopt($gitcurl, CURLOPT_USERAGENT, "Dominik-Hillmann https://api.github.com/Dominik-Hillmann");
-      $jsonR = curl_exec($gitcurl);
-      var_dump($jsonR);
-      curl_close($gitcurl);
-      // "d55c9cbf5f475177c79c39e31cf1fae3b63b7f9a"
-      echo $jsonR . "HALLO<br>";
+      function contactAPI($url, $token, $httpHeader) {
+         $curl = curl_init($url);
+         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+         if (isset($httpHeader)) {
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $httpHeader);
+         }
 
-      var_dump(github_request($urlRepos));
+         $outputs = curl_exec($curl);
+         curl_close($curl);
+         return $outputs;
+      }
 
+      contactAPI(
+         $github_url,
+         $curl_token_auth,
+         ["User-Agent: Dominik-Hillmann", $curl_token_auth]
+      );
 
-      //echo (string) github_request("http://api.github.com/users/Dominik-Hillmann/repos");
    ?>
 
 <!-- Page Layout -->
