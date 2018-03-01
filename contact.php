@@ -27,7 +27,7 @@
       $message = $_POST["message"];
 
       echo "TO: " . $receiver;
-      foreach($_POST as $ele)
+      foreach ($_POST as $ele)
          echo $ele . "<br>";
 
       $message .= "\nvon " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
@@ -39,13 +39,12 @@
       $headers .= "X-Mailer: PHP" . phpversion() . "\r\n";
 
       $allSet = TRUE;
-      foreach($_POST as $ele)
-         if(!isset($ele))
-         {
+      foreach ($_POST as $ele) {
+         if (!isset($ele)) {
             $allSet = FALSE;
             break;
          }
-
+      }
 
       $success;
       if($allSet || !isset($_POST["address"]) || !isset($_POST["firstname"]) || !isset($_POST["lastname"]) || !isset($_POST["message"]))
