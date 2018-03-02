@@ -107,14 +107,21 @@ header {
 
 /***** SKILLS *****/
 
+.segment {
+   width: 100%;
+   display: block;
+}
+
 .heading {
    background-color: blue;
-   width: 30%;
+   width: 50%;
+   display: inline-block;
 }
 
 .content {
-   width: 60%;
-   background-color: green;
+   width: 50%;
+   background-color: red;
+   display: inline-block;
 }
 
 #skills {
@@ -123,4 +130,11 @@ header {
    background-color: red;
    margin-top: -19px;
    background-color: red;
+}
+
+
+/***** CONTACT *****/
+
+#contact {
+   width: 100%;
 }

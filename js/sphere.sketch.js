@@ -7,8 +7,8 @@ var startPoint;
 var middlePoint;
 var layers = [];
 var cg;                                              // color gradient to be chosen
-const COLOR_GRADIENTS =
-[
+
+const COLOR_GRADIENTS = [
    new ColorGradient(243, 29,  52,  247, 159, 39),
    new ColorGradient(14,  255, 255, 204, 255, 19),
    new ColorGradient(10,  48,  255, 16,  216, 255)
@@ -24,8 +24,8 @@ var imgWidth;
 var imgOpacity = 255;
 var arrow;
 
-function windowResized() // event: resizing canvas so that it fits into resized window
-{
+function windowResized() { // event: resizing canvas so that it fits into resized window
+
    //width = windowWidth;
    //height = windowHeight;
    //setupOnResize();
@@ -33,8 +33,7 @@ function windowResized() // event: resizing canvas so that it fits into resized 
    setupOnResize();
 }
 
-function setup()
-{
+function setup() {
    /*width = windowWidth;
    height = windowHeight;
    sphereRadius = Math.round(0.5 * windowWidth); // new window size --> new radius
@@ -63,29 +62,24 @@ function setup()
    // frist collect all points possible, and for each of them the distance to the middle point
    var circlePositions = []; // needed to capture all possible points on canvas that may belong to circle
    var circleDists = []; // needed to save the distance between possible points and the desired middle point of the sphere
-   for(var x = 1; x <= width; x++)
-   {
-      for(var y = 1; y <= height; y++)
-      {
+   for (var x = 1; x <= width; x++) {
+      for (var y = 1; y <= height; y++) {
          circlePositions.push(new Position(x, y));
          circleDists.push(distance(x, y, middlePoint));
       }
    }
 
    // filter for all points circlePositions, that have a distance (saved in circleDists) of sphereRadius to middle point
-   circlePositions = circlePositions.filter(function(element, i, array)
-   {
+   circlePositions = circlePositions.filter(function(element, i, array) {
       return circleDists[i] === sphereRadius;
    });
 
    // filters for all points with sphereRadius distance to middle point on the left side of the canvas
-   var leftPositions = circlePositions.filter(function(element, i, array)
-   {
+   var leftPositions = circlePositions.filter(function(element, i, array) {
       return element.x < width / 2;
    });
    // filters for all points with sphereRadius distance to middle point on the right side of the canvas
-   var rightPositions = circlePositions.filter(function(element, i, array)
-   {
+   var rightPositions = circlePositions.filter(function(element, i, array) {
       return element.x > width / 2;
    });
    // none of the filters uses <= or >= because those points directly on the edge won't be needed anyways
@@ -93,18 +87,14 @@ function setup()
    // for the last filter, both arrays need to have the same number of points in them
    if(leftPositions.length != rightPositions.length)
       console.error("unequal length of arrays to build layers");
-   else
-   {
+   else {
       var sortedByYPos;
-      for(var i = 1; i <= height; i++) // first, get all points that have the same height (.y)
-      {
-         sortedByYPos = circlePositions.filter(function(element, index, array)
-         {
+      for (var i = 1; i <= height; i++) { // first, get all points that have the same height (.y)
+         sortedByYPos = circlePositions.filter(function(element, index, array) {
             return element.y === i;
          });
 
-         if(sortedByYPos.length === 0) // if there are no circle points with the y-position of i, go to the next iteration
-            continue;
+         if (sortedByYPos.length === 0) continue; // if there are no circle points with the y-position of i, go to the next iteration
 
          /*
             * the points were sorted into the original array so that
@@ -113,8 +103,7 @@ function setup()
             * --> therefore, the left border of one height is the first element and right border is the last element
          */
 
-         layers.push(new Layer
-         (
+         layers.push(new Layer(
             sortedByYPos[0].x,
             sortedByYPos[0].y,
             sortedByYPos[sortedByYPos.length - 1].x,
@@ -147,13 +136,11 @@ function setup()
    } // else
 } // setup
 
-function draw()
-{
+function draw() {
    background(7, 7, 7);
    cursor.update();
 
-   for(var i = 0; i < layers.length; i++)
-   {
+   for (var i = 0; i < layers.length; i++) {
       layers[i].movePoints(cursor);
       layers[i].drawPoints(1, 7, width);
    }
@@ -177,8 +164,7 @@ function draw()
 
 // This is a setup function that is called if the browser window is being resized.
 // It is slightly different from setup, e.g. it keeps the color gradient that was set in setup() and does not choose a new one.
-function setupOnResize()
-{
+function setupOnResize() {
    sphereRadius = Math.round(0.5 * windowWidth); // new window size --> new radius
    sphereRadius -= Math.round(0.2 * windowWidth);                           // few px less wide because otherwiese points missing at sphere's "equator"
    layers = [];                                  // therefore clear all layers

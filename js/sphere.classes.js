@@ -11,18 +11,14 @@ var partialDist = function(start, len, percent)
 }
 
 // consists of two colors as beginning and end of the gradient
-class ColorGradient
-{
-   constructor(startR, startG, startB, endR, endG, endB)
-   {
-      this.start =
-      {
+class ColorGradient {
+   constructor(startR, startG, startB, endR, endG, endB) {
+      this.start = {
          r : startR,
          b : startG,
          g : startB
       };
-      this.end =
-      {
+      this.end = {
          r : endR,
          g : endG,
          b : endB
@@ -31,10 +27,8 @@ class ColorGradient
 }
 
 // cursor that has information about its own past position
-class Cursor
-{
-   constructor(x, y, width)
-   {
+class Cursor {
+   constructor(x, y, width) {
       // x and y position in the last frame
       this.last = new Position(x, y); // both .last and .now having the same value directly after construction is enough
       // x and y position in the current frame
@@ -43,8 +37,7 @@ class Cursor
    }
 
    // last position is current position and current position is mouseX and mouseY
-   update()
-   {
+   update() {
       this.last.x = this.current.x;
       this.last.y = this.current.y;
       this.current.x = winMouseX;
@@ -55,24 +48,19 @@ class Cursor
 }
 
 // creates new vector
-class Position
-{
-   constructor(x, y)
-   {
+class Position {
+   constructor(x, y) {
       this.x = x;
       this.y = y;
    }
 }
 
 // contains additonal information about the tier of the point
-class CirclePos extends Position
-{
-   constructor(x, y, r, g, b)
-   {
+class CirclePos extends Position {
+   constructor(x, y, r, g, b) {
       super(x, y);
       this.secondTier = (Math.random() > 0.5); // 50% possibility that the dot will be in the second tier
-      this.color =
-      {
+      this.color = {
          r : r,
          g : g,
          b : b
@@ -81,10 +69,9 @@ class CirclePos extends Position
 }
 
 // a layer represents a line on which the points can move
-class Layer
-{
+class Layer {
    constructor(x1, y1, x2, y2) {
-      if(y1 != y2)
+      if (y1 != y2)
          console.error("Borders in layer do not have same height!");
 
       this.left = new Position(x1, y1);
@@ -100,28 +87,23 @@ class Layer
       // top to bottom: each layer is divided into unequal parts:
       // the first 0 to 10 percent, 10 to 25 percent, 25 to 75 percent, 75 to 90, 90 to 100 percent
       // the smaller areas on the side are supposed to have a bigger probability of points falling into them
-      var area1Left = // first left
-      [
+      var area1Left = [// first left
          this.left.x,
          partialDist(this.left.x, layerLen, 0.1)
       ];
-      var area2Left = // second left
-      [
+      var area2Left = [// second left
          partialDist(this.left.x, layerLen, 0.1),
          partialDist(this.left.x, layerLen, 0.25)
       ];
-      var area3 = // middle
-      [
+      var area3 = [// middle
          partialDist(this.left.x, layerLen, 0.25),
          partialDist(this.left.x, layerLen, 0.75)
       ];
-      var area2Right = // second right
-      [
+      var area2Right = [ // second right
          partialDist(this.left.x, layerLen, 0.75),
          partialDist(this.left.x, layerLen, 0.9)
       ];
-      var area1Right = // frist right
-      [
+      var area1Right = [ // frist right
          partialDist(this.left.x, layerLen, 0.9),
          this.right.x
       ];
@@ -137,19 +119,16 @@ class Layer
          selectedAreas = area3;
       // both parts of an area need to be selected because both together have the overall probability assigned
       // since areas 1 and 2 are divided into two and area 3 is kept together, they need to be treated differently
-      if(selectedAreas[0].length == 2) // so area 1 or 2
-      {
+      if (selectedAreas[0].length == 2) { // so area 1 or 2
          var iterationArea; // to select left or right half based on random number
-         for(var i = 1; i <= amount; i++)
-         {
+         for(var i = 1; i <= amount; i++) {
             var randPos = Math.random(); // new random position within selectedArea every iteration
             if((randPos <= 0.5) && (selectedAreas.length == 2)) // whether to choose left or right side
                iterationArea = selectedAreas[0];
             else
                iterationArea = selectedAreas[1];
 
-            this.points.push(new CirclePos
-            (
+            this.points.push(new CirclePos(
                map(Math.random(), 0, 1, iterationArea[0], iterationArea[1]),
                this.left.y,
                255,
@@ -157,9 +136,7 @@ class Layer
                255
             )); // then finally push new point in array that contains this layer's points
          } // for
-      }
-      else // so area 3 is selected --> no need to decide between left or right area
-      {
+      } else { // so area 3 is selected --> no need to decide between left or right area
          for(var i = 1; i <= amount; i++) {
             this.points.push(new CirclePos(map(
                Math.random(),
@@ -172,29 +149,25 @@ class Layer
       } // else
    } // newPointsOnLayer
 
-   movePoints(cursor)
-   {
+   movePoints(cursor) {
       var len = this.layerLen;
 
-      for(var i = 0; i < this.points.length; i++)
-      {
+      for (var i = 0; i < this.points.length; i++) {
          var point = this.points[i];
-         if(point.secondTier)
+         if (point.secondTier)
             point.x += len * (-1 * 0.001);
          else
             point.x += len * 0.001;
          // at last, the change of direction, if the point happens to step over the layer's border
-         if((point.x > this.right.x) || (point.x < this.left.x))
+         if ((point.x > this.right.x) || (point.x < this.left.x))
             point.secondTier = !point.secondTier;
          }
    }
 
    // sets
-   colorize(startPoint, cg)
-   {
+   colorize(startPoint, cg) {
       // startPoint: point where color gradient starts
-      for(var i = 0; i < this.points.length; i++)
-      {
+      for (var i = 0; i < this.points.length; i++) {
          var point = this.points[i];
          var dist = distance(point.x, point.x, startPoint);
          point.color.r = Math.round(map(dist, 0, sphereRadius, cg.start.r, cg.end.r));
@@ -204,14 +177,12 @@ class Layer
    }
 
    // draws the array of points in this layer
-   drawPoints(minSize, maxSize, width)
-   {
+   drawPoints(minSize, maxSize, width) {
       var midSize = (minSize + maxSize) / 2;
       var len = this.layerLen;
       var y = this.left.y;
 
-      for(var i = 0; i < this.points.length; i++)
-      {
+      for (var i = 0; i < this.points.length; i++) {
          var point = this.points[i];
          var r = point.color.r;
          var g = point.color.g;
@@ -219,8 +190,7 @@ class Layer
          var x = point.x;
          var a = 255;                              // alpha value
 
-         var size = map
-         (
+         var size = map(
             Math.abs((width / 2) - x),             // absolute deviation from layer middle
             0,                                     // point can deviate from 0 to
             len / 2,                               // full range to border: half of the
@@ -228,9 +198,8 @@ class Layer
             midSize                                // at the edges of both tiers points should have midSize
          );
 
-         for(var j = 0; j < 3; j++)                // one point + the two "shadows" for aestethic reasons
-         {
-            stroke(r, g, b, a);                    // for each shadow new alpha
+         for (var j = 0; j < 3; j++) {              // one point + the two "shadows" for aestethic reasons
+            stroke(r, g, b, a);                     // for each shadow new alpha
             fill(r, g, b, a);
             ellipse(x, y, size);
             x -= 2;
@@ -241,8 +210,7 @@ class Layer
    }
 
    // draws a line between the left point of the layer and the right point
-   drawLine()
-   {
+   drawLine() {
       line(this.left.x, this.left.y, this.right.x, this.right.y);
    }
 }
