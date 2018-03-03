@@ -70,7 +70,7 @@
 
       /***** OpenWeatherMap API *****/
       // configurations for contacting the OpenWeatherMap API
-      $appid = "9fe71167771b980192490c2eb67c98bf";
+      $appid = "";
       $city = "Mannheim";
       // check the last time the weather.json file was updated
       $nowTime = time() / (60 * 60);
@@ -102,7 +102,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "";
+      $githubToken = "20e51131fcc4df95cd0a493886516a87d9539185";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -187,23 +187,32 @@
       </div>
    </div>-->
 
-   <div id="contact" class="segment">
-      <div class="heading">
-         <h2>CONTACT</h2>
+   <div id = "contact">
+
+      <div id = "contactOther">
+
+         <div>
+            <img src = "./images/arrow_down.png">
+         </div>
+
+         <div><!-- social media links -->
+            <img src = "./images/arrow_down.png">
+         </div>
+
       </div>
-      <div class="content">
-         <form action="contact.php" method="post">
+
+
+      <div id = "contactForm">
+         <form action = "contact.php" method = "post">
             <h2>Say hello!</h2>
-            <div>
-               <p><h3>Vorname</h3><input name="firstname" value="Test"></p>
-               <p><h3>Nachname</h3><input name="lastname"></p>
-            </div>
-            <p><h3>E-Mailadresse</h3><input name="address"></p>
-            <p><h3>Betreff</h3><input name="subject"></p>
-            <p><h3>Nachricht</h3><textarea name="message"></textarea></p>
-            <p><input type="submit"><input type="reset"></p>
+            <div><input type="text" name = "firstname" value = "Vorname" onfocus='if(this.value=="Vorname"){this.value="";}'><input type="text" name = "lastname" value = "Nachname" onfocus='if(this.value=="Nachname"){this.value="";}'></div>
+            <p><input type="text" name = "address" value = "Mailadresse" onfocus='if(this.value=="Mailadresse"){this.value="";}'></p>
+            <p><input type="text" name = "subject" value = "Betreff" onfocus='if(this.value=="Betreff"){this.value="";}'></p>
+            <p><textarea name = "message"value = "Nachricht" onfocus='if(this.value=="Nachricht"){this.value="";}'></textarea></p>
+            <p><input type = "submit"><input type = "reset"></p>
          </form>
       </div>
+
    </div>
 
    <!--<div id="currently" class="segment">
@@ -244,11 +253,11 @@
    </div>-->
 
    <?php
-      echo "difference in time concerning weather: " . ($nowTime - getTime("./data/timeWeather.txt") / (60 * 60)) . "<br>";
-      echo "difference in time concerning github repositories: " . ($nowTime - getTime("./data/timeWeather.txt") / (60 * 60)) . "<br>";
+      echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
+      echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
       echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
       echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
-      echo "current conditions in " . $city . ": " . $weather->weather[0]->description;
+      echo "current conditions in " . $city . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
       echo "<br>";
       var_dump($weather);
       echo "<br><br>";

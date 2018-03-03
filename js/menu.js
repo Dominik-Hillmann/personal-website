@@ -37,6 +37,20 @@ header.addEventListener("mouseleave", function()
 });
 
 
+/***** Preloading images *****/
+/*function preload()
+{
+   var images = [];
+   for (var i = 0; i < preload.arguments.length; i++)
+   {
+      images[i] = new Image();
+      images[i].src = preload.arguments[i];
+   }
+}
+
+preload("images/circle_full.png", "images/hollow_circle.png");
+*/
+
 // change picture
 var menuDivs = menu.getElementsByTagName("div");
 var imgs = [];
