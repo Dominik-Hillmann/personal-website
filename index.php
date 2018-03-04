@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
+<!-- NOTHING WELL DONE IS EVER INSIGNIFICANT. -->
 <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Dominik Hillmann</title>
@@ -70,7 +70,7 @@
 
       /***** OpenWeatherMap API *****/
       // configurations for contacting the OpenWeatherMap API
-      $appid = "";
+      $appid = "dfc5381a15a6aea6bea3bcb0ef26a045";
       $city = "Mannheim";
       // check the last time the weather.json file was updated
       $nowTime = time() / (60 * 60);
@@ -102,7 +102,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "20e51131fcc4df95cd0a493886516a87d9539185";
+      $githubToken = "";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -157,11 +157,32 @@
       for ($i = 1; $i < count($repos); $i++)
          if ($repos[$i]->lastUpdate > $currProj->lastUpdate)
             $currProj = $repos[$i];
+
+
+      /***** CONSTRUCTIONG WEATHER SYMBOLS *****/
+      $weatherPicStr = "./images/weather/";
+      $hour = (int) date("G", time());
+
+      if (($hour > 21) || ($hour < 6))
+         $weatherPicStr .= "night_";
+      else
+         $weatherPicStr .= "day_";
+
+
+
+
+
+
+
+
    ?>
 
 <!-- Page Layout -->
 
    <header>
+      <div id="weather">
+
+      </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
          <div><img src="images/hollow_circle.png"><a class="unshown" href="#">START</a></div>
@@ -192,7 +213,12 @@
       <div id = "contactOther">
 
          <div>
-            <img src = "./images/arrow_down.png">
+            <div>
+               <img src="/images/github_black.png">
+               <img src="/images/xing_black.png">
+               <img src="/images/linkedin_black.png">
+            </div>
+
          </div>
 
          <div><!-- social media links -->
@@ -204,12 +230,31 @@
 
       <div id = "contactForm">
          <form action = "contact.php" method = "post">
-            <h2>Say hello!</h2>
-            <div><input type="text" name = "firstname" value = "Vorname" onfocus='if(this.value=="Vorname"){this.value="";}'><input type="text" name = "lastname" value = "Nachname" onfocus='if(this.value=="Nachname"){this.value="";}'></div>
-            <p><input type="text" name = "address" value = "Mailadresse" onfocus='if(this.value=="Mailadresse"){this.value="";}'></p>
-            <p><input type="text" name = "subject" value = "Betreff" onfocus='if(this.value=="Betreff"){this.value="";}'></p>
-            <p><textarea name = "message"value = "Nachricht" onfocus='if(this.value=="Nachricht"){this.value="";}'></textarea></p>
-            <p><input type = "submit"><input type = "reset"></p>
+            <h2 class="hover-underline-animation">Say hello!</h2>
+            <div>
+               <div class="twoinrow">
+                  <h3 class="formHeading">Vorname</h3>
+                  <input type="text" name="firstname">
+               </div><div class="twoinrow"><!-- to avoid whitespace -->
+                  <h3 class="formHeading">Nachname</h3>
+                  <input type="text" name="lastname">
+               </div>
+            </div>
+            <p>
+               <h3 class="formHeading">E-Mailadresse</h3>
+               <input type="text" name="address">
+            </p>
+            <p>
+               <h3 class="formHeading">Betreff</h3>
+               <input type="text" name="subject">
+            </p>
+            <p>
+               <h3 class="formHeading">Nachricht</h3>
+               <textarea id="message" name="message"></textarea>
+            </p>
+            <p>
+               <input class="nonWriteInput" type="submit"><input class="nonWriteInput" type="reset">
+            </p>
          </form>
       </div>
 
