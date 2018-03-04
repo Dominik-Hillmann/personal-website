@@ -239,6 +239,10 @@
                <input type="text" name="address">
             </p>
             <p>
+               <h3 class="formHeading">Telefonnummer</h3>
+               <input type="text" name="telnum">
+            </p>
+            <p>
                <h3 class="formHeading">Betreff</h3>
                <input type="text" name="subject">
             </p>
