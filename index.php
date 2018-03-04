@@ -22,14 +22,12 @@
 <body>
    <?php
       // stores all needed data for the GitHub projects I want to display
-      class Repo
-      {
+      class Repo {
          public $name;
          public $lastUpdate;
          public $description;
 
-         public function __construct($name, $lastUpdate, $description)
-         {
+         public function __construct($name, $lastUpdate, $description) {
             $this->name = $name;
             $this->description = $description;
             $this->lastUpdate = strtotime($lastUpdate); // UNIX timestamp
@@ -37,8 +35,7 @@
       }
 
       // accesses wather and github API via curl
-      function contactAPI($url, $token)
-      {
+      function contactAPI($url, $token) {
          $curl = curl_init($url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
          if (isset($token))
@@ -50,8 +47,7 @@
       }
 
       // writes current time into .txt files
-      function putTime($path)
-      {
+      function putTime($path) {
          $lastTime = fopen($path, "w");
          fputs($lastTime, (string) time());
          fclose($lastTime);
@@ -59,8 +55,7 @@
       }
 
       // time from .txt file as UNIX timestamp
-      function getTime($path)
-      {
+      function getTime($path) {
          $timef = fopen($path, "r");
          $time = (int) fgets($timef);
          fclose($timef);
@@ -79,23 +74,17 @@
       $wAPI = false;
 
       // less than one hour ago --> use the JSON
-      if (($nowTime - $weatherUpd) <= 1.0)
-      {
+      if (($nowTime - $weatherUpd) <= 1.0) {
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
-      }
-      else
-      {
+      } else {
          $jsonW = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $city . "&appid=" . $appid, NULL);
          $wAPI = true;
 
-         if (isset($jsonW))
-         {
+         if (isset($jsonW)) {
             $weather = json_decode($jsonW);
             file_put_contents("./data/weather.json", json_encode($weather));
             putTime("./data/timeWeather.txt");
-         }
-         else
-         {
+         } else {
             $weather = json_decode(file_get_contents("./data/weather.json", "r"));
          }
       }
@@ -115,23 +104,16 @@
          $repoData = json_decode(contactAPI($ReposUrl, $curlToken));
 
          // put all relevant data into objects
-         foreach ($repoData as $repo)
-         {
-            array_push($repos, new Repo
-            (
+         foreach ($repoData as $repo) {
+            array_push($repos, new Repo(
                $repo->name,
                $repo->pushed_at,
                $repo->description
             ));
          }
-
-         $gAPI = true;
-
          // (over)write files
-         foreach ($repos as $repo)
-         {
-            file_put_contents
-            (
+         foreach ($repos as $repo) {
+            file_put_contents(
                "./data/repos/" . $repo->name . ".json",
                json_encode($repo)
             );
@@ -139,49 +121,61 @@
 
          // update time because the data got updated
          putTime("./data/timeGithub.txt");
-      }
-      else
-      {
+         $gAPI = true;
+      } else {
          // get repo data locally
          $files = scandir("./data/repos/");
          // delete ".", ".."
          unset($files[0]);
          unset($files[1]);
 
-         foreach ($files as $file)
+         foreach ($files as $file) {
             array_push($repos, json_decode(file_get_contents("./data/repos/" . $file)));
+         }
       }
 
       // select project with most recent update
       $currProj = $repos[0];
-      for ($i = 1; $i < count($repos); $i++)
-         if ($repos[$i]->lastUpdate > $currProj->lastUpdate)
+      for ($i = 1; $i < count($repos); $i++) {
+         if ($repos[$i]->lastUpdate > $currProj->lastUpdate) {
             $currProj = $repos[$i];
+         }
+      }
 
 
       /***** CONSTRUCTIONG WEATHER SYMBOLS *****/
       $weatherPicStr = "./images/weather/";
       $hour = (int) date("G", time());
 
-      if (($hour > 21) || ($hour < 6))
+      if (($hour > 21) || ($hour < 6)) {
          $weatherPicStr .= "night_";
-      else
+      } else {
          $weatherPicStr .= "day_";
+      }
 
-
-
-
-
-
-
-
+      $id = $weather->weather[0]->id;
+      if ((($id >= 200) && ($id < 300)) || ($id >= 900)) {
+         $weatherPicStr .= "storm.png";
+      } else if (($id >= 300) && ($id < 600)) {
+         $weatherPicStr .= "rain.png";
+      } else if (($id >= 600) && ($id < 701)) {
+         $weatherPicStr .= "snow.png";
+      } else if (($id >= 701) && ($id < 800)) {
+         $weatherPicStr .= "mist.png";
+      } else if ($id == 800) {
+         $weatherPicStr .= "clear.png";
+      } else if (($id >= 801) && ($id < 900)) {
+         $weatherPicStr .= "cloud.png";
+      } else {
+         $weatherPicStr .= "cloud.png";
+      }
    ?>
 
 <!-- Page Layout -->
 
    <header>
       <div id="weather">
-
+         <?php echo '<img src="' . $weatherPicStr . '">' ?>
       </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
