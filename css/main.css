@@ -32,6 +32,27 @@ header {
    transition: opacity 0.25s ease-in-out;
 }
 
+header * { border: 1px dashed white }
+
+#weather {
+   display: inline;
+   margin-top: -5px;
+}
+
+#weather img {
+   height: 22px;
+   display: inline;
+   margin-top: 20px;
+   margin-right: 7px;
+   padding: 0;
+}
+
+#weather p {
+   display: inline-block;
+   font-size: 15px;
+   text-align: center;
+   font-family: sans-serif;
+}
 
 #menuwrapper {
    display: block;

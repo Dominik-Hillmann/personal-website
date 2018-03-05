@@ -144,14 +144,15 @@
 
 
       /***** CONSTRUCTIONG WEATHER SYMBOLS *****/
-      $weatherPicStr = "./images/weather/";
+      $weatherPicStr = "./images/weather/bright_";
       $hour = (int) date("G", time());
 
-      if (($hour > 21) || ($hour < 6)) {
+      if (($hour > 20) || ($hour < 6)) {
          $weatherPicStr .= "night_";
       } else {
          $weatherPicStr .= "day_";
       }
+
 
       $id = $weather->weather[0]->id;
       if ((($id >= 200) && ($id < 300)) || ($id >= 900)) {
@@ -175,7 +176,7 @@
 
    <header>
       <div id="weather">
-         <?php echo '<img src="' . $weatherPicStr . '">' ?>
+         <img src=<?php echo $weatherPicStr; ?>><p><?php echo round($weather->main->temp - 273.15) . "°C " . $city; ?></p>
       </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
