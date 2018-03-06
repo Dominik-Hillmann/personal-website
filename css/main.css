@@ -32,34 +32,28 @@ header {
    transition: opacity 0.25s ease-in-out;
 }
 
-header * { border: 1px dashed white }
-
 #weather {
-   display: inline;
-   margin-top: -5px;
+   height: 22px;
+   margin-top: 10px;
 }
 
 #weather img {
    height: 22px;
-   display: inline;
-   margin-top: 20px;
-   margin-right: 7px;
-   padding: 0;
+   margin-right: 5px;
 }
 
 #weather p {
-   display: inline-block;
    font-size: 15px;
-   text-align: center;
    font-family: sans-serif;
+   float: right;
+   width: 100px;
+   display: inline-block;
+   margin-top: 2px;
 }
 
 #menuwrapper {
-   display: block;
-   font-size: 20px;
-   border: white dashed 1px;
+
    font-size: 15px;
-   vertical-align: middle;
 }
 
 #menuwrapper div {
@@ -113,6 +107,7 @@ header * { border: 1px dashed white }
 }
 
 
+
 /***** START *****/
 
 #sketch-holder {
@@ -153,7 +148,6 @@ header * { border: 1px dashed white }
 
 #contactForm form p {
    margin: 0px 0px 15px 0px;
-   padding: 0;
 }
 
 .formHeading {
@@ -170,12 +164,26 @@ header * { border: 1px dashed white }
 
 #contactForm form input {
    width: 61.8%;
+   height: 25px;
    margin: 0;
-   border: 0;
+   border: none;
    background-color: #b6be9c;
    border-radius: 4px;
-   border-bottom: 2px brown;
 
+}
+
+#contactForm form input:focus {
+   background-color: green;
+   animation-name: writing;
+   animation-duration: 0.5s;
+}
+
+@keyframes writing {
+   from {
+      background-color: #b6be9c;
+   } to {
+      background-color: green;
+   }
 }
 
 #contactForm form:first-of-type div {
@@ -183,7 +191,6 @@ header * { border: 1px dashed white }
    width: 61.8%;
    margin-left: auto;
    margin-right: auto;
-   margin-bottom: 0;
    margin-top: 0;
 }
 
@@ -193,7 +200,7 @@ header * { border: 1px dashed white }
    width: 49%;
    height: 45px;
    display: inline-block;
-   margin: 0px 0px 5px 0px;
+   margin: 0px 0px 12px 0px;
 }
 
 #contactForm form:first-of-type div.twoinrow:first-child {
@@ -226,22 +233,35 @@ header * { border: 1px dashed white }
    border: none;
 }
 
+#message:focus {
+   background-color: green;
+   animation-name: writing;
+   animation-duration: 0.5s;
+}
+
+
 /* submit and reset buttons */
 #contactForm form p:last-of-type {
-   font-family: 'Raleway', sans-serif;
-   margin-bottom: 50px;
+   margin-bottom: 40px;
    color: white;
-}
+   margin-top: 20px;
 
+}
+/*
 #contactForm form p:last-of-type input {
    color: white;
+   width: 20%;
+
+
+   /*background-color: #7b9e87;*/
+   /*border: 10px white;
+}*/
+
+#submit {
+   color: white;
+   width: 25px;
+   border: 1px white;
 }
-
-#contactForm form p:last-of-type input:first-of-type {
-   margin-bottom: 5px;
-}
-
-
 
 /******** PSEUDOKLASSE FOCUS KÖNNTE WICHTIG WERDEN ****/
 

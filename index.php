@@ -91,7 +91,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "";
+      $githubToken = "10eedc7e838eaa8bbad57e986848c9c14fda8373";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -170,13 +170,15 @@
       } else {
          $weatherPicStr .= "cloud.png";
       }
+
    ?>
 
 <!-- Page Layout -->
 
    <header>
       <div id="weather">
-         <img src=<?php echo $weatherPicStr; ?>><p><?php echo round($weather->main->temp - 273.15) . "°C " . $city; ?></p>
+         <img src=<?php echo $weatherPicStr; ?>>
+         <p><?php echo round($weather->main->temp - 273.15) . "°C " . $city; ?></p>
       </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
@@ -222,7 +224,8 @@
 
       </div>
 
-
+      <!-- Button linksbündig gross -->
+      <!-- Rechts daneben Download Lebenslauf -->
       <div id = "contactForm">
          <form action = "contact.php" method = "post">
             <h2 class="hover-underline-animation">Say hello!</h2>
@@ -252,7 +255,8 @@
                <textarea id="message" name="message"></textarea>
             </p>
             <p>
-               <input class="nonWriteInput" type="submit"><input class="nonWriteInput" type="reset">
+               <input id="submit" class="nonWriteInput" type="submit">
+               <!--<a href="#">Resumé</a>-->
             </p>
          </form>
       </div>
