@@ -31,6 +31,7 @@
          echo $ele . "<br>";
 
       $message .= "\nvon " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
+      $message .= "Telefonnummer: " . $_POST["telnum"];
       $headers = "Reply-To: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
       $headers .= "Return-Path: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
       $headers .= "MIME-Version: 1.0\r\n";

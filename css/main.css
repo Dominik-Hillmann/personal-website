@@ -247,21 +247,13 @@ header {
    margin-top: 20px;
 
 }
-/*
-#contactForm form p:last-of-type input {
-   color: white;
-   width: 20%;
-
-
-   /*background-color: #7b9e87;*/
-   /*border: 10px white;
-}*/
 
 #submit {
-   color: white;
-   width: 25px;
-   border: 1px white;
+   display: inline;
+   color: black;
+   height: 100px;
 }
+
 
 /******** PSEUDOKLASSE FOCUS KÖNNTE WICHTIG WERDEN ****/
 

@@ -91,7 +91,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "10eedc7e838eaa8bbad57e986848c9c14fda8373";
+      $githubToken = "";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -299,6 +299,8 @@
       <div class="heading"></div>
       <div class="content"></div>
    </div>-->
+
+   <!-- IDEE: ganz unten Herzchen mit Zähler klick -> herz++;-->
 
    <?php
       echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
