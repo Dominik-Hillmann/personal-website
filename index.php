@@ -147,7 +147,7 @@
       $weatherPicStr = "./images/weather/bright_";
       $hour = (int) date("G", time());
 
-      if (($hour > 20) || ($hour < 6)) {
+      if (($hour > 19) || ($hour < 7)) {
          $weatherPicStr .= "night_";
       } else {
          $weatherPicStr .= "day_";
@@ -189,7 +189,7 @@
       </div>
    </header>
 
-   <div id="sketch-holder"></div>
+   <!--<div id="sketch-holder"></div>-->
 
 
 
@@ -261,6 +261,51 @@
          </form>
       </div>
 
+
+      <div id="skills">
+         <div>
+            <div class="sliderWrapper">
+               <img src="./images/left_arrow.png">
+               <div class="slider">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+               </div>
+               <img src="./images/right_arrow.png">
+            </div>
+            <div class="sliderWrapper">
+               <img src="./images/left_arrow.png">
+               <div class="slider">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+               </div>
+               <img src="./images/right_arrow.png">
+            </div>
+            <div class="sliderWrapper">
+               <img src="./images/left_arrow.png">
+               <div class="slider">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
+               </div>
+               <img src="./images/right_arrow.png">
+            </div>
+         </div>
+      </div>
+
    </div>
 
    <!--<div id="currently" class="segment">
@@ -300,7 +345,7 @@
       <div class="content"></div>
    </div>-->
 
-   <!-- IDEE: ganz unten Herzchen mit Zähler klick -> herz++;-->
+
 
    <?php
       echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";

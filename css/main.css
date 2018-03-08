@@ -123,6 +123,7 @@ header {
    overflow: hidden;
 
    font-family: 'Raleway', sans-serif;
+   clear: both;
 }
 
 /*#contact * {
@@ -255,9 +256,6 @@ header {
 }
 
 
-/******** PSEUDOKLASSE FOCUS KÖNNTE WICHTIG WERDEN ****/
-
-/* resume download and social media links on the left hand side */
 #contactOther {
    color: red;
    background-color: blue;
@@ -300,3 +298,43 @@ header {
   transform: scaleX(1);
   transform-origin: bottom left;
 }*/
+
+
+/***** SKILLS *****/
+
+#skills {
+   clear: both;
+
+   background-color: #d6fc28;
+}
+
+
+#skills div {
+   width: 61.8%;
+
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.sliderWrapper {
+
+   margin-top: 10px;
+
+   background-color: #114536;
+}
+
+.sliderWrapper img {
+   height: 30px;
+}
+
+.slider {
+   display: inline-block;
+
+   margin: 0 auto 0 auto;
+
+   background-color: #594b1a;
+}
+
+.slider img {
+   display: inline-block;
+}
