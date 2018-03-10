@@ -305,6 +305,7 @@ header {
 #skills {
    clear: both;
 
+
    background-color: #d6fc28;
 }
 
@@ -314,6 +315,10 @@ header {
 
    margin-left: auto;
    margin-right: auto;
+}
+
+.sliderConstrainer {
+   
 }
 
 .sliderWrapper {

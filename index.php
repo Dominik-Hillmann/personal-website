@@ -265,43 +265,49 @@
       <div id="skills">
          <div>
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png">
-               <div class="slider">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-               </div>
-               <img src="./images/right_arrow.png">
+               <!--<div class="sliderConstrainer">-->
+                  <img src="./images/left_arrow.png">
+                  <div class="slider">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                  </div>
+                  <img src="./images/right_arrow.png">
+               <!--</div>-->
             </div>
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png">
-               <div class="slider">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-               </div>
-               <img src="./images/right_arrow.png">
+               <!--<div class="sliderConstrainer">-->
+                  <img src="./images/left_arrow.png">
+                  <div class="slider">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                  </div>
+                  <img src="./images/right_arrow.png">
+               <!--</div>-->
             </div>
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png">
-               <div class="slider">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-                  <img src="/images/github_black.png">
-                  <img src="/images/xing_black.png">
-                  <img src="/images/linkedin_black.png">
-               </div>
-               <img src="./images/right_arrow.png">
+               <!--<div class="sliderConstrainer">-->
+                  <img src="./images/left_arrow.png">
+                  <div class="slider">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                     <img src="/images/github_black.png">
+                     <img src="/images/xing_black.png">
+                     <img src="/images/linkedin_black.png">
+                  </div>
+                  <img src="./images/right_arrow.png">
+               <!--</div>-->
             </div>
          </div>
       </div>
