@@ -1,5 +1,3 @@
-function textDisappear()
-{
-   if (this.value == this.name)
-      this.value="";
+function textDisappear() {
+   if (this.value == this.name) this.value = "";
 }

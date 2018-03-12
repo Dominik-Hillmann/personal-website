@@ -91,7 +91,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "";
+      $githubToken = "10eedc7e838eaa8bbad57e986848c9c14fda8373";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -310,6 +310,14 @@
                <!--</div>-->
             </div>
          </div>
+
+         <div class="simpleSlides">
+            <img class="slide slideLeft" src="./images/arrow_down.png">
+            <img class="slide slideLeft" src="./images/left_arrow.png">
+            <img class="slide slideLeft" src="./images/github_black.png">
+            <img class="slide slideLeft" src="./images/arrow_down.png">
+         </div>
+
       </div>
 
    </div>
