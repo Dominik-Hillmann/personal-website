@@ -317,9 +317,6 @@ header {
    margin-right: auto;
 }
 
-.sliderConstrainer {
-
-}
 
 .sliderWrapper {
 
@@ -340,20 +337,9 @@ header {
    background-color: #594b1a;
 }
 
-.slider img {
-   display: inline-block;
-}
 
 
-
-
-
-.slide {
-  display: none;
-  width: 50px;
-  background-color: grey;
-}
-
+/*
 .slideLeft {
   position: relative;
   animation: slideLeft 0.8s
@@ -363,23 +349,48 @@ header {
    position: relative;
    animation: slideRight 0.8s;
 }
+*/
 
-@keyframes slideLeft {
+
+
+.slide {
+  width: 50px;
+  background-color: grey;
+}
+
+.slideShown {
+   display: inline-block;
+}
+
+.notShown {
+   display: none;
+}
+
+.slideIn {
+   animation: slideIn 0.8s;
+}
+
+.slideOut {
+   animation: slideOut 0.8s;
+}
+
+
+@keyframes slideIn {
    from {
-      left : -500px;
+
       opacity: 0;
    } to {
-      left: 0;
+
       opacity: 1;
    }
 }
 
-@keyframes slideRight {
+@keyframes slideOut {
    from {
-      right: 0;
+
       opacity : 1;
    } to {
-      right: 500px;
+
       opacity: 0;
    }
 }

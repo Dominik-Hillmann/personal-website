@@ -1,13 +1,18 @@
-// pushes last element to the right and lets the next Element slide in from the left
-function slide() {
-   let slides = document.getElementsByClassName("slide");
 
-   for (let i = 0; i < slides.length; i++) {
-      slide[i].setAttribute("style", "display: none");
-   }
+// pushes last element to the right and lets the next Element slide in from the left
+var slide = function () {
+   let slides = document.getElementsByClassName("slide");
+   let activeSlides = slides.getElementsByClassName("slideShown");
+
+
+
+   // rein: slides[cnt - 1] --> slideIn, fadeIn, nach links
+   // raus: slides[cnt] --> .slideOut, fadeout, nach rechts
 }
 
-var doSlide = {
+/*var doSlide = {
    sliderForOne : function () { },
    sliderForTwo : function () { }
-};
+};*/
+
+var cnt = 0;

@@ -91,7 +91,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "10eedc7e838eaa8bbad57e986848c9c14fda8373";
+      $githubToken = "";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -268,19 +268,20 @@
                <!--<div class="sliderConstrainer">-->
                   <img src="./images/left_arrow.png">
                   <div class="slider">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
+                     <img src="/images/github_black.png" class="slide slideShown">
+                     <img src="/images/xing_black.png" class="slide slideShown">
+                     <img src="/images/linkedin_black.png" class="slide slideShown">
+                     <img src="/images/github_black.png" class="slide notShown">
+                     <img src="/images/xing_black.png" class="slide notShown">
+                     <img src="/images/linkedin_black.png" class="slide notShown">
+                     <img src="/images/github_black.png" class="slide notShown">
+                     <img src="/images/xing_black.png" class="slide notShown">
+                     <img src="/images/linkedin_black.png" class="slide notShown">
                   </div>
                   <img src="./images/right_arrow.png">
                <!--</div>-->
             </div>
+            <?php/*
             <div class="sliderWrapper">
                <!--<div class="sliderConstrainer">-->
                   <img src="./images/left_arrow.png">
@@ -308,14 +309,7 @@
                   </div>
                   <img src="./images/right_arrow.png">
                <!--</div>-->
-            </div>
-         </div>
-
-         <div class="simpleSlides">
-            <img class="slide slideLeft" src="./images/arrow_down.png">
-            <img class="slide slideLeft" src="./images/left_arrow.png">
-            <img class="slide slideLeft" src="./images/github_black.png">
-            <img class="slide slideLeft" src="./images/arrow_down.png">
+            </div>*/?>
          </div>
 
       </div>
@@ -376,6 +370,7 @@
 </body>
 
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/slide.js"></script>
 
 <!-- spaeter herunterladen und gleich auf dem Server zur Verfügung stellen -->
 <script type="text/javascript" src="js/libraries/p5.js"></script>
