@@ -91,7 +91,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "";
+      $githubToken = "10eedc7e838eaa8bbad57e986848c9c14fda8373";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -187,6 +187,7 @@
          <div><img src="images/hollow_circle.png"><a class="unshown" href="#">KONTAKT</a></div>
          <!--später blank.png, mit css hollow und full änder per CSS-->
       </div>
+            <button onclick="slide()">Klick mich hart</button>
    </header>
 
    <!--<div id="sketch-holder"></div>-->
@@ -262,23 +263,25 @@
       </div>
 
 
+
       <div id="skills">
+
          <div>
             <div class="sliderWrapper">
                <!--<div class="sliderConstrainer">-->
-                  <img src="./images/left_arrow.png">
+                  <img src="./images/left_arrow.png" class="arrow">
                   <div class="slider">
                      <img src="/images/github_black.png" class="slide slideShown">
                      <img src="/images/xing_black.png" class="slide slideShown">
                      <img src="/images/linkedin_black.png" class="slide slideShown">
-                     <img src="/images/github_black.png" class="slide notShown">
-                     <img src="/images/xing_black.png" class="slide notShown">
-                     <img src="/images/linkedin_black.png" class="slide notShown">
-                     <img src="/images/github_black.png" class="slide notShown">
-                     <img src="/images/xing_black.png" class="slide notShown">
-                     <img src="/images/linkedin_black.png" class="slide notShown">
+                     <img src="/images/github_black.png" class="slide">
+                     <img src="/images/xing_black.png" class="slide">
+                     <img src="/images/linkedin_black.png" class="slide">
+                     <img src="/images/github_black.png" class="slide">
+                     <img src="/images/xing_black.png" class="slide">
+                     <img src="/images/linkedin_black.png" class="slide">
                   </div>
-                  <img src="./images/right_arrow.png">
+                  <img src="./images/right_arrow.png" class="arrow">
                <!--</div>-->
             </div>
             <?php/*
