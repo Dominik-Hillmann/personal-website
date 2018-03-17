@@ -154,14 +154,16 @@ class Layer {
 
       for (var i = 0; i < this.points.length; i++) {
          var point = this.points[i];
-         if (point.secondTier)
+         if (point.secondTier) {
             point.x += len * (-1 * 0.001);
-         else
+         } else {
             point.x += len * 0.001;
+         }
          // at last, the change of direction, if the point happens to step over the layer's border
-         if ((point.x > this.right.x) || (point.x < this.left.x))
+         if ((point.x > this.right.x) || (point.x < this.left.x)) {
             point.secondTier = !point.secondTier;
          }
+      }
    }
 
    // sets

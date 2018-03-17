@@ -19,7 +19,7 @@ var switchClass = function (slide, inClass, outClass) {
 
 // next row of imgs that come after those currently displayed
 var getNextSlides = function () {
-   let slides = document.getElementsByClassName("slide");//"slide"
+   let slides = document.getElementsByClassName("slide");
    console.log("Es gibt ", slides.length, " Bildelemente");
 
    let currSlidesInd = [];
@@ -31,11 +31,8 @@ var getNextSlides = function () {
       }
    }
 
-   currSlidesInd.sort(function (a, b) {
-      return a - b;
-   });
+   currSlidesInd.sort(function (a, b) { return a - b; });
    let currSlides = indToImg(currSlidesInd, slides);
-
    nextStop = ((nextStop + NUM_ROW) >= slides.length) ? (nextStop + NUM_ROW - slides.length) : (nextStop + NUM_ROW);
 
    console.log("CurrentSlides: ", currSlides, currSlidesInd);
