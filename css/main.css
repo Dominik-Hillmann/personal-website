@@ -355,6 +355,8 @@ header {
   height: 50px;
 
   background-color: grey;
+
+  margin: 0 auto 0 auto;
 }
 
 .slideShown {

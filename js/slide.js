@@ -19,7 +19,7 @@ var switchClass = function (slide, inClass, outClass) {
 
 // next row of imgs that come after those currently displayed
 var getNextSlides = function () {
-   let slides = document.getElementsByClassName("slide");
+   let slides = document.getElementsByClassName("slide");//"slide"
    console.log("Es gibt ", slides.length, " Bildelemente");
 
    let currSlidesInd = [];
