@@ -271,17 +271,17 @@
                <!--<div class="sliderConstrainer">-->
                   <img src="./images/left_arrow.png" class="arrow">
                   <div class="slider">
-                     <img src="/images/github_black.png" class="slide notShown">
-                     <img src="/images/xing_black.png" class="slide notShown">
-                     <img src="/images/linkedin_black.png" class="slide notShown">
-                     <img src="/images/github_black.png" class="slide notShown">
-                     <img src="/images/xing_black.png" class="slide notShown">
-                     <img src="/images/linkedin_black.png" class="slide notShown">
-                     <img src="/images/github_black.png" class="slide notShown">
-                     <img src="/images/xing_black.png" class="slide notShown">
-                     <img src="/images/linkedin_black.png" class="slide notShown">
-                     <img src="/images/linkedin_black.png" class="slide notShown">
-                  </div>
+                     <img src="/images/github_black.png" class="slide notShown"><!-- getting of goddamn whitespace
+                     --><img src="/images/xing_black.png" class="slide notShown"><!--
+                     --><img src="/images/linkedin_black.png" class="slide notShown"><!--
+                     --><img src="/images/github_black.png" class="slide notShown"><!--
+                     --><img src="/images/xing_black.png" class="slide notShown"><!--
+                     --><img src="/images/linkedin_black.png" class="slide notShown"><!--
+                     --><img src="/images/github_black.png" class="slide notShown"><!--
+                     --><img src="/images/xing_black.png" class="slide notShown"><!--
+                     --><img src="/images/linkedin_black.png" class="slide notShown"><!--
+                     --><img src="/images/linkedin_black.png" class="slide notShown"><!--
+                  --></div>
                   <img src="./images/right_arrow.png" class="arrow">
                <!--</div>-->
             </div>

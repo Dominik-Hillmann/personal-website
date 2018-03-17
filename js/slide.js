@@ -1,8 +1,6 @@
 const NUM_ROW = 3; // meaning 3 images in the row
 
-// for sorting arrs of ints smallest first
-var sortInd = function (a, b) { return a - b; }
-
+// BUG: if any number further apart than 1, then leave normally ordered big numbers in front
 // returns the imgs from allImgArr with indeces indArr
 var indToImg = function (indArr, allImgArr) {
    let imgArr = [];
@@ -10,18 +8,19 @@ var indToImg = function (indArr, allImgArr) {
       imgArr.push(allImgArr[index]);
    }
    return imgArr;
-
-   // BUG: if any number further apart than 1, then leave normally ordered big numbers in front
 }
+
 
 var switchClass = function (slide, inClass, outClass) {
    slide.classList.add(inClass);
    slide.classList.remove(outClass);
 }
 
+
+// next row of imgs that come after those currently displayed
 var getNextSlides = function () {
    let slides = document.getElementsByClassName("slide");
-      console.log("Es gibt ", slides.length, " Bildelemente");
+   console.log("Es gibt ", slides.length, " Bildelemente");
 
    let currSlidesInd = [];
    for (let i = nextStop; i > (nextStop - NUM_ROW); i--) {
@@ -32,19 +31,10 @@ var getNextSlides = function () {
       }
    }
 
-   let nextSlidesInd = [];
-   for (let i = nextStop; i < (nextStop + NUM_ROW); i++) {
-      if (i > slides.length) {
-         nextSlidesInd.push(i - slides.length);
-      } else {
-         nextSlidesInd.push(i);
-      }
-   }
-
-   nextSlidesInd.sort(sortInd);
-   currSlidesInd.sort(sortInd);
+   currSlidesInd.sort(function (a, b) {
+      return a - b;
+   });
    let currSlides = indToImg(currSlidesInd, slides);
-   let nextSlides = indToImg(nextSlidesInd, slides);
 
    nextStop = ((nextStop + NUM_ROW) >= slides.length) ? (nextStop + NUM_ROW - slides.length) : (nextStop + NUM_ROW);
 
@@ -54,39 +44,39 @@ var getNextSlides = function () {
    return currSlides;
 }
 
+
 // pushes last element to the right and lets the next Element slide in from the left
 var animateSlide = function () {
-   let currSlides = document.getElementsByClassName("slideShown");
+   let allSlides = document.getElementsByClassName("slide");
    let nextSlides = getNextSlides();
 
-   console.log("CURRENT SLIDES ", currSlides);
 
-   for (currSlide of currSlides) {
-      switchClass(currSlide, "slideOut", "slideIn");
-      setTimeout(function () {
-         switchClass(currSlide, "notShown", "slideShown");
-      }, 800); // 800ms = 0.8s, time needed to slide out in css/main.css
+   for (slide of allSlides) {
+      switchClass(slide, "slideOut", "slideIn");
    }
 
-   for (nextSlide of nextSlides) {
-      switchClass(nextSlide, "slideShown", "notShown");
-      switchClass(nextSlide, "slideIn", "slideOut");
-   }
+   // timeout because the slideOut animation in main.css takes 800ms and I want new ones to slide in after that
+   setTimeout(function () {
+      for (slide of allSlides) {
+         switchClass(slide, "notShown", "slideShown");
+      }
+
+      for (nextSlide of nextSlides) {
+         switchClass(nextSlide, "slideShown", "notShown");
+         switchClass(nextSlide, "slideIn", "slideOut");
+      }
+   }, 800);
 }
 
-var showFirstSlides = function () {
-   let slides = getNextSlides();
-   for (slide of slides) {
+
+// to be executed before animateSlide so that there are slides having class slideShown
+var firstSlides = function () {
+   //let slides = getNextSlides();
+   for (slide of getNextSlides()) {
       switchClass(slide, "slideShown", "notShown");
       switchClass(slide, "slideIn", "slideOut");
    }
 }
 
-//var emptySlides = document.getElementsByClassName("empty");
-var nextStop = NUM_ROW - 1; // for the start: 0 to the NUM
-showFirstSlides();
-
-/*var doSlide = {
-   sliderForOne : function () { },
-   sliderForTwo : function () { }
-};*/
+var nextStop = NUM_ROW - 1;
+firstSlides();
