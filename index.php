@@ -38,9 +38,9 @@
       function contactAPI($url, $token) {
          $curl = curl_init($url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-         if (isset($token))
+         if (isset($token)) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $token]);
-
+         }
          $outputs = curl_exec($curl);
          curl_close($curl);
          return $outputs;
@@ -91,7 +91,7 @@
 
 
       /***** GitHub API *****/
-      $githubToken = "10eedc7e838eaa8bbad57e986848c9c14fda8373";
+      $githubToken = "";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -271,7 +271,7 @@
 
          <div>
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png" class="arrow">
+               <!--<img src="./images/left_arrow.png" class="arrow">-->
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
@@ -284,23 +284,22 @@
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web">
                </div>
-               <img src="./images/right_arrow.png" class="arrow">
+               <!--<img src="./images/right_arrow.png" class="arrow">-->
+               <img src="./images/arrow_in_circle.png" class="arrow">
             </div>
 
 
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png" class="arrow">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown data">
                </div>
-               <img src="./images/right_arrow.png" class="arrow">
+               <img src="./images/arrow_in_circle.png" class="arrow">
             </div>
 
 
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png" class="arrow">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown general"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown general"><!--
@@ -309,19 +308,18 @@
                --><img src="/images/xing_black.png" class="slide notShown general"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown general">
                </div>
-               <img src="./images/right_arrow.png" class="arrow">
+               <img src="./images/arrow_in_circle.png" class="arrow">
             </div>
 
 
             <div class="sliderWrapper">
-               <img src="./images/left_arrow.png" class="arrow">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown theo"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown theo">
                </div>
-               <img src="./images/right_arrow.png" class="arrow">
+               <img src="./images/arrow_in_circle.png" class="arrow">
             </div>
 
             <?php/*

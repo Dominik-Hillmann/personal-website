@@ -320,9 +320,13 @@ header {
 
 .sliderWrapper {
 
-   margin-top: 10px;
+   margin-top: 20px;
 
    background-color: #114536;
+}
+
+#skills div:last-child {
+   margin-bottom: 15px;
 }
 
 
@@ -333,21 +337,6 @@ header {
 
    background-color: #594b1a;
 }
-
-
-
-/*
-.slideLeft {
-  position: relative;
-  animation: slideLeft 0.8s
-}
-
-.slideRight {
-   position: relative;
-   animation: slideRight 0.8s;
-}
-*/
-
 
 
 .slide {
@@ -376,7 +365,11 @@ header {
 }
 
 .arrow {
-   height: 50px;
+   height: 25px;
+
+   vertical-align: bottom;
+   margin-left: -15.5px;
+   margin-bottom: -15.5px;
 }
 
 
