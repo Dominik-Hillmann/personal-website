@@ -192,14 +192,12 @@ function setupOnResize() {
    }
 
    var sortedByYPos;
-   for (var i = 1; i <= height; i++) // first, get all points that have the same height (.y)
-   {
+   for (var i = 1; i <= height; i++) { // first, get all points that have the same height (.y)
       sortedByYPos = circlePositions.filter(function (element, index, array) {
          return element.y === i;
       });
 
-      if(sortedByYPos.length === 0) // if there are no circle points with the y-position of i, go to the next iteration
-         continue;
+      if (sortedByYPos.length === 0) continue;// if there are no circle points with the y-position of i, go to the next iteration
       /*
          * the points were sorted into the original array so that
          * the points most on the left (or the smallest .x) were sorted in first

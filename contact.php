@@ -48,10 +48,11 @@
       }
 
       $success;
-      if($allSet || !isset($_POST["address"]) || !isset($_POST["firstname"]) || !isset($_POST["lastname"]) || !isset($_POST["message"]))
+      if($allSet || !isset($_POST["address"]) || !isset($_POST["firstname"]) || !isset($_POST["lastname"]) || !isset($_POST["message"])) {
          $success = mail($receiver, $subject, $message, $headers);
-      else
+      } else {
          echo "<h1>ACHTUNG</h1><p>Fehler</p><br>";
+      }
 
       echo ($success ? "<h1>JA</h1>" : "<h1>NEIN</h1>");
    ?>
