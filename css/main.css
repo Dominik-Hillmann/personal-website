@@ -1,5 +1,6 @@
 /*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
+@import url("./anim.css");
 
 body {
    background-color: rgb(7, 7, 7);
@@ -357,11 +358,11 @@ header {
 }
 
 .slideIn {
-   animation: slideIn 0.8s;
+   animation: slideIn 0.5s;
 }
 
 .slideOut {
-   animation: slideOut 0.8s;
+   animation: slideOut 0.5s;
 }
 
 .arrow {
@@ -370,6 +371,36 @@ header {
    vertical-align: bottom;
    margin-left: -15.5px;
    margin-bottom: -15.5px;
+
+   cursor: pointer;
+}
+
+.arrow:hover {
+   background-color: red;
+}
+
+.progress {
+   display: block;
+   float: left;
+
+   height: 7px;
+   width: 100%;
+
+   background-color: darkred;
+   border-top-right-radius: 4px;
+   border-top-left-radius: 4px;
+}
+
+.progress div {
+   display: block;
+   float: left;
+
+   height: 7px;
+   width: 50%;
+
+   background-color: darkblue;
+   border-top-right-radius: 4px;
+   border-top-left-radius: 4px;
 }
 
 
@@ -379,10 +410,8 @@ header {
 
 @keyframes slideOut {
    from {
-
       opacity : 1;
    } to {
-
       opacity: 0;
    }
 }

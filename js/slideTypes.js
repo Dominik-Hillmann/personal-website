@@ -98,7 +98,7 @@ var animateSlide = function (type) {
          switchClass(nextSlide, "slideShown", "notShown");
          switchClass(nextSlide, "slideIn", "slideOut");
       }
-   }, 800);
+   }, 500);
 }
 
 

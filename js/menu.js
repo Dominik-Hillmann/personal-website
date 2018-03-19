@@ -4,13 +4,16 @@
 // first: positioning the menu correctly
 var menu = document.getElementById("menuwrapper");
 
-function adaptmenu()
-{
-   menu.style.marginTop = ((window.innerHeight / 2) - menu.offsetHeight / 2) + "px";
+function adaptMenu() {
+   menu.style.marginTop = (
+      (window.innerHeight / 2) -
+      (menu.offsetHeight / 2) -
+      (document.getElementById("weather").offsetHeight / 2)
+   ) + "px";
 }
 
-adaptmenu(); // adapting for the first time after loading
-window.addEventListener("resize", adaptmenu); // every time the window size is changed
+adaptMenu(); // adapting for the first time after loading
+window.addEventListener("resize", adaptMenu); // every time the window size is changed
 
 
 // secondly: animations when hovering
@@ -18,14 +21,14 @@ window.addEventListener("resize", adaptmenu); // every time the window size is c
 var header = document.getElementsByTagName("header")[0];
 var menuLinks = menu.getElementsByTagName("a");
 // show menu options when hovering above header
-header.addEventListener("mouseover", function() {
-   for(link of menuLinks) {
+header.addEventListener("mouseover", function () {
+   for (link of menuLinks) {
       link.classList.remove("unshown");
       link.classList.add("shown");
    }
 });
 // hide menu options when the cursor leaves the header
-header.addEventListener("mouseleave", function() {
+header.addEventListener("mouseleave", function () {
    for (link of menuLinks) {
       link.classList.remove("shown");
       link.classList.add("unshown");

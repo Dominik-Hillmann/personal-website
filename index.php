@@ -187,10 +187,6 @@
          <div><img src="images/hollow_circle.png"><a class="unshown" href="#">KONTAKT</a></div>
          <!--später blank.png, mit css hollow und full änder per CSS-->
       </div>
-            <button onclick="animateSlide('web')">web</button><br>
-            <button onclick="animateSlide('data')">data</button><br>
-            <button onclick="animateSlide('general')">general</button><br>
-            <button onclick="animateSlide('theo')">theo</button>
    </header>
 
    <!--<div id="sketch-holder"></div>-->
@@ -271,7 +267,7 @@
 
          <div>
             <div class="sliderWrapper">
-               <!--<img src="./images/left_arrow.png" class="arrow">-->
+               <div class="progress"><div>&nbsp;</div></div>
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
@@ -284,8 +280,7 @@
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web">
                </div>
-               <!--<img src="./images/right_arrow.png" class="arrow">-->
-               <img src="./images/arrow_in_circle.png" class="arrow">
+                  <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow">
             </div>
 
 
@@ -295,7 +290,7 @@
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown data">
                </div>
-               <img src="./images/arrow_in_circle.png" class="arrow">
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="arrow">
             </div>
 
 
@@ -305,10 +300,9 @@
                --><img src="/images/xing_black.png" class="slide notShown general"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
                --><img src="/images/github_black.png" class="slide notShown general"><!--
-               --><img src="/images/xing_black.png" class="slide notShown general"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown general">
+               --><img src="/images/xing_black.png" class="slide notShown general">
                </div>
-               <img src="./images/arrow_in_circle.png" class="arrow">
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="arrow">
             </div>
 
 
@@ -319,7 +313,7 @@
                --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown theo">
                </div>
-               <img src="./images/arrow_in_circle.png" class="arrow">
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="arrow">
             </div>
 
             <?php/*
@@ -406,6 +400,15 @@
       var_dump($weather);
       echo "<br><br>";
       var_dump($currProj);
+
+      echo "<br><br>";
+      for ($i = 5; $i <= 100; $i += 5) {
+         echo "@keyframes anim". $i ."{from{0%}to{".$i."%}}";
+      }echo "<br>";
+
+      for ($i = 5; $i <= 100; $i += 5) {
+         echo ".progress".$i."{animation-name:anim".$i.";animation-duration:0.5s;}";
+      }
    ?>
 <!-- End of Page Layout -->
 </body>
