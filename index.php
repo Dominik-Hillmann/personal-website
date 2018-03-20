@@ -266,7 +266,7 @@
       <div id="skills">
 
          <div>
-            <div class="sliderWrapper">
+            <div id="web-wrapper" class="sliderWrapper">
                <div class="progress"><div>&nbsp;</div></div>
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
@@ -284,7 +284,7 @@
             </div>
 
 
-            <div class="sliderWrapper">
+            <div id="data-wrapper" class="sliderWrapper">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
@@ -294,7 +294,7 @@
             </div>
 
 
-            <div class="sliderWrapper">
+            <div id="general-wrapper" class="sliderWrapper">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown general"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown general"><!--
@@ -306,7 +306,7 @@
             </div>
 
 
-            <div class="sliderWrapper">
+            <div id="theo-wrapper" class="sliderWrapper">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown theo"><!--

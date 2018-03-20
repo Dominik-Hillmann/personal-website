@@ -1,6 +1,6 @@
-var xspacing = 8;    // Distance between each horizontal location
+var xspacing = 3;    // Distance between each horizontal location
 var w;                     // Width of entire wave
-var maxwaves = 4;    // total # of waves to add together
+var maxwaves = 5;    // total # of waves to add together
 
 var theta = 0.0;
 var amplitude = new Array(maxwaves);    // Height of wave
@@ -18,12 +18,12 @@ function setup() {
    w = width + 16;
 
     for (var i = 0; i < maxwaves; i++) {
-         amplitude[i] = random(10,30);
-         var period = random(100,300); // Num pixels before wave repeats
+         amplitude[i] = random(10, 30);
+         var period = random(100, 300); // Num pixels before wave repeats
          dx[i] = (TWO_PI / period) * xspacing;
     }
 
-    yvalues = new Array(floor(w/xspacing));
+    yvalues = new Array(floor(w / xspacing));
 }
 
 function draw() {
@@ -35,7 +35,7 @@ function draw() {
 function calcWave() {
     // Increment theta (try different values
     // for 'angular velocity' here
-    theta += 0.02;
+    theta += 0.12;
 
    // Set all height values to zero
    for (var i = 0; i < yvalues.length; i++) {
@@ -47,9 +47,12 @@ function calcWave() {
       var x = theta;
       for (var i = 0; i < yvalues.length; i++) {
          // Every other wave is cosine instead of sine
-         if (j % 2 == 0)   yvalues[i] += sin(x)*amplitude[j];
-         else yvalues[i] += cos(x)*amplitude[j];
-         x+=dx[j];
+         if (j % 2 == 0)  {
+            yvalues[i] += sin(x) * amplitude[j];
+         } else {
+            yvalues[i] += cos(x) * amplitude[j];
+         }
+         x += dx[j];
       }
    }
 }
@@ -60,6 +63,6 @@ function renderWave() {
    fill(255,50);
    ellipseMode(CENTER);
    for (var x = 0; x < yvalues.length; x++) {
-      ellipse(x*xspacing,width/2+yvalues[x],16,16);
+      ellipse(x * xspacing, width / 2 + yvalues[x], 16, 16);
    }
 }
