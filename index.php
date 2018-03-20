@@ -402,9 +402,15 @@
       var_dump($currProj);
 
       echo "<br><br>";
-      for ($i = 5; $i <= 100; $i += 5) {
-         echo "@keyframes anim". $i ."{from{0%}to{".$i."%}}";
-      }echo "<br>";
+      for ($j = 10; $j <= 100; $j += 10) {
+         for ($i = 0; $i <= 100; $i += 10) {
+            if (($i != $j)) {
+               echo "@keyframes anim".$i."to".$j."{from{width:".$i."%}to{width:".$j."%}}";
+               echo ".progress".$i."to".$j."{animation-name:anim".$i."to".$j.";animation-duration:0.5s;}";
+            }
+         }
+      }
+      echo "<br>";
 
       for ($i = 5; $i <= 100; $i += 5) {
          echo ".progress".$i."{animation-name:anim".$i.";animation-duration:0.5s;}";

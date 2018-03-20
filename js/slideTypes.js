@@ -152,7 +152,11 @@ var percSlide = function (type) {
    }
 
    console.log("LastImg", lastImg, allImgs[lastImg]);
-   return roundToMultOf(5, (lastImg / totLen) * 100);
+   return roundToMultOf(10, (lastImg / totLen) * 100);
+}
+
+var animBar = function (type) {
+   
 }
 
 console.log(percSlide("web"));
