@@ -278,9 +278,15 @@
                --><img src="/images/github_black.png" class="slide notShown web"><!--
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown web">
+               --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
+               --><img src="./images/question.png" onhover="" class="question navSlider"><!--
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow navSlider">
                </div>
+               <!-- IDEE: put last two into own div and let them float-->
+               <!--<div>
+                  <img src="./images/question.png" onhover="" class="question">
                   <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow">
+               </div>-->
             </div>
 
 
@@ -420,9 +426,8 @@
 </body>
 
 <script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="js/slideTypes.js"></script>
+<script type="text/javascript" src="js/slides.js"></script>
 
-<!-- spaeter herunterladen und gleich auf dem Server zur Verfügung stellen -->
 <script type="text/javascript" src="js/libraries/p5.js"></script>
 <script type="text/javascript" src="js/sphere.classes.js"></script>
 <script type="text/javascript" src="js/sphere.sketch.js"></script>

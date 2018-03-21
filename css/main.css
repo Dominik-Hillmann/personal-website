@@ -320,7 +320,6 @@ header {
 
 
 .sliderWrapper {
-
    margin-top: 20px;
 
    background-color: #114536;
@@ -333,7 +332,6 @@ header {
 
 .slider {
    display: inline-block;
-
    margin: 0 auto 0 auto;
 
    background-color: #594b1a;
@@ -365,18 +363,20 @@ header {
    animation: slideOut 0.5s;
 }
 
-.arrow {
-   height: 25px;
-
-   vertical-align: bottom;
-   margin-left: -15.5px;
-   margin-bottom: -15.5px;
-
-   cursor: pointer;
+@keyframes slideIn {
+   from {
+      opacity: 0;
+   } to {
+      opacity: 1;
+   }
 }
 
-.arrow:hover {
-   background-color: red;
+@keyframes slideOut {
+   from {
+      opacity : 1;
+   } to {
+      opacity: 0;
+   }
 }
 
 .progress {
@@ -403,19 +403,35 @@ header {
    border-top-left-radius: 4px;
 }
 
+/*.sliderWrapper div:last-of-type {
+   display: inline-block;
 
-@keyframes slideIn {
-   from {
-      opacity: 0; 
-   } to {
-      opacity: 1;
-   }
+   height: 100%;
+
+}*/
+
+.navSlider {
+   float: right;
+   margin-right: -15.5px;
+
+   height: 25px;
+
+   cursor: pointer;
 }
 
-@keyframes slideOut {
-   from {
-      opacity : 1;
-   } to {
-      opacity: 0;
-   }
+.navSlider:hover {
+   background-color: red;
+}
+
+.arrow {
+   vertical-align: bottom;
+   bottom: 0;
+
+   margin-bottom: -15.5px;
+}
+
+.question {
+   vertical-align: top;
+
+   margin-top: -15.5px;
 }
