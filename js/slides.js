@@ -144,12 +144,32 @@ var firstSlides = function (type) {
    return;
 }
 
+
+var types = ["web", "data", "theo", "general"];
 var webStop = NUM_ROW - 1;
 var dataStop = NUM_ROW - 1;
 var theoStop = NUM_ROW - 1;
 var generalStop = NUM_ROW - 1;
 
-firstSlides("web");
-firstSlides("data");
-firstSlides("theo");
-firstSlides("general");
+for (type of types) {
+   firstSlides(type);
+}
+
+/***** More Information on skills *****/
+
+var webInfo = "Text that will be shown.";
+var dataInfo = "Text that will be shown.";
+var theoInfo = "Text that will be shown.";
+var generalInfo = "Text that will be shown.";
+
+for (type of types) {
+   let ele = document.getElementsByClassName(type + "-slider-wrapper")[0];
+   console.log(ele);
+
+   ele.addEventListener("mouseover", function () {
+      
+   });
+
+   ele.addEventListener("mouseleave", function () {
+   });
+}

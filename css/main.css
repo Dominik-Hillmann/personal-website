@@ -403,16 +403,17 @@ header {
    border-top-left-radius: 4px;
 }
 
-/*.sliderWrapper div:last-of-type {
+.sliderWrapper div:last-of-type {
    display: inline-block;
 
    height: 100%;
 
-}*/
+   /*background-color: fuchsia;*/
+}
 
 .navSlider {
-   float: right;
-   margin-right: -15.5px;
+   /*float: right;*/
+   margin-left: -15.5px;
 
    height: 25px;
 
@@ -432,6 +433,5 @@ header {
 
 .question {
    vertical-align: top;
-
-   margin-top: -15.5px;
+   margin-left: -15.5px;
 }

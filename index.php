@@ -266,7 +266,7 @@
       <div id="skills">
 
          <div>
-            <div id="web-wrapper" class="sliderWrapper">
+            <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="progress"><div>&nbsp;</div></div>
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
@@ -279,18 +279,16 @@
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><img src="./images/question.png" onhover="" class="question navSlider"><!--
-               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow navSlider">
-               </div>
-               <!-- IDEE: put last two into own div and let them float-->
-               <!--<div>
-                  <img src="./images/question.png" onhover="" class="question">
-                  <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow">
-               </div>-->
+               --><div>
+                     <!--<img src="./images/question.png" onhover="" class="question navSlider">-->
+                  </div>
+               </div><!--
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow navSlider"><!--
+               --><img class="navSlider question" src="./images/question.png">
             </div>
 
 
-            <div id="data-wrapper" class="sliderWrapper">
+            <div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
@@ -300,7 +298,7 @@
             </div>
 
 
-            <div id="general-wrapper" class="sliderWrapper">
+            <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown general"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown general"><!--
@@ -312,7 +310,7 @@
             </div>
 
 
-            <div id="theo-wrapper" class="sliderWrapper">
+            <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown theo"><!--
