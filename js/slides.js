@@ -26,9 +26,9 @@ var percSlide = function (type) {
 */
 /***** Switching the images *****/
 
-// BUG: if any number further apart than 1, then leave normally ordered big numbers in front
-// returns the imgs from allImgArr with indeces indArr
-var indToImg = function (indArr, allImgArr) {
+function indToImg(indArr, allImgArr) {
+   // BUG: if any number further apart than 1, then leave normally ordered big numbers in front
+   // returns the imgs from allImgArr with indeces indArr
    let imgArr = [];
    for (index of indArr) {
       imgArr.push(allImgArr[index]);
@@ -37,14 +37,14 @@ var indToImg = function (indArr, allImgArr) {
 }
 
 
-var switchClass = function (slide, inClass, outClass) {
+function switchClass(slide, inClass, outClass) {
    slide.classList.add(inClass);
    slide.classList.remove(outClass);
 }
 
 
-// next row of imgs that come after those currently displayed
-var getNextSlides = function (type) {
+function getNextSlides(type) {
+   // next row of imgs that come after those currently displayed
    let slides = document.getElementsByClassName(type);
    console.log("Es gibt ", slides.length, " Bildelemente");
 
@@ -105,8 +105,8 @@ var getNextSlides = function (type) {
 }
 
 
-// pushes last element to the right and lets the next Element slide in from the left
-var animateSlide = function (type) {
+function animateSlide(type) {
+   // pushes last element to the right and lets the next Element slide in from the left
    let allSlides = document.getElementsByClassName(type);
    let nextSlides = getNextSlides(type);
 
@@ -128,15 +128,12 @@ var animateSlide = function (type) {
       }
    }, 500);
 
-   //let newProp = percSlide(type);
-   //let progBar = document.getElementById(type + "-wrapper").getElementsByClassName("progress")[0].getElementsByTagName("div")[0];
-   //console.log("percSlides: ", oldProp, newProp);
    return;
 }
 
 
-// to be executed before animateSlide so that there are slides having class slideShown
-var firstSlides = function (type) {
+function firstSlides(type) {
+   // to be executed before animateSlide so that there are slides having class slideShown
    for (slide of getNextSlides(type)) {
       switchClass(slide, "slideShown", "notShown");
       switchClass(slide, "slideIn", "slideOut");
@@ -145,7 +142,7 @@ var firstSlides = function (type) {
 }
 
 
-var types = ["web", "data", "theo", "general"];
+var types = ["web"]/*, "data", "theo", "general"]*/;
 var webStop = NUM_ROW - 1;
 var dataStop = NUM_ROW - 1;
 var theoStop = NUM_ROW - 1;
@@ -162,14 +159,34 @@ var dataInfo = "Text that will be shown.";
 var theoInfo = "Text that will be shown.";
 var generalInfo = "Text that will be shown.";
 
-for (type of types) {
-   let ele = document.getElementsByClassName(type + "-slider-wrapper")[0];
-   console.log(ele);
+function showTypeInfo(type) {
+   // show text that describes what kind of skills are shown here
+   let slider = document.getElementsByClassName(type + "-slider-wrapper")[0];
+   let question = slider.getElementsByClassName("question")[0];
+   let allSlides = slider.getElementsByClassName("slide");
+   let infoText = slider.getElementsByClassName("infoText")[0];
+   let currSlides = slider.getElementsByClassName("slideShown");
 
-   ele.addEventListener("mouseover", function () {
-      
-   });
+   console.log("Type", type);
+   console.log("Slider", slider);
+   console.log("Question", question);
+   console.log("allSlides", allSlides);
 
-   ele.addEventListener("mouseleave", function () {
-   });
+   for (slide of currSlides) { // möglicherweise immer wieder Elemente auswählen, weil sich die current elements ändern
+      switchClass(slide, "slideOut", "slideIn");
+   }
+
+   setTimeout(function () {
+      for (slide of currSlides) {
+         switchClass(slide, "notShown", "slideShown");
+      }
+
+      switchClass(infoText, "slideShown", "notShown");
+   }, 500);
+
+   // remove eventlisteners from both buttons
+   // add to them the retrun to the last current pcittures
+   // onclick they get their old event listeners back
+   return currSlides;
+   // returns slides there were hidden so that the next function can use them to make them visible again
 }

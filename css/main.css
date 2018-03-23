@@ -424,6 +424,21 @@ header {
    background-color: red;
 }
 
+.navSliderHidden {
+   margin-left: -15.5px;
+
+   height: 25px;
+
+   cursor: pointer;
+   opacity: 0;
+   animation: hideSlider 1.0s;
+}
+
+@keyframes hideSlider {
+   from { opacity: 1; } to { opacity: 0; }
+}
+
+
 .arrow {
    vertical-align: bottom;
    bottom: 0;

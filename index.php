@@ -66,7 +66,7 @@
       /***** OpenWeatherMap API *****/
       // configurations for contacting the OpenWeatherMap API
       $appid = "dfc5381a15a6aea6bea3bcb0ef26a045";
-      $city = "Mannheim";
+      $city = "Magdeburg";
       // check the last time the weather.json file was updated
       $nowTime = time() / (60 * 60);
       $weatherUpd = getTime("./data/timeWeather.txt") / (60 * 60);
@@ -279,12 +279,13 @@
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
+               --><p class="notShown infoText slideOut">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p><!--
                --><div>
                      <!--<img src="./images/question.png" onhover="" class="question navSlider">-->
                   </div>
                </div><!--
                --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow navSlider"><!--
-               --><img class="navSlider question" src="./images/question.png">
+               --><img class="navSlider question" onclick="showTypeInfo('web');" src="./images/question.png">
             </div>
 
 
