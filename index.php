@@ -279,13 +279,15 @@
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><p class="notShown infoText slideOut">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p><!--
+               --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p><!--
                --><div>
                      <!--<img src="./images/question.png" onhover="" class="question navSlider">-->
                   </div>
                </div><!--
-               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="arrow navSlider"><!--
-               --><img class="navSlider question" onclick="showTypeInfo('web');" src="./images/question.png">
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider"><!--
+               --><img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">
+               <!--onclick="animateSlide('web')"-->
+               <!--onclick="showTypeInfo('web');"-->
             </div>
 
 

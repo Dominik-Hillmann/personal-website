@@ -107,27 +107,43 @@ function getNextSlides(type) {
 
 function animateSlide(type) {
    // pushes last element to the right and lets the next Element slide in from the left
+
    let allSlides = document.getElementsByClassName(type);
    let nextSlides = getNextSlides(type);
 
-   //let oldProp = percSlide(type);
+   // if infoText open, close it before showing next types
+   let infoText = document.getElementById(type + "Info");
+   if (infoText.classList.contains("slideShown")) {
+      // first, let the infoText vanish, then put in the new slides
+      switchClass(infoText, "slideOut", "slideIn");
 
-   for (slide of allSlides) {
-      switchClass(slide, "slideOut", "slideIn");
-   }
+      setTimeout(function () {
+         switchClass(infoText, "notShown", "slideShown");
 
-   // timeout because the slideOut animation in main.css takes 800ms and I want new ones to slide in after that
-   setTimeout(function () {
+         for (nextSlide of nextSlides) {
+            switchClass(nextSlide, "slideShown", "notShown");
+            switchClass(nextSlide, "slideIn", "slideOut");
+         }
+      }, 500);
+
+   } else {
+      // let all the currently displayed slides vanish and then put in the new slides
       for (slide of allSlides) {
-         switchClass(slide, "notShown", "slideShown");
+         switchClass(slide, "slideOut", "slideIn");
       }
 
-      for (nextSlide of nextSlides) {
-         switchClass(nextSlide, "slideShown", "notShown");
-         switchClass(nextSlide, "slideIn", "slideOut");
-      }
-   }, 500);
+      // timeout because the slideOut animation in main.css takes 800ms and I want new ones to slide in after that
+      setTimeout(function () {
+         for (slide of allSlides) {
+            switchClass(slide, "notShown", "slideShown");
+         }
 
+         for (nextSlide of nextSlides) {
+            switchClass(nextSlide, "slideShown", "notShown");
+            switchClass(nextSlide, "slideIn", "slideOut");
+         }
+      }, 500);
+   }
    return;
 }
 
@@ -166,22 +182,25 @@ function showTypeInfo(type) {
    let allSlides = slider.getElementsByClassName("slide");
    let infoText = slider.getElementsByClassName("infoText")[0];
    let currSlides = slider.getElementsByClassName("slideShown");
+   let navButtons = slider.getElementsByClassName("navSlider");
 
    console.log("Type", type);
    console.log("Slider", slider);
    console.log("Question", question);
    console.log("allSlides", allSlides);
 
-   for (slide of currSlides) { // möglicherweise immer wieder Elemente auswählen, weil sich die current elements ändern
+   // möglicherweise immer wieder Elemente auswählen, weil sich die current elements ändern
+   for (slide of currSlides) {
       switchClass(slide, "slideOut", "slideIn");
    }
 
    setTimeout(function () {
-      for (slide of currSlides) {
-         switchClass(slide, "notShown", "slideShown");
+      for (allSlide of allSlides) {
+         switchClass(allSlide, "notShown", "slideShown");
       }
 
       switchClass(infoText, "slideShown", "notShown");
+      switchClass(infoText, "slideIn", "slideOut");
    }, 500);
 
    // remove eventlisteners from both buttons
