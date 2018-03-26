@@ -176,36 +176,38 @@ var theoInfo = "Text that will be shown.";
 var generalInfo = "Text that will be shown.";
 
 function showTypeInfo(type) {
-   // show text that describes what kind of skills are shown here
-   let slider = document.getElementsByClassName(type + "-slider-wrapper")[0];
-   let question = slider.getElementsByClassName("question")[0];
-   let allSlides = slider.getElementsByClassName("slide");
-   let infoText = slider.getElementsByClassName("infoText")[0];
-   let currSlides = slider.getElementsByClassName("slideShown");
-   let navButtons = slider.getElementsByClassName("navSlider");
+   // if infoText shown then animate Slide else show infoText
+   let infoText = document.getElementById(type + "Info");
+   if (infoText.classList.contains("slideShown")) {
+      animateSlide(type);
+   } else {
+      // show text that describes what kind of skills are shown here
+      let slider = document.getElementsByClassName(type + "-slider-wrapper")[0];
+      let question = slider.getElementsByClassName("question")[0];
+      let allSlides = slider.getElementsByClassName("slide");
+      // let infoText = slider.getElementsByClassName("infoText")[0];
+      let currSlides = slider.getElementsByClassName("slideShown");
+      let navButtons = slider.getElementsByClassName("navSlider");
 
-   console.log("Type", type);
-   console.log("Slider", slider);
-   console.log("Question", question);
-   console.log("allSlides", allSlides);
+      console.log("Type", type);
+      console.log("Slider", slider);
+      console.log("Question", question);
+      console.log("allSlides", allSlides);
 
-   // möglicherweise immer wieder Elemente auswählen, weil sich die current elements ändern
-   for (slide of currSlides) {
-      switchClass(slide, "slideOut", "slideIn");
-   }
-
-   setTimeout(function () {
-      for (allSlide of allSlides) {
-         switchClass(allSlide, "notShown", "slideShown");
+      // möglicherweise immer wieder Elemente auswählen, weil sich die current elements ändern
+      for (slide of currSlides) {
+         switchClass(slide, "slideOut", "slideIn");
       }
 
-      switchClass(infoText, "slideShown", "notShown");
-      switchClass(infoText, "slideIn", "slideOut");
-   }, 500);
+      setTimeout(function () {
+         for (allSlide of allSlides) {
+            switchClass(allSlide, "notShown", "slideShown");
+         }
 
-   // remove eventlisteners from both buttons
-   // add to them the retrun to the last current pcittures
-   // onclick they get their old event listeners back
+         switchClass(infoText, "slideShown", "notShown");
+         switchClass(infoText, "slideIn", "slideOut");
+      }, 500);
+   }
    return currSlides;
    // returns slides there were hidden so that the next function can use them to make them visible again
 }
