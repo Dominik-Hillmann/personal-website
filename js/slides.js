@@ -208,6 +208,5 @@ function showTypeInfo(type) {
          switchClass(infoText, "slideIn", "slideOut");
       }, 500);
    }
-   return currSlides;
-   // returns slides there were hidden so that the next function can use them to make them visible again
+   return; //currSlides
 }

@@ -21,21 +21,23 @@
 </head>
 <body>
    <?php
-      // stores all needed data for the GitHub projects I want to display
       class Repo {
+         // stores all needed data for the GitHub projects I want to display
          public $name;
          public $lastUpdate;
          public $description;
+         public $mainLang;
 
-         public function __construct($name, $lastUpdate, $description) {
+         public function __construct($name, $lastUpdate, $description, $mainLang) {
             $this->name = $name;
             $this->description = $description;
             $this->lastUpdate = strtotime($lastUpdate); // UNIX timestamp
+            $this->mainLang;
          }
       }
 
-      // accesses wather and github API via curl
       function contactAPI($url, $token) {
+         // accesses wather and github API via curl
          $curl = curl_init($url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
          if (isset($token)) {
@@ -46,16 +48,18 @@
          return $outputs;
       }
 
-      // writes current time into .txt files
+
       function putTime($path) {
+         // writes current time into .txt files
          $lastTime = fopen($path, "w");
          fputs($lastTime, (string) time());
          fclose($lastTime);
          return;
       }
 
-      // time from .txt file as UNIX timestamp
+
       function getTime($path) {
+         // time from .txt file as UNIX timestamp
          $timef = fopen($path, "r");
          $time = (int) fgets($timef);
          fclose($timef);
@@ -63,7 +67,7 @@
       }
 
 
-      /***** OpenWeatherMap API *****/
+      /***** OPENWEATHERMAP API *****/
       // configurations for contacting the OpenWeatherMap API
       $appid = "dfc5381a15a6aea6bea3bcb0ef26a045";
       $city = "Magdeburg";
@@ -90,7 +94,7 @@
       }
 
 
-      /***** GitHub API *****/
+      /***** GITHUB API *****/
       $githubToken = "";
       $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
@@ -108,7 +112,8 @@
             array_push($repos, new Repo(
                $repo->name,
                $repo->pushed_at,
-               $repo->description
+               $repo->description,
+               $repo->language
             ));
          }
          // (over)write files
@@ -139,6 +144,17 @@
       for ($i = 1; $i < count($repos); $i++) {
          if ($repos[$i]->lastUpdate > $currProj->lastUpdate) {
             $currProj = $repos[$i];
+         }
+      }
+
+      // select featured repos
+      $featNames = ["Vibrating-Line", "Sphere"];
+      $featRepos = [];
+      foreach ($repos as $repo) {
+         foreach ($featNames as $name) {
+            if ($repo->name == $name) {
+               array_push($featRepos, $repo);
+            }
          }
       }
 
