@@ -32,7 +32,7 @@
             $this->name = $name;
             $this->description = $description;
             $this->lastUpdate = strtotime($lastUpdate); // UNIX timestamp
-            $this->mainLang;
+            $this->mainLang = $mainLang;
          }
       }
 
@@ -96,7 +96,7 @@
 
       /***** GITHUB API *****/
       $githubToken = "";
-      $ReposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
+      $reposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
       $githubUpd = getTime("./data/timeGithub.txt") / (60 * 60);
@@ -105,10 +105,9 @@
       $gAPI = false;
 
       if (($nowTime - $githubUpd) >= 24.0) {
-         $repoData = json_decode(contactAPI($ReposUrl, $curlToken));
-
-         // put all relevant data into objects
+         $repoData = json_decode(contactAPI($reposUrl, $curlToken));
          foreach ($repoData as $repo) {
+            // put all relevant data into objects
             array_push($repos, new Repo(
                $repo->name,
                $repo->pushed_at,
@@ -130,8 +129,7 @@
       } else {
          // get repo data locally
          $files = scandir("./data/repos/");
-         // delete ".", ".."
-         unset($files[0]);
+         unset($files[0]); // delete ".", ".."
          unset($files[1]);
 
          foreach ($files as $file) {
@@ -152,9 +150,7 @@
       $featRepos = [];
       foreach ($repos as $repo) {
          foreach ($featNames as $name) {
-            if ($repo->name == $name) {
-               array_push($featRepos, $repo);
-            }
+            if ($repo->name == $name) array_push($featRepos, $repo);
          }
       }
 
@@ -169,6 +165,7 @@
          $weatherPicStr .= "day_";
       }
 
+      // $weatherPicStr .= (($hour > 19) || ($hour < 7)) ? "night_" : "day_";
 
       $id = $weather->weather[0]->id;
       if ((($id >= 200) && ($id < 300)) || ($id >= 900)) {
@@ -280,8 +277,15 @@
 
 
       <div id="skills">
+         <div id="repos">
+            <h1>Featured repositories</h1>
+            <p>Das ist ein Test, ich teste hier</p>
 
-         <div>
+            <h1>Repository I last worked on:</h1>
+            <p>Das ist ein Test, Testitestitest</p>
+         </div>
+
+         <div id="skillSlider">
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="progress"><div>&nbsp;</div></div>
                <div class="slider"><!--
@@ -293,17 +297,14 @@
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/github_black.png" class="slide notShown web"><!--
                --><img src="/images/xing_black.png" class="slide notShown web"><!--
+
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p><!--
-               --><div>
-                     <!--<img src="./images/question.png" onhover="" class="question navSlider">-->
-                  </div>
+
+               --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div><!--
-               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider"><!--
-               --><img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">
-               <!--onclick="animateSlide('web')"-->
-               <!--onclick="showTypeInfo('web');"-->
+            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider"><!--
+            --><img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">
             </div>
 
 
@@ -311,9 +312,15 @@
                <div class="slider"><!--
                --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data">
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="arrow">
+               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
+
+               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
+
+               --><p class="notShown infoText slideOut" id="dataInfo">DATA-INFO</p>
+               </div><!--
+            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider"><!--
+            --><img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">
             </div>
 
 
@@ -323,9 +330,15 @@
                --><img src="/images/xing_black.png" class="slide notShown general"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
                --><img src="/images/github_black.png" class="slide notShown general"><!--
-               --><img src="/images/xing_black.png" class="slide notShown general">
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="arrow">
+               --><img src="/images/xing_black.png" class="slide notShown general"><!--
+
+               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+
+               --><p class="notShown infoText slideOut" id="generalInfo">general-Beschreibungstext</p>
+               </div><!--
+            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="generalNavSlider arrow navSlider"><!--
+            --><img src="./images/question.png" onclick="showTypeInfo('general');" class="generalNavSlider question navSlider">
             </div>
 
 
@@ -334,84 +347,22 @@
                --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
                --><img src="/images/xing_black.png" class="slide notShown theo"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo">
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="arrow">
+               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+
+               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+
+               --><p class="notShown infoText slideOut" id="theoInfo">THEO-Beschreibung</p>
+               </div><!--
+            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('theo');" class="theoNavSlider arrow navSlider"><!--
+            --><img src="./images/question.png" onclick="showTypeInfo('theo');" class="theoNavSlider navSlider question">
             </div>
 
-            <?php/*
-            <div class="sliderWrapper">
-               <!--<div class="sliderConstrainer">-->
-                  <img src="./images/left_arrow.png">
-                  <div class="slider">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                  </div>
-                  <img src="./images/right_arrow.png">
-               <!--</div>-->
-            </div>
-            <div class="sliderWrapper">
-               <!--<div class="sliderConstrainer">-->
-                  <img src="./images/left_arrow.png">
-                  <div class="slider">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                  </div>
-                  <img src="./images/right_arrow.png">
-               <!--</div>-->
-            </div>*/?>
          </div>
 
       </div>
 
    </div>
-
-   <!--<div id="currently" class="segment">
-
-
-      <div class="heading"><h2>Currently...</h2></div>
-      <div class="content">
-
-         <div id="reading">
-            <div class="heading"><h2>... reading</h2></div>
-            <div class="content">
-
-            </div>
-         </div>
-
-
-         <div id="working">
-            <div class="heading"><h2>... working on</h2></div>
-            <div class="content">
-
-            </div>
-         </div>
-
-      </div>
-
-   </div>-
-
-
-   <div id="resume" class="segment">
-      <div class="heading"><h2>Resumé</h2></div>
-      <div class="content"></div>
-   </div>
-
-
-   <div id="notebook" class="segment">
-      <div class="heading"></div>
-      <div class="content"></div>
-   </div>-->
-
-
 
    <?php
       echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
@@ -423,6 +374,8 @@
       var_dump($weather);
       echo "<br><br>";
       var_dump($currProj);
+      echo "<br><br>";
+      var_dump($featRepos);
 
       echo "<br><br>";
       for ($j = 10; $j <= 100; $j += 10) {

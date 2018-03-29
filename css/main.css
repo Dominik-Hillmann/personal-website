@@ -303,15 +303,21 @@ header {
 
 /***** SKILLS *****/
 
-#skills {
-   clear: both;
+#repos {
 
-
-   background-color: #d6fc28;
 }
 
 
-#skills div {
+#skills {
+   clear: both;
+   background-color: #d6fc28;
+}
+
+#skillSlider {
+   
+}
+
+#skills div { /* ÄNDERN */
    width: 61.8%;
 
    margin-left: auto;

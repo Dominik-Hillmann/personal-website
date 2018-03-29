@@ -158,7 +158,7 @@ function firstSlides(type) {
 }
 
 
-var types = ["web"]/*, "data", "theo", "general"]*/;
+var types = ["web", "data", "theo", "general"];
 var webStop = NUM_ROW - 1;
 var dataStop = NUM_ROW - 1;
 var theoStop = NUM_ROW - 1;
@@ -169,11 +169,6 @@ for (type of types) {
 }
 
 /***** More Information on skills *****/
-
-var webInfo = "Text that will be shown.";
-var dataInfo = "Text that will be shown.";
-var theoInfo = "Text that will be shown.";
-var generalInfo = "Text that will be shown.";
 
 function showTypeInfo(type) {
    // if infoText shown then animate Slide else show infoText
