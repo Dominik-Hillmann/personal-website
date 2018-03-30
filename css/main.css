@@ -303,30 +303,35 @@ header {
 
 /***** SKILLS *****/
 
-#repos {
-
-}
-
-
 #skills {
    clear: both;
    background-color: #d6fc28;
 }
 
-#skillSlider {
-   
+#repos {
+   float: right;
+   color: black;
+   width: 38%;
 }
 
-#skills div { /* ÄNDERN */
+#skillSlider {
+   float: left;
+   width: 61.8%;
+}
+
+/*#skills div {
    width: 61.8%;
 
    margin-left: auto;
    margin-right: auto;
-}
+}*/
 
 
 .sliderWrapper {
-   margin-top: 20px;
+   clear: both;
+   margin: 20px auto 0 auto;
+   text-align: center;
+   width: 20%;
 
    background-color: #114536;
 }
@@ -383,30 +388,6 @@ header {
    } to {
       opacity: 0;
    }
-}
-
-.progress {
-   display: block;
-   float: left;
-
-   height: 7px;
-   width: 100%;
-
-   background-color: darkred;
-   border-top-right-radius: 4px;
-   border-top-left-radius: 4px;
-}
-
-.progress div {
-   display: block;
-   float: left;
-
-   height: 7px;
-   width: 50%;
-
-   background-color: darkblue;
-   border-top-right-radius: 4px;
-   border-top-left-radius: 4px;
 }
 
 .sliderWrapper div:last-of-type {

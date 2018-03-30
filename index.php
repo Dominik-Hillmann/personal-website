@@ -287,19 +287,15 @@
 
          <div id="skillSlider">
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
-               <div class="progress"><div>&nbsp;</div></div>
                <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
-               --><img src="/images/xing_black.png" class="slide notShown web"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><img src="/images/github_black.png" class="slide notShown web"><!--
-               --><img src="/images/xing_black.png" class="slide notShown web"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><img src="/images/github_black.png" class="slide notShown web"><!--
-               --><img src="/images/xing_black.png" class="slide notShown web"><!--
-
-               --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown web"><!--
+               --><img src="/images/logo/html5.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
+               --><img src="/images/logo/css3.png" class="slide notShown web"><!--
+               --><img src="/images/logo/js.png" class="slide notShown web"><!--
+               --><img src="/images/logo/p5.png" class="slide notShown web"><!--
+               --><img src="/images/logo/php.png" class="slide notShown web"><!--
+               --><img src="/images/logo/processing.png" class="slide notShown web"><!--
+               --><img src="/images/logo/R.png" class="slide notShown web"><!--
+               --><img src="/images/logo/stata.png" class="slide notShown web"><!--
 
                --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div><!--

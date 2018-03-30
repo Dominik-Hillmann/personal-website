@@ -132,8 +132,8 @@ function animateSlide(type) {
          switchClass(slide, "slideOut", "slideIn");
       }
 
-      // timeout because the slideOut animation in main.css takes 800ms and I want new ones to slide in after that
       setTimeout(function () {
+         // timeout because the slideOut animation in main.css takes 800ms and I want new ones to slide in after that
          for (slide of allSlides) {
             switchClass(slide, "notShown", "slideShown");
          }
