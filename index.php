@@ -123,8 +123,7 @@
             );
          }
 
-         // update time because the data got updated
-         putTime("./data/timeGithub.txt");
+         putTime("./data/timeGithub.txt"); // update time because the data got updated
          $gAPI = true;
       } else {
          // get repo data locally
@@ -277,13 +276,6 @@
 
 
       <div id="skills">
-         <div id="repos">
-            <h1>Featured repositories</h1>
-            <p>Das ist ein Test, ich teste hier</p>
-
-            <h1>Repository I last worked on:</h1>
-            <p>Das ist ein Test, Testitestitest</p>
-         </div>
 
          <div id="skillSlider">
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
@@ -354,6 +346,14 @@
             --><img src="./images/question.png" onclick="showTypeInfo('theo');" class="theoNavSlider navSlider question">
             </div>
 
+         </div>
+
+         <div id="repos">
+            <h1>Featured repositories</h1>
+            <p>Das ist ein Test, ich teste hier</p>
+
+            <h1>Repository I last worked on:</h1>
+            <p>Das ist ein Test, Testitestitest</p>
          </div>
 
       </div>
