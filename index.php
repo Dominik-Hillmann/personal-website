@@ -27,12 +27,14 @@
          public $lastUpdate;
          public $description;
          public $mainLang;
+         public $url;
 
-         public function __construct($name, $lastUpdate, $description, $mainLang) {
+         public function __construct($name, $lastUpdate, $description, $mainLang, $url) {
             $this->name = $name;
             $this->description = $description;
             $this->lastUpdate = strtotime($lastUpdate); // UNIX timestamp
             $this->mainLang = $mainLang;
+            $this->url = $url;
          }
       }
 
@@ -112,7 +114,8 @@
                $repo->name,
                $repo->pushed_at,
                $repo->description,
-               $repo->language
+               $repo->language,
+               $repo->html_url
             ));
          }
          // (over)write files
@@ -201,21 +204,9 @@
       </div>
    </header>
 
-   <!--<div id="sketch-holder"></div>-->
+   <div id="sketch">
 
-
-
-   <!--<div id="test"></div>
-
-   <div id="skills" class="segment">
-      <div class="heading">
-         <h2>SKILLS</h2>
-      </div>
-
-      <div class="content">
-
-      </div>
-   </div>-->
+   </div>
 
    <div id = "contact">
 
@@ -236,8 +227,7 @@
 
       </div>
 
-      <!-- Button linksbündig gross -->
-      <!-- Rechts daneben Download Lebenslauf -->
+
       <div id = "contactForm">
          <form action = "contact.php" method = "post">
             <h2 class="hover-underline-animation">Say hello!</h2>
@@ -350,10 +340,14 @@
 
          <div id="repos">
             <h1>Featured repositories</h1>
-            <p>Das ist ein Test, ich teste hier</p>
+            <p><?php
+               foreach ($featRepos as $featRepo) {
+                  echo  '<a href="' . $featRepo->url . '">' . $featRepo->name . '</a>/';
+               }
+            ?></p>
 
             <h1>Repository I last worked on:</h1>
-            <p>Das ist ein Test, Testitestitest</p>
+            <p><?php echo  '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
          </div>
 
       </div>

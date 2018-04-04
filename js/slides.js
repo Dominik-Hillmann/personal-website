@@ -1,29 +1,5 @@
 const NUM_ROW = 3; // meaning 3 images in the row
 
-/***** Progess bars at top of sliders *****/
-/*
-var roundToMultOf = function (to, num) {
-   let rest = num % to;
-   return (rest > (to / 2)) ? (num + to - rest) : (num - rest);
-}
-
-
-// returns the nearest percentage divisible by 5 depending on what's the last pic in slider out of all pics
-var percSlide = function (type) {
-   let allImgs = document.getElementsByClassName(type);
-   let totLen = allImgs.length;
-
-   let lastImg; // index of last img containing class "slideShown"
-   for (let i = 0; i < totLen; i++) {
-      if (allImgs[i].classList.contains("slideShown") && allImgs[(i == allImgs.length - 1) ? 0 : (i + 1)].classList.contains("notShown")) {
-         lastImg = i;
-      }
-   }
-
-   console.log("LastImg", lastImg, allImgs[lastImg]);
-   return roundToMultOf(5, (lastImg / totLen) * 100);
-}
-*/
 /***** Switching the images *****/
 
 function indToImg(indArr, allImgArr) {
