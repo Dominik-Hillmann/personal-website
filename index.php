@@ -83,7 +83,10 @@
       if (($nowTime - $weatherUpd) <= 1.0) {
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
       } else {
-         $jsonW = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $city . "&appid=" . $appid, NULL);
+         $jsonW = contactAPI(
+            "http://api.openweathermap.org/data/2.5/weather?q=" . $city . "&appid=" . $appid,
+            NULL
+         );
          $wAPI = true;
 
          if (isset($jsonW)) {
@@ -204,184 +207,169 @@
       </div>
    </header>
 
-   <div id="sketch">
+   <div id="sketch"> </div>
 
-   </div>
+   <div id="main">
+      <div id = "contact">
 
-   <div id = "contact">
+         <div id = "contactOther">
 
-      <div id = "contactOther">
-
-         <div>
             <div>
-               <img src="/images/github_black.png">
-               <img src="/images/xing_black.png">
-               <img src="/images/linkedin_black.png">
-            </div>
-
-         </div>
-
-         <div><!-- social media links -->
-            <img src = "./images/arrow_down.png">
-         </div>
-
-      </div>
-
-
-      <div id = "contactForm">
-         <form action = "contact.php" method = "post">
-            <h2 class="hover-underline-animation">Say hello!</h2>
-            <div>
-               <div class="twoinrow">
-                  <h3 class="formHeading">Vorname</h3>
-                  <input type="text" name="firstname">
-               </div><div class="twoinrow"><!-- to avoid whitespace -->
-                  <h3 class="formHeading">Nachname</h3>
-                  <input type="text" name="lastname">
+               <div>
+                  <img src="/images/github_black.png">
+                  <img src="/images/xing_black.png">
+                  <img src="/images/linkedin_black.png">
                </div>
-            </div>
-            <p>
-               <h3 class="formHeading">E-Mailadresse</h3>
-               <input type="text" name="address">
-            </p>
-            <p>
-               <h3 class="formHeading">Telefonnummer</h3>
-               <input type="text" name="telnum">
-            </p>
-            <p>
-               <h3 class="formHeading">Betreff</h3>
-               <input type="text" name="subject">
-            </p>
-            <p>
-               <h3 class="formHeading">Nachricht</h3>
-               <textarea id="message" name="message"></textarea>
-            </p>
-            <p>
-               <input id="submit" class="nonWriteInput" type="submit">
-               <!--<a href="#">Resumé</a>-->
-            </p>
-         </form>
-      </div>
 
-
-
-      <div id="skills">
-
-         <div id="skillSlider">
-            <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/logo/html5.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
-               --><img src="/images/logo/css3.png" class="slide notShown web"><!--
-               --><img src="/images/logo/js.png" class="slide notShown web"><!--
-               --><img src="/images/logo/p5.png" class="slide notShown web"><!--
-               --><img src="/images/logo/php.png" class="slide notShown web"><!--
-               --><img src="/images/logo/processing.png" class="slide notShown web"><!--
-               --><img src="/images/logo/R.png" class="slide notShown web"><!--
-               --><img src="/images/logo/stata.png" class="slide notShown web"><!--
-
-               --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
-               </div><!--
-            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider"><!--
-            --><img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">
             </div>
 
-
-            <div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
-               --><img src="/images/xing_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-
-               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-
-               --><p class="notShown infoText slideOut" id="dataInfo">DATA-INFO</p>
-               </div><!--
-            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider"><!--
-            --><img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">
-            </div>
-
-
-            <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown general"><!-- getting rid of goddamn whitespace
-               --><img src="/images/xing_black.png" class="slide notShown general"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-               --><img src="/images/github_black.png" class="slide notShown general"><!--
-               --><img src="/images/xing_black.png" class="slide notShown general"><!--
-
-               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-
-               --><p class="notShown infoText slideOut" id="generalInfo">general-Beschreibungstext</p>
-               </div><!--
-            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="generalNavSlider arrow navSlider"><!--
-            --><img src="./images/question.png" onclick="showTypeInfo('general');" class="generalNavSlider question navSlider">
-            </div>
-
-
-            <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
-               --><img src="/images/xing_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-
-               --><p class="notShown infoText slideOut" id="theoInfo">THEO-Beschreibung</p>
-               </div><!--
-            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('theo');" class="theoNavSlider arrow navSlider"><!--
-            --><img src="./images/question.png" onclick="showTypeInfo('theo');" class="theoNavSlider navSlider question">
+            <div><!-- social media links -->
+               <img src = "./images/arrow_down.png">
             </div>
 
          </div>
 
-         <div id="repos">
-            <h1>Featured repositories</h1>
-            <p><?php
-               foreach ($featRepos as $featRepo) {
-                  echo  '<a href="' . $featRepo->url . '">' . $featRepo->name . '</a>/';
-               }
-            ?></p>
 
-            <h1>Repository I last worked on:</h1>
-            <p><?php echo  '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
+         <div id = "contactForm">
+            <form action = "contact.php" method = "post">
+               <h2 class="hover-underline-animation">Say hello!</h2>
+               <div>
+                  <div class="twoinrow">
+                     <h3 class="formHeading">Vorname</h3>
+                     <input type="text" name="firstname">
+                  </div><div class="twoinrow"><!-- to avoid whitespace -->
+                     <h3 class="formHeading">Nachname</h3>
+                     <input type="text" name="lastname">
+                  </div>
+               </div>
+               <p>
+                  <h3 class="formHeading">E-Mailadresse</h3>
+                  <input type="text" name="address">
+               </p>
+               <p>
+                  <h3 class="formHeading">Telefonnummer</h3>
+                  <input type="text" name="telnum">
+               </p>
+               <p>
+                  <h3 class="formHeading">Betreff</h3>
+                  <input type="text" name="subject">
+               </p>
+               <p>
+                  <h3 class="formHeading">Nachricht</h3>
+                  <textarea id="message" name="message"></textarea>
+               </p>
+               <p>
+                  <input id="submit" class="nonWriteInput" type="submit">
+                  <!--<a href="#">Resumé</a>-->
+               </p>
+            </form>
+         </div>
+
+
+
+         <div id="skills">
+
+            <div id="skillSlider">
+               <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
+                  <div class="slider"><!--
+                  --><img src="/images/logo/html5.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
+                  --><img src="/images/logo/css3.png" class="slide notShown web"><!--
+                  --><img src="/images/logo/js.png" class="slide notShown web"><!--
+                  --><img src="/images/logo/p5.png" class="slide notShown web"><!--
+                  --><img src="/images/logo/php.png" class="slide notShown web"><!--
+                  --><img src="/images/logo/processing.png" class="slide notShown web"><!--
+                  --><img src="/images/logo/R.png" class="slide notShown web"><!--
+                  --><img src="/images/logo/stata.png" class="slide notShown web"><!--
+
+                  --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
+                  </div><!--
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider"><!--
+               --><img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">
+               </div>
+
+
+               <div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
+                  <div class="slider"><!--
+                  --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
+                  --><img src="/images/xing_black.png" class="slide notShown data"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
+
+                  --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
+
+                  --><p class="notShown infoText slideOut" id="dataInfo">DATA-INFO</p>
+                  </div><!--
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider"><!--
+               --><img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">
+               </div>
+
+
+               <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
+                  <div class="slider"><!--
+                  --><img src="/images/github_black.png" class="slide notShown general"><!-- getting rid of goddamn whitespace
+                  --><img src="/images/xing_black.png" class="slide notShown general"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+                  --><img src="/images/github_black.png" class="slide notShown general"><!--
+                  --><img src="/images/xing_black.png" class="slide notShown general"><!--
+
+                  --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+
+                  --><p class="notShown infoText slideOut" id="generalInfo">general-Beschreibungstext</p>
+                  </div><!--
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="generalNavSlider arrow navSlider"><!--
+               --><img src="./images/question.png" onclick="showTypeInfo('general');" class="generalNavSlider question navSlider">
+               </div>
+
+
+               <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
+                  <div class="slider"><!--
+                  --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
+                  --><img src="/images/xing_black.png" class="slide notShown theo"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+
+                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+
+                  --><p class="notShown infoText slideOut" id="theoInfo">THEO-Beschreibung</p>
+                  </div><!--
+               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('theo');" class="theoNavSlider arrow navSlider"><!--
+               --><img src="./images/question.png" onclick="showTypeInfo('theo');" class="theoNavSlider navSlider question">
+               </div>
+
+            </div>
+
+            <div id="repos">
+               <h1>Featured repositories</h1>
+               <p><?php
+                  foreach ($featRepos as $featRepo) {
+                     echo  '<a href="' . $featRepo->url . '">' . $featRepo->name . '</a>/';
+                  }
+               ?></p>
+
+               <h1>Repository I last worked on:</h1>
+               <p><?php echo  '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
+            </div>
+
          </div>
 
       </div>
+      <?php
+         echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
+         echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
+         echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
+         echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
+         echo "current conditions in " . $city . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
+         echo "<br>";
+         var_dump($weather);
+         echo "<br><br>";
+         var_dump($currProj);
+         echo "<br><br>";
+         var_dump($featRepos);
+      ?>
+</div>
 
-   </div>
-
-   <?php
-      echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
-      echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
-      echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
-      echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
-      echo "current conditions in " . $city . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
-      echo "<br>";
-      var_dump($weather);
-      echo "<br><br>";
-      var_dump($currProj);
-      echo "<br><br>";
-      var_dump($featRepos);
-
-      echo "<br><br>";
-      for ($j = 10; $j <= 100; $j += 10) {
-         for ($i = 0; $i <= 100; $i += 10) {
-            if (($i != $j)) {
-               echo "@keyframes anim".$i."to".$j."{from{width:".$i."%}to{width:".$j."%}}";
-               echo ".progress".$i."to".$j."{animation-name:anim".$i."to".$j.";animation-duration:0.5s;}";
-            }
-         }
-      }
-      echo "<br>";
-
-      for ($i = 5; $i <= 100; $i += 5) {
-         echo ".progress".$i."{animation-name:anim".$i.";animation-duration:0.5s;}";
-      }
-   ?>
 <!-- End of Page Layout -->
 </body>
 
@@ -389,7 +377,6 @@
 <script type="text/javascript" src="js/slides.js"></script>
 
 <script type="text/javascript" src="js/libraries/p5.js"></script>
-<script type="text/javascript" src="js/sphere.classes.js"></script>
-<script type="text/javascript" src="js/sphere.sketch.js"></script>
+<script type="text/javascript" src="js/sketches.js"></script>
 
 </html>
