@@ -1,5 +1,5 @@
 /*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
-@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+@import url("https://fonts.googleapis.com/css?family=Raleway:200");
 
 body {
    background-color: rgb(7, 7, 7);
@@ -12,8 +12,9 @@ a:link {
 }
 
 #sketch {
+   display: block;
    float: left;
-   width: calc(100% - 61.8%);
+   /*width: 31.8%;*/
    position: fixed;
 }
 
@@ -34,6 +35,8 @@ header {
    position: fixed;
    background-color: none;
    height: 100%;
+   width: 30%;
+
    color: white;
    padding-left: 10px;
    padding-right: 10px;
@@ -49,19 +52,18 @@ header {
 #weather img {
    height: 22px;
    margin-right: 5px;
+  float: left;
 }
 
 #weather p {
    font-size: 15px;
    font-family: sans-serif;
-   float: right;
-   width: 100px;
+   float: left;
    display: inline-block;
-   margin-top: 2px;
+   margin-top: 2.5px;
 }
 
 #menuwrapper {
-
    font-size: 15px;
 }
 
@@ -313,11 +315,12 @@ header {
 
 #skills {
    clear: both;
-   background-color: #d6fc28;
+   background-color: yellow;
+   margin: 0;
 }
 
 #repos {
-   float: left;
+   display: block;
    color: black;
    width: 38%;
 }
@@ -332,7 +335,8 @@ header {
 }
 */
 #skillSlider {
-   float: right;
+   display: block;
+   text-align: center;
    width: 61.8%;
 }
 
