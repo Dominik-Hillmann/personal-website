@@ -23,12 +23,13 @@ function windowResized() {
 }
 
 function setupOnResize() {
-   width = Math.round(displayWidth * 0.38);
+   /*width = Math.round(displayWidth * 0.38);
    height = displayHeight;
    cnv = createCanvas(width, height);
-   cnv.parent("sketch");
+   cnv.parent("sketch");*/
 }
-
+/*
 window.onresize = function() {
    resizeCanvas(width, height);
 }
+*/

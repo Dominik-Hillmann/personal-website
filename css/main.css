@@ -319,6 +319,8 @@ header {
    margin: 0;
 }
 
+#reposWrapper { }
+
 #repos {
    display: block;
    color: black;
@@ -336,7 +338,7 @@ header {
 */
 #skillSlider {
    display: block;
-   text-align: center;
+   margin: 0 auto 0 auto;
    width: 61.8%;
 }
 
