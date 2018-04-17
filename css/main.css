@@ -1,6 +1,8 @@
 /*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
 @import url("https://fonts.googleapis.com/css?family=Raleway:200");
 
+* { margin: 0; }
+
 body {
    background-color: rgb(7, 7, 7);
    margin: 0;
@@ -14,7 +16,6 @@ a:link {
 #sketch {
    display: block;
    float: left;
-   /*width: 31.8%;*/
    position: fixed;
 }
 
@@ -23,9 +24,6 @@ a:link {
    width: 61.8%;
 }
 
-/*a:hover {
-   text-decoration: underline;
-}*/
 
 /***** HEADER *****/
 
@@ -137,24 +135,16 @@ header {
    clear: both;
 }
 
-/*#contact * {
-      border: 1px dashed white;
-}*/
-
 /* email form on the right side */
 #contactForm {
    background-color: #7b9e87;
-   float: right;
-   display: inline-block;
-   margin-right: 120px;
+   display: block;
+   margin: 0 auto 0 auto;
    width: calc(61% - 120px);
 }
 
 #contactForm form {
    display: block;
-   vertical-align: center;
-   margin: 0 auto 0 auto;
-   float: none;
    text-align: center;
 }
 
@@ -168,14 +158,14 @@ header {
    margin: 0;
    padding: 0;
    text-align: left;
-   width: 61.8%;
+   width: 95%;
    align: center;
    margin-left: auto;
    margin-right: auto;
 }
 
 #contactForm form input {
-   width: 61.8%;
+   width: 95%;
    height: 25px;
    margin: 0;
    border: none;
@@ -200,7 +190,7 @@ header {
 
 #contactForm form:first-of-type div {
    /*background-color: green;*/
-   width: 61.8%;
+   width: 95.5%;
    margin-left: auto;
    margin-right: auto;
    margin-top: 0;
@@ -226,6 +216,7 @@ header {
 
 #contactForm form:first-of-type div.twoinrow input {
    display: block;
+   height: 25px;
    width: 100%;
    margin: 0;
 }
@@ -239,7 +230,7 @@ header {
    resize: none;
    background-color: #b6be9c;
    border-radius: 4px;
-   width: 61.8%;
+   width: 95%;
    height: 150px;
    font-family: 'Raleway', sans-serif;
    border: none;
@@ -279,37 +270,6 @@ header {
 #contactOther div img {
    height: 50px;
 }
-
-/*#contactOther:first-child {
-   background-color: orange;
-}
-
-#contactOther:last-child {
-   background-color: pink;
-}*/
-
-/*.hover-underline-animation {
-  display: inline-block;
-  position: relative;
-  color: red;
-}
-.hover-underline-animation::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #0087ca;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-.hover-underline-animation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}*/
-
 
 /***** SKILLS *****/
 
@@ -379,7 +339,6 @@ header {
 
 .slide {
   width: 100px;
-  /*height: 50px;*/
 
   background-color: grey;
 
@@ -422,12 +381,9 @@ header {
    display: inline-block;
 
    height: 100%;
-
-   /*background-color: fuchsia;*/
 }
 
 .navSlider {
-   /*float: right;*/
    margin-left: -15.5px;
 
    height: 35px;

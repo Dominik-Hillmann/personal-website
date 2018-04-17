@@ -256,11 +256,11 @@
                --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
 
-                  --><p class="notShown infoText slideOut" id="dataInfo">DATA-INFO</p>
-                  </div><!--
+               --><p class="notShown infoText slideOut" id="dataInfo">DATA-INFO</p>
+               </div><!--
                --><img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider"><!--
                --><img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">
-               </div>
+            </div>
 
 
                <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
@@ -333,7 +333,7 @@
                   </p>
                </form>
             </div>
-            <div id = "contactOther">
+            <!-- <div id = "contactOther">
                <div>
                   <div>
                      <img src="/images/github_black.png">
@@ -341,10 +341,10 @@
                      <img src="/images/linkedin_black.png">
                   </div>
                </div>
-               <div><!-- social media links -->
+               <div>
                   <img src = "./images/arrow_down.png">
                </div>
-            </div>
+            </div> -->
 
          </div>
 
