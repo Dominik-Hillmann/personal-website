@@ -26,14 +26,14 @@
          public $name;
          public $lastUpdate;
          public $description;
-         public $mainLang;
+         public $langs;
          public $url;
 
-         public function __construct($name, $lastUpdate, $description, $mainLang, $url) {
+         public function __construct($name, $lastUpdate, $description, $langs, $url) {
             $this->name = $name;
             $this->description = $description;
             $this->lastUpdate = strtotime($lastUpdate); // UNIX timestamp
-            $this->mainLang = $mainLang;
+            $this->langs = $langs;
             $this->url = $url;
          }
       }
@@ -50,7 +50,6 @@
          return $outputs;
       }
 
-
       function putTime($path) {
          // writes current time into .txt files
          $lastTime = fopen($path, "w");
@@ -58,7 +57,6 @@
          fclose($lastTime);
          return;
       }
-
 
       function getTime($path) {
          // time from .txt file as UNIX timestamp
@@ -72,7 +70,7 @@
       /***** OPENWEATHERMAP API *****/
       // configurations for contacting the OpenWeatherMap API
       $appid = "dfc5381a15a6aea6bea3bcb0ef26a045";
-      $city = "Magdeburg";
+      $city = "Mannheim";
       // check the last time the weather.json file was updated
       $nowTime = time() / (60 * 60);
       $weatherUpd = getTime("./data/timeWeather.txt") / (60 * 60);
@@ -117,7 +115,7 @@
                $repo->name,
                $repo->pushed_at,
                $repo->description,
-               $repo->language,
+               /*$repo->language*/json_decode(contactAPI($repo->languages_url, $curlToken)),
                $repo->html_url
             ));
          }
@@ -155,7 +153,8 @@
       $featRepos = [];
       foreach ($repos as $repo) {
          foreach ($featNames as $name) {
-            if ($repo->name == $name) array_push($featRepos, $repo);
+            if ($repo->name == $name)
+               array_push($featRepos, $repo);
          }
       }
 
@@ -213,21 +212,11 @@
    <div id="main">
 
       <div id="skills">
-
-         <div id="repos">
-            <h1>Featured repositories</h1>
-               <p>
-                  <?php
-                     foreach ($featRepos as $featRepo) {
-                        echo  '<a href="' . $featRepo->url . '">' . $featRepo->name . '</a>/';
-                     }
-                  ?>
-               </p>
-               <h1>Repository I last worked on:</h1>
-               <p><?php echo  '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
-         </div>
-
-
+         <?php
+            foreach ($repos as $repo) {
+               var_dump($repo->langs);
+            }
+         ?>
          <div id="skillSlider">
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider"><!--
@@ -297,6 +286,23 @@
                --><img src="./images/question.png" onclick="showTypeInfo('theo');" class="theoNavSlider navSlider question">
                </div>
             </div>
+
+
+               <div id="repos">
+                  <h1>Activity of the last week</h1>
+                  <p></p>
+                  <h1>Featured repositories</h1>
+                     <p>
+                        <?php
+                           foreach ($featRepos as $featRepo) {
+                              echo '<a href="' . $featRepo->url . '">' . $featRepo->name . '</a>/';
+                           }
+                        ?>
+                     </p>
+                     <h1>Repository I last worked on:</h1>
+                     <p><?php echo  '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
+               </div>
+
 
          </div>
 
