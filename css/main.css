@@ -124,6 +124,16 @@ header {
 }
 
 
+
+
+
+#start {
+   background-color: green;
+}
+
+
+
+
 /***** CONTACT *****/
 
 #contact {
@@ -140,7 +150,8 @@ header {
    background-color: #7b9e87;
    display: block;
    margin: 0 auto 0 auto;
-   width: calc(61% - 120px);
+   width: 61.8%;
+   float: left;
 }
 
 #contactForm form {
@@ -415,4 +426,22 @@ header {
 .infoText {
   width: 100%;
   font-size: 15px;
+}
+
+
+#socialMedia {
+  width: 38.2%;
+  margin: 0 auto 0 auto;
+  float: right;
+}
+
+#socialMedia div {
+  text-align: center;
+  margin: 15px
+}
+
+#socialMedia img {
+  width: 100px;
+  display: inline;
+
 }

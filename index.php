@@ -115,7 +115,7 @@
                $repo->name,
                $repo->pushed_at,
                $repo->description,
-               /*$repo->language*/json_decode(contactAPI($repo->languages_url, $curlToken)),
+               json_decode(contactAPI($repo->languages_url, $curlToken)),
                $repo->html_url
             ));
          }
@@ -169,8 +169,6 @@
          $weatherPicStr .= "day_";
       }
 
-      // $weatherPicStr .= (($hour > 19) || ($hour < 7)) ? "night_" : "day_";
-
       $id = $weather->weather[0]->id;
       if ((($id >= 200) && ($id < 300)) || ($id >= 900)) {
          $weatherPicStr .= "storm.png";
@@ -211,6 +209,27 @@
 
    <div id="main">
 
+      <div id="start">
+
+         <!-- HIER FOTO VIA GITHUB API NEBEN TEXT -->
+
+         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+         <?php
+            echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
+            echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
+            echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
+            echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
+            echo "current conditions in " . $city . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
+            echo "<br>";
+            var_dump($weather);
+            echo "<br><br>";
+            var_dump($currProj);
+            echo "<br><br>";
+            var_dump($featRepos);
+         ?>
+
+      </div>
+
       <div id="skills">
          <?php
             foreach ($repos as $repo) {
@@ -220,7 +239,7 @@
          <div id="skillSlider">
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider"><!--
-               --><img src="/images/logo/html5.png" class="slide notShown web"><!-- getting rid of goddamn whitespace
+               --><img src="/images/logo/html5.png" class="slide notShown web"><!--
                --><img src="/images/logo/css3.png" class="slide notShown web"><!--
                --><img src="/images/logo/js.png" class="slide notShown web"><!--
                --><img src="/images/logo/p5.png" class="slide notShown web"><!--
@@ -238,7 +257,7 @@
 
             <div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
                <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown data"><!-- getting rid of goddamn whitespace
+               --><img src="/images/github_black.png" class="slide notShown data"><!--
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
 
@@ -254,7 +273,7 @@
 
                <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
                   <div class="slider"><!--
-                  --><img src="/images/github_black.png" class="slide notShown general"><!-- getting rid of goddamn whitespace
+                  --><img src="/images/github_black.png" class="slide notShown general"><!--
                   --><img src="/images/xing_black.png" class="slide notShown general"><!--
                   --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
                   --><img src="/images/github_black.png" class="slide notShown general"><!--
@@ -289,8 +308,6 @@
 
 
                <div id="repos">
-                  <h1>Activity of the last week</h1>
-                  <p></p>
                   <h1>Featured repositories</h1>
                      <p>
                         <?php
@@ -300,7 +317,7 @@
                         ?>
                      </p>
                      <h1>Repository I last worked on:</h1>
-                     <p><?php echo  '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
+                     <p><?php echo '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
                </div>
 
 
@@ -339,36 +356,25 @@
                   </p>
                </form>
             </div>
-            <!-- <div id = "contactOther">
+
+            <div id="socialMedia">
                <div>
-                  <div>
-                     <img src="/images/github_black.png">
-                     <img src="/images/xing_black.png">
-                     <img src="/images/linkedin_black.png">
-                  </div>
+                  <a href="https://github.com/Dominik-Hillmann"><img src="/images/github_black.png"></a>
+                  <h1>GITHUB</h1>
                </div>
                <div>
-                  <img src = "./images/arrow_down.png">
+                  <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
+                  <h1>XING</h1>
                </div>
-            </div> -->
+               <div>
+                  <a href="https://www.linkedin.com/in/dominik-hillmann-a0a21015a/"><img src="/images/linkedin_black.png"></a>
+                  <h1>LINKEDIN</h1>
+               </div>
+            </div>
 
          </div>
 
       </div>
-      <?php
-         echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
-         echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
-         echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
-         echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
-         echo "current conditions in " . $city . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
-         echo "<br>";
-         var_dump($weather);
-         echo "<br><br>";
-         var_dump($currProj);
-         echo "<br><br>";
-         var_dump($featRepos);
-      ?>
-
 <!-- End of Page Layout -->
 </body>
 
