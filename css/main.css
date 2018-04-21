@@ -149,8 +149,8 @@ header {
 #contactForm {
    background-color: #7b9e87;
    display: block;
-   margin: 0 auto 0 auto;
-   width: 61.8%;
+   margin: 0 auto 0 5%;
+   width: 56.8%; /* 61.8 - 5, 5 like always margin left and right */
    float: left;
 }
 
@@ -304,7 +304,7 @@ header {
 #repos h1, #repos p {
   text-align: right;
   display: block;
-  margin: 0 60px 0 0;
+  margin: 0 5% 0 0; /* as much as .sliders's left margin */
 }
 
 #skillSlider {
@@ -316,9 +316,13 @@ header {
 
 .sliderWrapper {
    clear: both;
-   margin: 30px auto 0 40px;
+   /*margin: 30px auto 0 10px;*/
+   margin-bottom: 25px;
+   margin-left: 5%; /* the same as right margin of #repo */
+   position: relative;
 
-   height: 130px;
+
+   /*height: 130px;*/
    min-width: 450px;
 
    background-color: #114536;
@@ -333,14 +337,32 @@ header {
    display: inline-block;
    margin: 0 auto 0 auto;
    min-width: 380px;
-   width: 90%;
-   background-image: url("../images/kafka.jpg");
+   width: 100%;
+   background-image: url("../images/backgrounds/background_web.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
 }
 
 .slide {
   width: 130px;
 
-  margin: 0 auto 0 7%;
+  margin: 2% auto 2% calc(30% - 130px); /* left margin is the third of slider minus its own width */
+}
+
+.slidername {
+  color: black;
+  background-color: red;
+  width: 100%;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.slidername h1, .slidername p {
+   margin: 1% 2% 1% 2%;
 }
 
 .slideShown {
@@ -382,7 +404,11 @@ header {
 }
 
 .navSlider {
-   margin-left: -15.5px;
+   float: right;
+   position: absolute;
+   margin-left: -50px;
+   margin-top: 145px;
+
 
    height: 35px;
    cursor: pointer;
@@ -411,10 +437,10 @@ header {
 }
 
 
-.arrow {
+.arrow {/*
    vertical-align: bottom;
    margin: 0 0 -10px -10px;
-}
+*/}
 
 .question {
    vertical-align: top;
@@ -426,14 +452,9 @@ header {
   font-size: 15px;
 }
 
-.slidername {
-  color: black;
-  background-color: red;
-}
-
 #socialMedia {
-  width: 38.2%;
-  margin: 0 auto 0 auto;
+  width: 33.2%; /* 38.2 - 5 */
+  margin: 0 5% 0 auto; /* always 5% margin on left and right */
   float: right;
 }
 

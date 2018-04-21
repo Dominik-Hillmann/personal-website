@@ -247,11 +247,13 @@
                --><img src="/images/logo/processing.png" class="slide notShown web"><!--
                --><img src="/images/logo/R.png" class="slide notShown web"><!--
                --><img src="/images/logo/stata.png" class="slide notShown web">
-               </div><!--
-            --><img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider"><!--
-            --><img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question"><!--
-            --><h1 class="slidername">WEB-PROGRAMMIERUNG</h1><!--
-            --><p class="notShown infoText slideOut" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
+               </div>
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider">
+               <!--<img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">-->
+               <div class="slidername">
+                  <h1>WEB-PROGRAMMIERUNG</h1>
+                  <p class="infoText" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
+               </div>
             </div>
 
 
