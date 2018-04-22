@@ -226,16 +226,16 @@
             var_dump($currProj);
             echo "<br><br>";
             var_dump($featRepos);
+            echo "<br><br>";
+            foreach ($repos as $repo) {
+               var_dump($repo->langs);
+            }
          ?>
 
       </div>
 
       <div id="skills">
-         <?php
-            foreach ($repos as $repo) {
-               var_dump($repo->langs);
-            }
-         ?>
+
          <div id="skillSlider">
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider"><!--
@@ -311,15 +311,35 @@
 
                <div id="repos">
                   <h1>Featured repositories</h1>
-                     <p>
-                        <?php
+                     <div>
+                        <div class="repoContainer">
+                           <!--<img src="./images/backgrounds/background_web.png">-->
+                           <p class="leftRepo">linke Testhälfte mit Inhalt</p>
+                           <div>
+                              <h1>Title</h1>
+                              <p>Beschreibung</p>
+                           </div>
+                        </div>
+
+                        <div class="repoContainer">
+                           <!--<img src="./images/backgrounds/background_web.png">-->
+                           <p class="leftRepo">linke Testhälfte mit Inhalt</p>
+                           <div>
+                              <h1>Titlelette</h1>
+                              <p>Beschreibung tralala</p>
+                           </div>
+                        </div>
+
+                        <?php/*
                            foreach ($featRepos as $featRepo) {
-                              echo '<a href="' . $featRepo->url . '">' . $featRepo->name . '</a>/';
+                              echo '<div class="reference"><a href=' . $featRepo->url . '">' . $featRepo->name . '</a>/</div>';
                            }
-                        ?>
-                     </p>
+                        */?>
+                     </div>
                      <h1>Repository I last worked on:</h1>
-                     <p><?php echo '<a href="' . $currProj->url . '">' . $currProj->name . '</a>/'; ?></p>
+                     <p>
+                        <?php/* echo '<div class="reference"><a href="' . $currProj->url . '">' . $currProj->name . '</a>/</div>';*/?>
+                     </p>
                </div>
 
 
@@ -365,12 +385,12 @@
                   <h1>GITHUB</h1>
                </div>
                <div>
-                  <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
-                  <h1>XING</h1>
-               </div>
-               <div>
                   <a href="https://www.linkedin.com/in/dominik-hillmann-a0a21015a/"><img src="/images/linkedin_black.png"></a>
                   <h1>LINKEDIN</h1>
+               </div>
+               <div>
+                  <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
+                  <h1>XING</h1>
                </div>
             </div>
 

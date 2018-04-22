@@ -283,12 +283,13 @@ header {
 }
 
 /***** SKILLS *****/
+/***** SKILLS --> REPOS *****/
 
 #skills {
    clear: both;
    background-color: yellow;
    margin: 0;
-   overflow: auto;
+   overflow: hidden;
 }
 
 #reposWrapper { }
@@ -301,17 +302,47 @@ header {
    margin: 0 auto 0 auto;
 }
 
-#repos h1, #repos p {
+/*repos h1, #repos p, #repos div {
   text-align: right;
-  display: block;
+
   margin: 0 5% 0 0; /* as much as .sliders's left margin */
+/*}*/
+
+.repoContainer {
+   display: block;
+   background-color: beige;
+   float: right;
+
+   height: 130px;
+   width: 130px;
 }
 
+.repoContainer div {
+   float: right;
+   width: 61.8%;
+   height: 100%;
+
+}
+
+.repoContainer h1 {
+   font-size: 15px;
+}
+
+.leftRepo {
+   float: left;
+   width: 38.2%;
+   height 100%;
+} /* == */ .repoContainer img {
+
+}
+
+
+
+/***** SKILLS --> SLIDERS *****/
 #skillSlider {
    display: block;
    float: left;
    width: 61.8%;
-   margin-top: -20px;
 }
 
 .sliderWrapper {
@@ -327,6 +358,7 @@ header {
 
    background-color: #114536;
 }
+
 
 #skills div:last-child {
    margin-bottom: 15px;
@@ -406,16 +438,11 @@ header {
 .navSlider {
    float: right;
    position: absolute;
-   margin-left: -50px;
-   margin-top: 145px;
+   top: calc(130px + 5%); /* slides height + both 2% margins of slides + 1% */
+   right: 2%;
 
-
-   height: 35px;
+   height: 40px;
    cursor: pointer;
-}
-
-.navSlider:hover {
-   background-color: red;
 }
 
 .navSliderHidden {
