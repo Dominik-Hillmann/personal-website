@@ -21,6 +21,8 @@
 </head>
 <body>
    <?php
+      require "libraries/config.inc.php";
+
       class Repo {
          // stores all needed data for the GitHub projects I want to display
          public $name;
@@ -35,6 +37,31 @@
             $this->lastUpdate = strtotime($lastUpdate); // UNIX timestamp
             $this->langs = $langs;
             $this->url = $url;
+         }
+
+         public function echoMe() {
+            /*
+            <div class="repoContainer">
+               <div>hide me</div>
+               <div>
+                  <h1>Titel</h1>
+                  <p>Beschreibung</p>
+               </div>
+            </div>
+            */
+            echo '<div class="repoContainer"><div>hide me</div><div>';
+            echo '<h1><a href="' . $this->url . '">' . $this->name . '</a></h1>';
+            echo '<p>' . ($this->description ? $this->description : "Keine Beschreibung") . '</p><p>';
+
+            $total = 0.0;
+            foreach ($this->langs as $amount) {
+               $total += $amount;
+            }
+
+            foreach ($this->langs as $lang => $amount) {
+               echo round(100 * $amount / $total) . "% " . $lang . " ";
+            }
+            echo '</p></div></div>';
          }
       }
 
@@ -66,11 +93,13 @@
          return $time;
       }
 
+      function echoRepo($repo) {
+
+
+      }
 
       /***** OPENWEATHERMAP API *****/
-      // configurations for contacting the OpenWeatherMap API
-      $appid = "dfc5381a15a6aea6bea3bcb0ef26a045";
-      $city = "Mannheim";
+      $appid = $weatherKey;
       // check the last time the weather.json file was updated
       $nowTime = time() / (60 * 60);
       $weatherUpd = getTime("./data/timeWeather.txt") / (60 * 60);
@@ -78,11 +107,11 @@
       $wAPI = false;
 
       // less than one hour ago --> use the JSON
-      if (($nowTime - $weatherUpd) <= 1.0) {
+      if (($nowTime - $weatherUpd) <= $weatherTimeDif) {
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
       } else {
          $jsonW = contactAPI(
-            "http://api.openweathermap.org/data/2.5/weather?q=" . $city . "&appid=" . $appid,
+            "http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $appid,
             NULL
          );
          $wAPI = true;
@@ -98,7 +127,6 @@
 
 
       /***** GITHUB API *****/
-      $githubToken = "";
       $reposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
       $curlToken = "Authorization: token " . $githubToken;
 
@@ -107,7 +135,7 @@
       $repos = [];
       $gAPI = false;
 
-      if (($nowTime - $githubUpd) >= 24.0) {
+      if (($nowTime - $githubUpd) >= $githubTimeDif) {
          $repoData = json_decode(contactAPI($reposUrl, $curlToken));
          foreach ($repoData as $repo) {
             // put all relevant data into objects
@@ -141,10 +169,10 @@
       }
 
       // select project with most recent update
-      $currProj = $repos[0];
+      $currRepo = $repos[0];
       for ($i = 1; $i < count($repos); $i++) {
-         if ($repos[$i]->lastUpdate > $currProj->lastUpdate) {
-            $currProj = $repos[$i];
+         if ($repos[$i]->lastUpdate > $currRepo->lastUpdate) {
+            $currRepo = $repos[$i];
          }
       }
 
@@ -191,7 +219,7 @@
    <header>
       <div id="weather">
          <img src=<?php echo $weatherPicStr; ?>>
-         <p><?php echo $city . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
+         <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
       </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
@@ -219,11 +247,11 @@
             echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
             echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
             echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
-            echo "current conditions in " . $city . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
+            echo "current conditions in " . $weatherCity . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
             echo "<br>";
             var_dump($weather);
             echo "<br><br>";
-            var_dump($currProj);
+            var_dump($currRepo);
             echo "<br><br>";
             var_dump($featRepos);
             echo "<br><br>";
@@ -308,40 +336,16 @@
                </div>
             </div>
 
-
                <div id="repos">
-                  <h1>Featured repositories</h1>
+                  <h1 class="repoHeading">Featured repositories</h1>
                      <div>
-                        <div class="repoContainer">
-                           <!--<img src="./images/backgrounds/background_web.png">-->
-                           <p class="leftRepo">linke Testhälfte mit Inhalt</p>
-                           <div>
-                              <h1>Title</h1>
-                              <p>Beschreibung</p>
-                           </div>
-                        </div>
-
-                        <div class="repoContainer">
-                           <!--<img src="./images/backgrounds/background_web.png">-->
-                           <p class="leftRepo">linke Testhälfte mit Inhalt</p>
-                           <div>
-                              <h1>Titlelette</h1>
-                              <p>Beschreibung tralala</p>
-                           </div>
-                        </div>
-
-                        <?php/*
-                           foreach ($featRepos as $featRepo) {
-                              echo '<div class="reference"><a href=' . $featRepo->url . '">' . $featRepo->name . '</a>/</div>';
-                           }
-                        */?>
+                        <?php foreach ($featRepos as $featRepo) { /*echoRepo($featRepo);*/ $featRepo->echoMe(); } ?>
                      </div>
-                     <h1>Repository I last worked on:</h1>
-                     <p>
-                        <?php/* echo '<div class="reference"><a href="' . $currProj->url . '">' . $currProj->name . '</a>/</div>';*/?>
-                     </p>
+                     <h1 class="repoHeading">Repository I last worked on:</h1>
+                     <div>
+                        <?php $currRepo->echoMe(); ?>
+                     </div>
                </div>
-
 
          </div>
 

@@ -302,40 +302,56 @@ header {
    margin: 0 auto 0 auto;
 }
 
-/*repos h1, #repos p, #repos div {
-  text-align: right;
-
-  margin: 0 5% 0 0; /* as much as .sliders's left margin */
-/*}*/
+.repoHeading {
+   text-align: right;
+  margin: 0 5% 0 5%; /* same as repoContainer */
+}
 
 .repoContainer {
    display: block;
-   background-color: beige;
    float: right;
 
    height: 130px;
-   width: 130px;
+   width: 90%;
+   margin: 20px 5% 0 5%;
+  border-radius: 10px;
 }
 
-.repoContainer div {
+.repoContainer div:last-child {
    float: right;
+   display: block;
+   background-color: beige;
+
    width: 61.8%;
    height: 100%;
 
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+}
+
+.repoContainer div:first-child {
+   float: left;
+   display: block;
+   background-image: url("../images/backgrounds/background_web.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+   font-size: 0px;
+
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+
+   width: 38.2%;
+   height: 100%;
 }
 
 .repoContainer h1 {
    font-size: 15px;
+   margin: 2px 5px 5px 5px;
 }
 
-.leftRepo {
-   float: left;
-   width: 38.2%;
-   height 100%;
-} /* == */ .repoContainer img {
-
+.repoContainer p {
+   margin: 0px 5px 5px 5px;
 }
-
 
 
 /***** SKILLS --> SLIDERS *****/
