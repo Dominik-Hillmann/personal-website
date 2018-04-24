@@ -119,13 +119,6 @@ header {
 
 /***** START *****/
 
-#sketch-holder {
-   border: 1px white dashed;
-}
-
-
-
-
 
 #start {
    background-color: green;
@@ -303,8 +296,8 @@ header {
 }
 
 .repoHeading {
-   text-align: right;
-  margin: 0 5% 0 5%; /* same as repoContainer */
+   text-align: center;
+   margin: 0 5% 0 5%; /* same as repoContainer */
 }
 
 .repoContainer {
@@ -355,6 +348,12 @@ header {
 
 
 /***** SKILLS --> SLIDERS *****/
+#skillSlider h1 {
+   color: black;
+   text-align: center;
+   margin: 0 5% 20px 5%; /* same as repoContainer */
+}
+
 #skillSlider {
    display: block;
    float: left;

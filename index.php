@@ -38,31 +38,6 @@
             $this->langs = $langs;
             $this->url = $url;
          }
-
-         public function echoMe() {
-            /*
-            <div class="repoContainer">
-               <div>hide me</div>
-               <div>
-                  <h1>Titel</h1>
-                  <p>Beschreibung</p>
-               </div>
-            </div>
-            */
-            echo '<div class="repoContainer"><div>hide me</div><div>';
-            echo '<h1><a href="' . $this->url . '">' . $this->name . '</a></h1>';
-            echo '<p>' . ($this->description ? $this->description : "Keine Beschreibung") . '</p><p>';
-
-            $total = 0.0;
-            foreach ($this->langs as $amount) {
-               $total += $amount;
-            }
-
-            foreach ($this->langs as $lang => $amount) {
-               echo round(100 * $amount / $total) . "% " . $lang . " ";
-            }
-            echo '</p></div></div>';
-         }
       }
 
       function contactAPI($url, $token) {
@@ -94,8 +69,26 @@
       }
 
       function echoRepo($repo) {
+         /*<div class="repoContainer">
+            <div>hide me</div>
+            <div>
+               <h1>Titel</h1>
+               <p>Beschreibung</p>
+            </div>
+         </div> */
+         echo '<div class="repoContainer"><div>hide me</div><div>';
+         echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
+         echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung") . '</p><p>';
 
+         $total = 0.0;
+         foreach ($repo->langs as $amount) {
+            $total += $amount;
+         }
 
+         foreach ($repo->langs as $lang => $amount) {
+            echo round(100 * $amount / $total) . "% " . $lang . " ";
+         }
+         echo '</p></div></div>';
       }
 
       /***** OPENWEATHERMAP API *****/
@@ -218,7 +211,7 @@
 <!-- Page Layout -->
    <header>
       <div id="weather">
-         <img src=<?php echo $weatherPicStr; ?>>
+         <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
          <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
       </div>
       <div id="menuwrapper">
@@ -236,11 +229,9 @@
 
 
    <div id="main">
-
       <div id="start">
-
          <!-- HIER FOTO VIA GITHUB API NEBEN TEXT -->
-
+         <!-- SPAETER TIMELINE -->
          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
          <?php
             echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
@@ -259,12 +250,12 @@
                var_dump($repo->langs);
             }
          ?>
-
       </div>
 
       <div id="skills">
 
          <div id="skillSlider">
+            <h1>Skills</h1>
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider"><!--
                --><img src="/images/logo/html5.png" class="slide notShown web"><!--
@@ -290,117 +281,128 @@
                --><img src="/images/github_black.png" class="slide notShown data"><!--
                --><img src="/images/xing_black.png" class="slide notShown data"><!--
                --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-
                --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-
-               --><p class="notShown infoText slideOut" id="dataInfo">DATA-INFO</p>
-               </div><!--
-               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider"><!--
-               --><img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">
+               --><img src="/images/linkedin_black.png" class="slide notShown data">
+               </div>
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider">
+               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
+               <div class="slidername">
+                  <h1>DATA_ENGINEERING</h1>
+                  <p class="infoText" id="dataInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
+               </div>
             </div>
 
 
-               <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
-                  <div class="slider"><!--
-                  --><img src="/images/github_black.png" class="slide notShown general"><!--
-                  --><img src="/images/xing_black.png" class="slide notShown general"><!--
-                  --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-                  --><img src="/images/github_black.png" class="slide notShown general"><!--
-                  --><img src="/images/xing_black.png" class="slide notShown general"><!--
-
-                  --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-                  --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-
-                  --><p class="notShown infoText slideOut" id="generalInfo">general-Beschreibungstext</p>
-                  </div><!--
-               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="generalNavSlider arrow navSlider"><!--
-               --><img src="./images/question.png" onclick="showTypeInfo('general');" class="generalNavSlider question navSlider">
+            <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
+               <div class="slider"><!--
+               --><img src="/images/github_black.png" class="slide notShown general"><!--
+               --><img src="/images/xing_black.png" class="slide notShown general"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+               --><img src="/images/github_black.png" class="slide notShown general"><!--
+               --><img src="/images/xing_black.png" class="slide notShown general"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown general">
                </div>
-
-
-               <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
-                  <div class="slider"><!--
-                  --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
-                  --><img src="/images/xing_black.png" class="slide notShown theo"><!--
-                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-
-                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-                  --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-
-                  --><p class="notShown infoText slideOut" id="theoInfo">THEO-Beschreibung</p>
-                  </div><!--
-               --><img src="./images/arrow_in_circle.png" onclick="animateSlide('theo');" class="theoNavSlider arrow navSlider"><!--
-               --><img src="./images/question.png" onclick="showTypeInfo('theo');" class="theoNavSlider navSlider question">
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider">
+               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
+               <div class="slidername">
+                  <h1>GENERAL PROGRAMMING</h1>
+                  <p class="infoText" id="generalInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div>
 
-               <div id="repos">
-                  <h1 class="repoHeading">Featured repositories</h1>
-                     <div>
-                        <?php foreach ($featRepos as $featRepo) { /*echoRepo($featRepo);*/ $featRepo->echoMe(); } ?>
-                     </div>
-                     <h1 class="repoHeading">Repository I last worked on:</h1>
-                     <div>
-                        <?php $currRepo->echoMe(); ?>
-                     </div>
+
+            <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
+               <div class="slider"><!--
+               --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
+               --><img src="/images/xing_black.png" class="slide notShown theo"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
+               --><img src="/images/linkedin_black.png" class="slide notShown theo">
                </div>
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider">
+               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
+               <div class="slidername">
+                  <h1>THEO</h1>
+                  <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
+               </div>
+            </div>
 
          </div>
 
-
-         <div id = "contact">
-
-            <div id = "contactForm">
-               <form action = "contact.php" method = "post">
-                  <h2 class="hover-underline-animation">Say hello!</h2>
-                  <div>
-                     <div class="twoinrow">
-                        <h3 class="formHeading">Vorname</h3>
-                        <input type="text" name="firstname">
-                     </div><div class="twoinrow"><!-- to avoid whitespace -->
-                        <h3 class="formHeading">Nachname</h3>
-                        <input type="text" name="lastname">
-                     </div>
-                  </div>
-                  <p>
-                     <h3 class="formHeading">E-Mailadresse</h3>
-                     <input type="text" name="address">
-                  </p><p>
-                     <h3 class="formHeading">Telefonnummer</h3>
-                     <input type="text" name="telnum">
-                  </p><p>
-                     <h3 class="formHeading">Betreff</h3>
-                     <input type="text" name="subject">
-                  </p><p>
-                     <h3 class="formHeading">Nachricht</h3>
-                     <textarea id="message" name="message"></textarea>
-                  </p><p>
-                     <input id="submit" class="nonWriteInput" type="submit">
-                     <!--<a href="#">Resumé</a>-->
-                  </p>
-               </form>
-            </div>
-
-            <div id="socialMedia">
+         <div id="repos">
+            <h1 class="repoHeading">Featured repositories</h1>
                <div>
-                  <a href="https://github.com/Dominik-Hillmann"><img src="/images/github_black.png"></a>
-                  <h1>GITHUB</h1>
+                  <?php
+                     foreach ($featRepos as $featRepo) {
+                        echoRepo($featRepo);
+                     }
+                  ?>
                </div>
+               <h1 class="repoHeading">Repository I last worked on:</h1>
                <div>
-                  <a href="https://www.linkedin.com/in/dominik-hillmann-a0a21015a/"><img src="/images/linkedin_black.png"></a>
-                  <h1>LINKEDIN</h1>
+                  <?php echoRepo($currRepo); ?>
                </div>
-               <div>
-                  <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
-                  <h1>XING</h1>
-               </div>
-            </div>
-
          </div>
 
       </div>
+
+
+      <div id = "contact">
+         <div id = "contactForm">
+            <form action = "contact.php" method = "post">
+               <h2 class="hover-underline-animation">Say hello!</h2>
+               <div>
+                  <div class="twoinrow">
+                     <h3 class="formHeading">Vorname</h3>
+                     <input type="text" name="firstname">
+                  </div><div class="twoinrow"><!-- to avoid whitespace -->
+                     <h3 class="formHeading">Nachname</h3>
+                     <input type="text" name="lastname">
+                  </div>
+               </div>
+               <p>
+                  <h3 class="formHeading">E-Mailadresse</h3>
+                  <input type="text" name="address">
+               </p><!--
+            --><p>
+                  <h3 class="formHeading">Telefonnummer</h3>
+                  <input type="text" name="telnum">
+               </p><!--
+            --><p>
+                  <h3 class="formHeading">Betreff</h3>
+                  <input type="text" name="subject">
+               </p><!--
+            --><p>
+                  <h3 class="formHeading">Nachricht</h3>
+                  <textarea id="message" name="message"></textarea>
+               </p><!--
+            --><p>
+                  <input id="submit" class="nonWriteInput" type="submit">
+                  <!--<a href="#">Resumé</a>-->
+               </p>
+            </form>
+         </div>
+
+         <div id="socialMedia">
+            <div>
+               <a href="https://github.com/Dominik-Hillmann"><img src="/images/github_black.png"></a>
+               <h1>GITHUB</h1>
+            </div>
+            <div>
+               <a href="https://www.linkedin.com/in/dominik-hillmann-a0a21015a/"><img src="/images/linkedin_black.png"></a>
+               <h1>LINKEDIN</h1>
+            </div>
+            <div>
+               <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
+               <h1>XING</h1>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
 <!-- End of Page Layout -->
 </body>
 

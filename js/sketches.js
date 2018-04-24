@@ -1,35 +1,16 @@
-var width;
-var height;
 var cnv;
+const PERC_WIDTH = 0.38;
 
 function setup() {
-   width = Math.round(displayWidth * 0.38);
-   height = displayHeight;
-   cnv = createCanvas(width, height);
+   cnv = createCanvas(Math.round(PERC_WIDTH * displayWidth), displayHeight);
    cnv.parent("sketch");
 }
 
 function draw() {
-   background(0, 155, 155);
+   background(0, 200, 100);
 }
 
 function windowResized() {
-   /*width = Math.round(displayWidth * 0.38);
-   height =  displayHeight;
-   // resizeCanvas(width, height);
-   cnv.size(width, height);
-   console.log("Resized");*/
-   setupOnResize();
+   // use displayWidth und displayHeight später für Berechnung der Grafik
+   resizeCanvas(Math.round(PERC_WIDTH * windowWidth), windowHeight);
 }
-
-function setupOnResize() {
-   /*width = Math.round(displayWidth * 0.38);
-   height = displayHeight;
-   cnv = createCanvas(width, height);
-   cnv.parent("sketch");*/
-}
-/*
-window.onresize = function() {
-   resizeCanvas(width, height);
-}
-*/
