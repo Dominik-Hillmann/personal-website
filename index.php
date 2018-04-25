@@ -40,6 +40,10 @@
          }
       }
 
+      class Skill {
+         // stores information
+      }
+
       function contactAPI($url, $token) {
          // accesses wather and github API via curl
          $curl = curl_init($url);
@@ -89,6 +93,19 @@
             echo round(100 * $amount / $total) . "% " . $lang . " ";
          }
          echo '</p></div></div>';
+      }
+
+
+      function echoSkills($path, $sliderClass, $skillList) {
+         // echoes the images for skills, includes placeholders
+         $len = count($skillList);
+         $lenPlus = $len;
+         while ($lenPlus % 3 != 0) {
+            $lenPlus++;
+         }
+         for ($i = 0; $i < $lenPlus; $i++) {
+            echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
+         }
       }
 
       /***** OPENWEATHERMAP API *****/
@@ -170,12 +187,12 @@
       }
 
       // select featured repos
-      $featNames = ["Vibrating-Line", "Sphere"];
       $featRepos = [];
       foreach ($repos as $repo) {
          foreach ($featNames as $name) {
-            if ($repo->name == $name)
+            if ($repo->name == $name) {
                array_push($featRepos, $repo);
+            }
          }
       }
 
@@ -184,7 +201,7 @@
       $weatherPicStr = "./images/weather/bright_";
       $hour = (int) date("G", time());
 
-      if (($hour > 19) || ($hour < 7)) {
+      if ($hour >= 20 || $hour <= 6) {
          $weatherPicStr .= "night_";
       } else {
          $weatherPicStr .= "day_";
@@ -257,15 +274,19 @@
          <div id="skillSlider">
             <h1>Skills</h1>
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/logo/html5.png" class="slide notShown web"><!--
-               --><img src="/images/logo/css3.png" class="slide notShown web"><!--
-               --><img src="/images/logo/js.png" class="slide notShown web"><!--
-               --><img src="/images/logo/p5.png" class="slide notShown web"><!--
-               --><img src="/images/logo/php.png" class="slide notShown web"><!--
-               --><img src="/images/logo/processing.png" class="slide notShown web"><!--
-               --><img src="/images/logo/R.png" class="slide notShown web"><!--
-               --><img src="/images/logo/stata.png" class="slide notShown web">
+               <div class="slider">
+                  <?php
+                     echoSkills("/images/logo/", "web", [
+                        "html5",
+                        "css3",
+                        "js",
+                        "p5",
+                        "php",
+                        "processing",
+                        "R",
+                        "stata"
+                     ]);
+                  ?>
                </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">-->
@@ -277,12 +298,15 @@
 
 
             <div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown data"><!--
-               --><img src="/images/xing_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown data">
+               <div class="slider">
+                  <?php
+                     echoSkills("/images/", "data", [
+                        "github_black",
+                        "github_black",
+                        "linkedin_black",
+                        "linkedin_black"
+                     ]);
+                  ?>
                </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
@@ -294,14 +318,14 @@
 
 
             <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown general"><!--
-               --><img src="/images/xing_black.png" class="slide notShown general"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-               --><img src="/images/github_black.png" class="slide notShown general"><!--
-               --><img src="/images/xing_black.png" class="slide notShown general"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown general"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown general">
+               <div class="slider">
+                  <?php
+                     echoSkills("/images/", "general", [
+                        "xing_black",
+                        "github_black",
+                        "linkedin_black"
+                     ]);
+                  ?>
                </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
@@ -313,13 +337,13 @@
 
 
             <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
-               <div class="slider"><!--
-               --><img src="/images/github_black.png" class="slide notShown theo"><!-- getting rid of goddamn whitespace
-               --><img src="/images/xing_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo"><!--
-               --><img src="/images/linkedin_black.png" class="slide notShown theo">
+               <div class="slider">
+                  <?php
+                     echoSkills("/images/", "theo", [
+                        "github_black",
+                        "xing_black"
+                     ]);
+                  ?>
                </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
@@ -340,7 +364,7 @@
                      }
                   ?>
                </div>
-               <h1 class="repoHeading">Repository I last worked on:</h1>
+               <h1 class="repoHeading">Repository I last worked on</h1>
                <div>
                   <?php echoRepo($currRepo); ?>
                </div>

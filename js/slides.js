@@ -71,7 +71,7 @@ function getNextSlides(type) {
          break;
    }
 
-   currSlidesInd.sort(function (a, b) { return a - b; });
+   // currSlidesInd.sort(function (a, b) { return a - b; });
    let currSlides = indToImg(currSlidesInd, slides);
 
    console.log("CurrentSlides: ", currSlides, currSlidesInd);
