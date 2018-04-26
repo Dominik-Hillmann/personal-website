@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<!-- NOTHING WELL DONE IS EVER INSIGNIFICANT. -->
+
 <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Dominik Hillmann</title>
@@ -40,9 +40,6 @@
          }
       }
 
-      class Skill {
-         // stores information
-      }
 
       function contactAPI($url, $token) {
          // accesses wather and github API via curl
@@ -72,6 +69,28 @@
          return $time;
       }
 
+
+      function getPic($adress, $savePath, $timePath) {
+         // updates the current picture of me
+         $lastTime = getTime($timePath) / (60 * 60);
+         $nowTime = time() / (60 * 60);
+
+         if ($nowTime - $lastTime > 30 * 24) {
+            $curl = curl_init($adress);
+            $file = fopen($savePath, "wb");
+
+            curl_setopt($curl, CURLOPT_FILE, $file);
+            curl_setopt($curl, CURLOPT_HEADER, 0);
+            curl_exec($curl);
+
+            curl_close($curl);
+            fclose($file);
+
+            putTime($timePath);
+         }
+      }
+
+
       function echoRepo($repo) {
          /*<div class="repoContainer">
             <div>hide me</div>
@@ -79,6 +98,7 @@
                <h1>Titel</h1>
                <p>Beschreibung</p>
             </div>
+            <p>Anteile der Sprachen</p>
          </div> */
          echo '<div class="repoContainer"><div>hide me</div><div>';
          echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
@@ -167,7 +187,9 @@
 
          putTime("./data/timeGithub.txt"); // update time because the data got updated
          $gAPI = true;
+
       } else {
+
          // get repo data locally
          $files = scandir("./data/repos/");
          unset($files[0]); // delete ".", ".."
@@ -247,6 +269,8 @@
 
    <div id="main">
       <div id="start">
+         <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
+         <img src="./images/me.png">
          <!-- HIER FOTO VIA GITHUB API NEBEN TEXT -->
          <!-- SPAETER TIMELINE -->
          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
@@ -262,8 +286,9 @@
             var_dump($currRepo);
             echo "<br><br>";
             var_dump($featRepos);
-            echo "<br><br>";
+            echo "<br>";
             foreach ($repos as $repo) {
+               echo "<br>";
                var_dump($repo->langs);
             }
          ?>

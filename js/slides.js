@@ -145,7 +145,8 @@ for (type of types) {
 }
 
 /***** More Information on skills *****/
-
+// currently irrelevant
+/*
 function showTypeInfo(type) {
    // if infoText shown then animate Slide else show infoText
    let infoText = document.getElementById(type + "Info");
@@ -181,3 +182,4 @@ function showTypeInfo(type) {
    }
    return; //currSlides
 }
+*/

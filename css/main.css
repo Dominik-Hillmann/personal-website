@@ -124,8 +124,10 @@ header {
    background-color: green;
 }
 
-
-
+#start img {
+  width: 200px;
+  border-radius: 50px;
+}
 
 /***** CONTACT *****/
 
