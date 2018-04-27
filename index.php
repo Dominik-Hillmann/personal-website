@@ -53,6 +53,7 @@
          return $outputs;
       }
 
+
       function putTime($path) {
          // writes current time into .txt files
          $lastTime = fopen($path, "w");
@@ -60,6 +61,7 @@
          fclose($lastTime);
          return;
       }
+
 
       function getTime($path) {
          // time from .txt file as UNIX timestamp
@@ -110,7 +112,7 @@
          }
 
          foreach ($repo->langs as $lang => $amount) {
-            echo round(100 * $amount / $total) . "% " . $lang . " ";
+            echo round(100 * $amount / $total) . '% ' . $lang . ' ';
          }
          echo '</p></div></div>';
       }
@@ -269,11 +271,20 @@
 
    <div id="main">
       <div id="start">
-         <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
-         <img src="./images/me.png">
-         <!-- HIER FOTO VIA GITHUB API NEBEN TEXT -->
-         <!-- SPAETER TIMELINE -->
-         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+         <div id="hello">
+            <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
+            <img src="./images/me.png">
+            <!-- SPAETER TIMELINE -->
+            <div>
+               <h1>Willkommen auf meiner Website</h1>
+               <p>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+               </p>
+               <p>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+               </p>
+            </div>
+         </div>
          <?php
             echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
             echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
@@ -287,6 +298,7 @@
             echo "<br><br>";
             var_dump($featRepos);
             echo "<br>";
+
             foreach ($repos as $repo) {
                echo "<br>";
                var_dump($repo->langs);
