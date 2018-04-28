@@ -1,13 +1,9 @@
 /*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
-@import url("https://fonts.googleapis.com/css?family=Raleway:200");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway:700');
 
 * { margin: 0; }
 
-body {
-   background-color: rgb(7, 7, 7);
-   margin: 0;
-   color: white;
-}
+body { margin: 0; }
 
 a:link {
    text-decoration: none;
@@ -22,6 +18,16 @@ a:link {
 #main {
    float: right;
    width: 61.8%;
+}
+
+/***** TEXTE *****/
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -277,22 +283,19 @@ header {
    height: 50px;
 }
 
+
 /***** SKILLS *****/
 /***** SKILLS --> REPOS *****/
 
 #skills {
    clear: both;
-   background-color: yellow;
    margin: 0;
    overflow: hidden;
 }
 
-#reposWrapper { }
-
 #repos {
    float: right;
    display: block;
-   color: black;
    width: 38.2%;
    margin: 0 auto 0 auto;
 }
@@ -315,7 +318,7 @@ header {
 .repoContainer div:last-child {
    float: right;
    display: block;
-   background-color: beige;
+   background-color: grey;
 
    width: 61.8%;
    height: 100%;
@@ -351,9 +354,8 @@ header {
 
 /***** SKILLS --> SLIDERS *****/
 #skillSlider h1 {
-   color: black;
    text-align: center;
-   margin: 0 5% 20px 5%; /* same as repoContainer */
+   margin: 0 0 0 0; /* same as repoContainer */
 }
 
 #skillSlider {
@@ -364,16 +366,10 @@ header {
 
 .sliderWrapper {
    clear: both;
-   /*margin: 30px auto 0 10px;*/
    margin-bottom: 25px;
    margin-left: 5%; /* the same as right margin of #repo */
    position: relative;
-
-
-   /*height: 130px;*/
    min-width: 450px;
-
-   background-color: #114536;
 }
 
 
@@ -410,8 +406,18 @@ header {
   border-bottom-right-radius: 20px;
 }
 
+.slidername h1 {
+
+}
+
 .slidername h1, .slidername p {
-   margin: 1% 2% 1% 2%;
+   margin: 10px 10px 10px 10px;
+}
+
+.slidername h1 {
+   text-align: left;
+   display: inline-block;
+   /*margin: 10px 10px 10px 10px;*/
 }
 
 .slideShown {

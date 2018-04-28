@@ -167,7 +167,7 @@
       $repos = [];
       $gAPI = false;
 
-      if (($nowTime - $githubUpd) >= $githubTimeDif) {
+      if ($nowTime - $githubUpd >= $githubTimeDif) {
          $repoData = json_decode(contactAPI($reposUrl, $curlToken));
          foreach ($repoData as $repo) {
             // put all relevant data into objects
