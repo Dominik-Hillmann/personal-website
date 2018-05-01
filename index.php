@@ -309,7 +309,7 @@
       <div id="skills">
 
          <div id="skillSlider">
-            <h1>Skills</h1>
+            <h1 id="mainSliderHeader">Skills</h1>
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider">
                   <?php
@@ -328,7 +328,7 @@
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">-->
                <div class="slidername">
-                  <h1>WEB-PROGRAMMIERUNG</h1>
+                  <h1>Web-Programmierung</h1>
                   <p class="infoText" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div>
@@ -348,7 +348,7 @@
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
                <div class="slidername">
-                  <h1>DATA_ENGINEERING</h1>
+                  <h1>Data-Engineering</h1>
                   <p class="infoText" id="dataInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div>
@@ -367,7 +367,7 @@
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
                <div class="slidername">
-                  <h1>GENERAL PROGRAMMING</h1>
+                  <h1>General Programming</h1>
                   <p class="infoText" id="generalInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div>
@@ -385,7 +385,7 @@
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider">
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
                <div class="slidername">
-                  <h1>THEO</h1>
+                  <h1>Theory</h1>
                   <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div>
