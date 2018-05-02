@@ -142,10 +142,7 @@
       if (($nowTime - $weatherUpd) <= $weatherTimeDif) {
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
       } else {
-         $jsonW = contactAPI(
-            "http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $appid,
-            NULL
-         );
+         $jsonW = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $appid, NULL);
          $wAPI = true;
 
          if (isset($jsonW)) {
@@ -309,7 +306,7 @@
       <div id="skills">
 
          <div id="skillSlider">
-            <h1 id="mainSliderHeader">Skills</h1>
+            <h1 class="mainHeader">Skills</h1>
             <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider">
                   <?php
@@ -410,10 +407,14 @@
       </div>
 
 
-      <div id = "contact">
-         <div id = "contactForm">
+      <div id="contact">
+         <div id="socialHeaders">
+            <h1>Kontakt</h1>
+            <h1>Social Media</h1>
+         </div>
+         <div id="contactForm">
             <form action = "contact.php" method = "post">
-               <h2 class="hover-underline-animation">Say hello!</h2>
+               <!--<h2>Say hello!</h2>-->
                <div>
                   <div class="twoinrow">
                      <h3 class="formHeading">Vorname</h3>
@@ -447,6 +448,7 @@
          </div>
 
          <div id="socialMedia">
+
             <div>
                <a href="https://github.com/Dominik-Hillmann"><img src="/images/github_black.png"></a>
                <h1>GITHUB</h1>

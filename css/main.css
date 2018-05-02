@@ -137,23 +137,44 @@ header {
 
 /***** CONTACT *****/
 
+#socialHeaders * {
+   display: inline-block;
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+
+#socialHeaders h1:first-child {
+   margin-left: 27.5%;
+}
+
+#socialHeaders h1:last-child {
+   float: right;
+   margin-right: 13%;
+}
+
 #contact {
-   background-color: red;
+   background-color: white;
    width: 100%;
    overflow: hidden;
 
    font-family: 'Raleway', sans-serif;
    clear: both;
+
+
 }
 
 /* email form on the right side */
 #contactForm {
-   background-color: #7b9e87;
+   background-color: white;
    display: block;
    margin: 0 auto 0 5%;
-   width: 56.8%; /* 61.8 - 5, 5 like always margin left and right */
+   width: calc(56.8% - 2.5%); /* 61.8 - 5, 5 like always margin left and right */
    float: left;
    box-shadow: 0 3px 10px 0;
+   border-radius: 10px;
+   border-top: 3px red;
+
+  border-top: 5px solid lightsalmon;
 }
 
 #contactForm form {
@@ -182,22 +203,25 @@ header {
    height: 25px;
    margin: 0;
    border: none;
-   background-color: #b6be9c;
+   background-color: lightgrey;
    border-radius: 4px;
 
 }
 
 #contactForm form input:focus {
-   background-color: green;
+   background-color: grey;
+   box-shadow: 0 1px 2px 0;
    animation-name: writing;
    animation-duration: 0.5s;
 }
 
 @keyframes writing {
    from {
-      background-color: #b6be9c;
+      background-color: lightgrey;
+
    } to {
-      background-color: green;
+      background-color: grey;
+      box-shadow: 0 1px 2px 0;
    }
 }
 
@@ -241,18 +265,19 @@ header {
 /* textarea of form */
 #message {
    resize: none;
-   background-color: #b6be9c;
+   background-color: lightgrey;
    border-radius: 4px;
    width: 95%;
    height: 150px;
-   font-family: 'Raleway', sans-serif;
+   font-family: 'Open Sans', sans-serif;
    border: none;
 }
 
 #message:focus {
-   background-color: green;
+   background-color: grey;
    animation-name: writing;
    animation-duration: 0.5s;
+   box-shadow: 0 1px 2px 0;
 }
 
 
@@ -356,7 +381,7 @@ header {
 
 
 /***** SKILLS --> SLIDERS *****/
-#mainSliderHeader {
+.mainHeader {
    text-align: center;
    margin: 10px 0 20px 0;
    /* same as repoContainer */
@@ -408,6 +433,7 @@ header {
   background-color: white;
   width: 100%;
 
+  border-top: 3px solid lightsalmon;
   box-shadow: 0 3px 10px 0;
 
   border-bottom-left-radius: 20px;
@@ -511,14 +537,17 @@ header {
 
 .infoText {
   width: 100%;
-
   font-size: 15px;
 }
 
 #socialMedia {
   width: 33.2%; /* 38.2 - 5 */
-  margin: 0 5% 0 auto; /* always 5% margin on left and right */
+  margin: 0 5% 50px 2.5%; /* always 5% margin on left and right */
+  box-shadow: 0 3px 10px 0;
+  border-radius: 10px;
   float: right;
+
+  border-top: 5px solid lightsalmon;
 }
 
 #socialMedia div {
@@ -527,7 +556,7 @@ header {
 }
 
 #socialMedia img {
-  width: 100px;
+  width: 98px;
   display: inline;
 
 }
