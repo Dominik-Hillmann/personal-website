@@ -348,11 +348,12 @@ header {
    display: block;
    background-color: white;
 
-   width: 61.8%;
+   width: calc(61.8% - 3px); /* minus thickness of left border */
    height: 100%;
 
    border-top-right-radius: 10px;
    border-bottom-right-radius: 10px;
+   border-left: 3px solid lightsalmon;
 }
 
 .repoContainer div:first-child {
@@ -371,14 +372,25 @@ header {
 }
 
 .repoContainer h1 {
-   font-size: 15px;
+   font-size: 17px;
    margin: 2px 5px 5px 5px;
+}
+
+.repoContainer h1 a {
+  color: black;
 }
 
 .repoContainer p {
    margin: 0px 5px 5px 5px;
 }
 
+.repoContainer p:last-child {
+   font-family: 'Open Sans', sans-serif;
+   font-size: 11px;
+   bottom: 0;
+   border-top: 1px solid black;
+   margin-top: 10px;
+}
 
 /***** SKILLS --> SLIDERS *****/
 .mainHeader {
@@ -433,7 +445,7 @@ header {
   background-color: white;
   width: 100%;
 
-  border-top: 3px solid lightsalmon;
+  border-top: 4px solid lightsalmon;
   box-shadow: 0 3px 10px 0;
 
   border-bottom-left-radius: 20px;
@@ -558,5 +570,11 @@ header {
 #socialMedia img {
   width: 98px;
   display: inline;
+  border-radius: 100%;
 
+
+}
+
+#socialMedia img:hover {
+  box-shadow: 0px 3px 10px 0px black;
 }
