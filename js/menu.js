@@ -4,21 +4,17 @@
 // first: positioning the menu correctly
 var menu = document.getElementById("menuwrapper");
 function adaptMenu() {
-   menu.style.marginTop = (
-      (window.innerHeight / 2) -
-      (menu.offsetHeight / 2) -
-      (document.getElementById("weather").offsetHeight / 2)
-   ) + "px";
+   menu.style.marginTop = ((window.innerHeight / 2) - (menu.offsetHeight / 2) - (document.getElementById("weather").offsetHeight / 2)) + "px";
 }
 
 adaptMenu(); // adapting for the first time after loading
 window.addEventListener("resize", adaptMenu); // every time the window size is changed
 
-
 // secondly: animations when hovering
 // let all a's transition if one of them transitions
 var header = document.getElementsByTagName("header")[0];
-var menuLinks = menu.getElementsByTagName("a");
+// var menuLinks = menu.getElementsByTagName("a");
+var menuLinks = menu.getElementsByTagName("p");
 // show menu options when hovering above header
 header.addEventListener("mouseover", function () {
    for (link of menuLinks) {
@@ -34,33 +30,21 @@ header.addEventListener("mouseleave", function () {
    }
 });
 
-/*let scrollTo = ["start", "skills", "contact"];
-for (let i = 0; i < 2; i++) {
-   menuLinks[i].addEventListener("onclick", () => {
-      document.getElementById(scrollTo[i]).scrollIntoView({
-        behavior: "smooth"
-     });
-   });
-}*/
-// for (link of menuLinks) link.style.background-color = "red";
-document.querySelector("#contact").scrollIntoView({
-   behavior: "smooth"
-});
-menuLinks[0].addEventListener("onclick", function () {
+menuLinks[0].addEventListener("click", function () {
    // START
    document.querySelector("#start").scrollIntoView({
       behavior: "smooth"
    });
 });
 
-menuLinks[1].addEventListener("onclick", function () {
+menuLinks[1].addEventListener("click", function () {
    // SKILLS
    document.querySelector("#skills").scrollIntoView({
       behavior: "smooth"
    });
 });
 
-menuLinks[2].addEventListener("onclick", function () {
+menuLinks[2].addEventListener("click", function () {
    // CONTACT
    document.querySelector("#contact").scrollIntoView({
       behavior: "smooth"
@@ -94,3 +78,10 @@ menuDivs[1].addEventListener("mouseover", function () { imgs[1][0].src = "images
 menuDivs[1].addEventListener("mouseleave", function () { imgs[1][0].src = "images/hollow_circle.png"; });
 menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images/circle_full.png"; });
 menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
+
+
+// body.addEventListener("onscroll", function () {
+//    let top = document.body.scrollTop;
+//    if ()
+// });
+// Helper function to get an element's exact position
