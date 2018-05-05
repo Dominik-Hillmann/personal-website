@@ -10,7 +10,7 @@ function adaptMenu() {
 adaptMenu(); // adapting for the first time after loading
 window.addEventListener("resize", adaptMenu); // every time the window size is changed
 
-// secondly: animations when hovering
+/***** ANIMATIONS CONCERNING MENU *****/
 // let all a's transition if one of them transitions
 var header = document.getElementsByTagName("header")[0];
 // var menuLinks = menu.getElementsByTagName("a");
@@ -78,10 +78,3 @@ menuDivs[1].addEventListener("mouseover", function () { imgs[1][0].src = "images
 menuDivs[1].addEventListener("mouseleave", function () { imgs[1][0].src = "images/hollow_circle.png"; });
 menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images/circle_full.png"; });
 menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
-
-
-// body.addEventListener("onscroll", function () {
-//    let top = document.body.scrollTop;
-//    if ()
-// });
-// Helper function to get an element's exact position

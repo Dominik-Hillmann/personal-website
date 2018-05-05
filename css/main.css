@@ -5,14 +5,13 @@
 
 body { margin: 0; }
 
-a:link {
-   text-decoration: none;
-}
+a:link { text-decoration: none; }
 
 #sketch {
    display: block;
    float: left;
    position: fixed;
+   box-shadow: 0px 10px 10px 0px black;
 }
 
 #main {
@@ -22,14 +21,9 @@ a:link {
 
 /***** TEXTE *****/
 
-h1 {
-  font-family: 'Raleway', sans-serif;
-}
+h1 { font-family: 'Raleway', sans-serif; }
 
-p {
-  font-family: 'Open Sans', sans-serif;
-}
-
+p { font-family: 'Open Sans', sans-serif; }
 
 /***** HEADER *****/
 
@@ -47,19 +41,15 @@ header {
 
    transition: opacity 0.25s ease-in-out;
 }
-
-
 #weather {
    height: 22px;
    margin-top: 10px;
 }
-
 #weather img {
    height: 22px;
    margin-right: 5px;
    float: left;
 }
-
 #weather p {
    font-size: 15px;
    font-family: 'Open Sans', sans-serif;
@@ -67,19 +57,15 @@ header {
    display: inline-block;
    margin-top: 0px;
 }
-
 #menuwrapper {
    font-size: 15px;
 }
-
 #menuwrapper div {
    margin-top: 8px;
 }
-
 #menuwrapper div:first-child {
    margin-top: 0;
 }
-
 #menuwrapper div p.unshown {
    vertical-align: middle;
    display: inline-block;
@@ -90,7 +76,6 @@ header {
    animation-name: unshown;
    animation-duration: 0.6s;
 }
-
 @keyframes unshown {
    from {
       opacity: 1.0;
@@ -127,17 +112,42 @@ header {
 }
 
 
-
 /***** START *****/
 
 
 #start {
-   background-color: green;
+   background-color: white;
+   margin: 30px 0px 30px 0px;
 }
 
 #start img {
-  width: 200px;
-  border-radius: 50px;
+   width: 200px;
+   border-radius: 10px;
+   margin: 10px 10px 10px 10px;
+}
+
+#hello {
+   display: flex;
+   /*border-top: 5px solid lightsalmon;*/
+   width: 62.8%;
+   margin: 0 auto 0 auto;
+   box-shadow: 0px 3px 10px 0px black;
+   border-radius: 10px;
+}
+
+#hello div {
+   height: auto;
+   padding-left: 10px;
+   float: right;
+   text-align: left;
+   width: calc(100% - (200px + 20px + 10px + 3px + 10px));
+   margin: 10px 10px 10px 0px;
+   border-left: 3px solid lightsalmon;
+   /*100% - imgwidth - leftrightmargins - margins of text*/
+}
+
+#hello h1 {
+   margin-bottom: 10px;
 }
 
 /***** CONTACT *****/

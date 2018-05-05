@@ -254,9 +254,9 @@
       </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
-         <div><img src="images/hollow_circle.png"><!--<a class="unshown">--><p>Start</p><!--</a>--></div>
-         <div><img src="images/hollow_circle.png"><!--<a class="unshown">--><p>Skills</p><!--</a>--></div>
-         <div><img src="images/hollow_circle.png"><!--<a class="unshown">--><p>Kontakt</p><!--</a>--></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Start</p></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Skills</p></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Kontakt</p></div>
          <!--später blank.png, mit css hollow und full änder per CSS-->
       </div>
    </header>
@@ -273,34 +273,12 @@
             <img src="./images/me.png">
             <!-- SPAETER TIMELINE -->
             <div>
-               <h1>Willkommen auf meiner Website</h1>
+               <h1>Willkommen</h1>
                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-               </p>
-               <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ebergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                </p>
             </div>
          </div>
-         <?php
-            echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
-            echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
-            echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
-            echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
-            echo "current conditions in " . $weatherCity . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
-            echo "<br>";
-            var_dump($weather);
-            echo "<br><br>";
-            var_dump($currRepo);
-            echo "<br><br>";
-            var_dump($featRepos);
-            echo "<br>";
-
-            foreach ($repos as $repo) {
-               echo "<br>";
-               var_dump($repo->langs);
-            }
-         ?>
       </div>
 
       <div id="skills">
@@ -462,10 +440,29 @@
                <h1>XING</h1>
             </div>
          </div>
+         <?php
+            echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
+            echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
+            echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
+            echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
+            echo "current conditions in " . $weatherCity . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
+            echo "<br>";
+            var_dump($weather);
+            echo "<br><br>";
+            var_dump($currRepo);
+            echo "<br><br>";
+            var_dump($featRepos);
+            echo "<br>";
 
+            foreach ($repos as $repo) {
+               echo "<br>";
+               var_dump($repo->langs);
+            }
+         ?>
       </div>
 
    </div>
+
 <!-- End of Page Layout -->
 </body>
 
