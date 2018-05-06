@@ -374,7 +374,7 @@ header {
 .repoContainer div:first-child {
    float: left;
    display: block;
-   background-image: url("../images/backgrounds/background_web.png");
+   /*background-image: url("../images/backgrounds/background_web.png");*/
    background-repeat: no-repeat;
    background-size: cover;
    font-size: 0px;
@@ -439,7 +439,7 @@ header {
    margin: 0 auto 0 auto;
    min-width: 380px;
    width: 100%;
-   background-image: url("../images/backgrounds/background_web.png");
+   /*background-image: url("../images/backgrounds/background_web.png");*/
    background-repeat: no-repeat;
    background-size: cover;
 

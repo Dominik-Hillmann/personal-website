@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-
+<!-- Everything well done is worthwhile. -->
 <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Dominik Hillmann</title>
@@ -45,9 +45,10 @@
          // accesses wather and github API via curl
          $curl = curl_init($url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-         if (isset($token)) {
+
+         if (isset($token))
             curl_setopt($curl, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $token]);
-         }
+
          $outputs = curl_exec($curl);
          curl_close($curl);
          return $outputs;
@@ -93,7 +94,7 @@
       }
 
 
-      function echoRepo($repo) {
+      function echoRepo($repo, $imgStr) {
          /*<div class="repoContainer">
             <div>hide me</div>
             <div>
@@ -102,14 +103,12 @@
             </div>
             <p>Anteile der Sprachen</p>
          </div> */
-         echo '<div class="repoContainer"><div>hide me</div><div>';
+         echo '<div class="repoContainer"><div  style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
          echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
          echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung") . '</p><p>';
 
          $total = 0.0;
-         foreach ($repo->langs as $amount) {
-            $total += $amount;
-         }
+         foreach ($repo->langs as $amount) $total += $amount;
 
          foreach ($repo->langs as $lang => $amount) {
             echo round(100 * $amount / $total) . '% ' . $lang . ' ';
@@ -117,7 +116,7 @@
          echo '</p></div></div>';
       }
 
-
+      /*
       function echoSkills($path, $sliderClass, $skillList) {
          // echoes the images for skills, includes placeholders
          $len = count($skillList);
@@ -128,6 +127,24 @@
          for ($i = 0; $i < $lenPlus; $i++) {
             echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
          }
+      }
+      */
+      function echoSkills($path, $sliderClass, $header, $text, $skillList) {
+         // echoes the images for skills, includes placeholders
+         echo '<div id="'. $sliderClass .'-wrapper" class="sliderWrapper '. $sliderClass .'-slider-wrapper">';
+         echo '<div style="background-image: url(\'./images/backgrounds/background_'. $sliderClass .'.png\');" class="slider">';
+
+         $len = count($skillList);
+         $lenPlus = $len;
+         while ($lenPlus % 3 != 0) $lenPlus++;
+         for ($i = 0; $i < $lenPlus; $i++) {
+            echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
+         }
+
+         echo '</div>';
+         echo '<img src="./images/arrow_in_circle.png" onclick="animateSlide(\''. $sliderClass .'\')" class="'. $sliderClass .'NavSlider arrow navSlider">';
+         echo '<div class="slidername"><h1>'. $header .'</h1>';
+         echo '<p class="infoText" id="'. $sliderClass .'Info">'. $text .'</p></div></div>';
       }
 
       /***** OPENWEATHERMAP API *****/
@@ -285,9 +302,10 @@
 
          <div id="skillSlider">
             <h1 class="mainHeader">Skills</h1>
-            <div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
+
+            <!--<div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
                <div class="slider">
-                  <?php
+                  <?php/*
                      echoSkills("/images/logo/", "web", [
                         "html5",
                         "css3",
@@ -298,35 +316,57 @@
                         "R",
                         "stata"
                      ]);
-                  ?>
+                  */?>
                </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider">
-               <!--<img src="./images/question.png" onclick="showTypeInfo('web');" class="webNavSlider navSlider question">-->
                <div class="slidername">
                   <h1>Web-Programmierung</h1>
                   <p class="infoText" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
-            </div>
+            </div>-->
+            <?php
+               $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
+               echoSkills("/images/logo/", "web", "Web-Programmierung", $text, [
+                  "html5",
+                  "css3",
+                  "js",
+                  "p5",
+                  "php",
+                  "processing",
+                  "R",
+                  "stata"
+               ]);
+            ?>
 
-
-            <div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
+            <!--<div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
                <div class="slider">
-                  <?php
+                  <?php/*
                      echoSkills("/images/", "data", [
                         "github_black",
                         "github_black",
                         "linkedin_black",
                         "linkedin_black"
                      ]);
-                  ?>
+                  */?>
                </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider">
-               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
                <div class="slidername">
                   <h1>Data-Engineering</h1>
                   <p class="infoText" id="dataInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
-            </div>
+            </div>-->
+            <?php
+               echoSkills("/images/logo/", "data", "Data-Engineering", $text, [
+                  "html5",
+                  "css3",
+                  "js",
+                  "p5",
+                  "php",
+                  "processing",
+                  "R",
+                  "stata"
+               ]);
+            ?>
 
 
             <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
@@ -371,14 +411,14 @@
             <h1 class="repoHeading">Featured repositories</h1>
                <div>
                   <?php
-                     foreach ($featRepos as $featRepo) {
-                        echoRepo($featRepo);
+                     for ($i = 0; $i < count($featRepos); $i++) {
+                        echoRepo($featRepos[$i], $featReposImgs[$i]);
                      }
                   ?>
                </div>
                <h1 class="repoHeading">Repository I last worked on</h1>
                <div>
-                  <?php echoRepo($currRepo); ?>
+                  <?php echoRepo($currRepo, "images/backgrounds/background_web.png"); ?>
                </div>
          </div>
 
