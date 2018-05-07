@@ -78,3 +78,5 @@ menuDivs[1].addEventListener("mouseover", function () { imgs[1][0].src = "images
 menuDivs[1].addEventListener("mouseleave", function () { imgs[1][0].src = "images/hollow_circle.png"; });
 menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images/circle_full.png"; });
 menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
+
+console.log(window.dataLayer);

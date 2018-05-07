@@ -2,6 +2,15 @@
 <html lang="de">
 <head>
 <!-- Everything well done is worthwhile. -->
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118780357-1"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-118780357-1');
+   </script>
+
 <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Dominik Hillmann</title>
@@ -17,7 +26,7 @@
 
 <!-- Favicon -->
     <link rel="icon" type="image/png" href="">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
    <?php
@@ -116,19 +125,7 @@
          echo '</p></div></div>';
       }
 
-      /*
-      function echoSkills($path, $sliderClass, $skillList) {
-         // echoes the images for skills, includes placeholders
-         $len = count($skillList);
-         $lenPlus = $len;
-         while ($lenPlus % 3 != 0) {
-            $lenPlus++;
-         }
-         for ($i = 0; $i < $lenPlus; $i++) {
-            echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
-         }
-      }
-      */
+
       function echoSkills($path, $sliderClass, $header, $text, $skillList) {
          // echoes the images for skills, includes placeholders
          echo '<div id="'. $sliderClass .'-wrapper" class="sliderWrapper '. $sliderClass .'-slider-wrapper">';
@@ -462,6 +459,7 @@
                   <input id="submit" class="nonWriteInput" type="submit">
                   <!--<a href="#">Resumé</a>-->
                </p>
+               <div class="g-recaptcha" data-sitekey="6LfN2VcUAAAAAJkZ542qnEj2SmZ0adjE-w18YWtU"></div>
             </form>
          </div>
 
