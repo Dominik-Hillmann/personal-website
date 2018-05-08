@@ -21,28 +21,35 @@
 <body>
    <h1>KONTAKTANFRAGE</h1>
    <?php
-      require "libraries/config.inc.php";
-      require_once('recaptchalib.php');
-      $privatekey = "your_private_key";
-      $resp = recaptcha_check_answer(
-         $privatekey,
-         $_SERVER["REMOTE_ADDR"],
-         $_POST["recaptcha_challenge_field"],
-         $_POST["recaptcha_response_field"]
-      );
+      function space() { echo "<br><br>"; }
 
-      if (!$resp->is_valid) {
-        die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
-             "(reCAPTCHA said: " . $resp->error . ")");
-      } else {
-         // code after successful verification
+      require "libraries/config.inc.php";
+
+      $data = [
+         'secret' => $privCaptcha,
+         'response' => $_POST["g-recaptcha-response"]
+      ];
+
+      $verify = curl_init();
+      curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+      curl_setopt($verify, CURLOPT_POST, true);
+      curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+      curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+      $response = curl_exec($verify);
+
+      var_dump($response);
+      space();
+      var_dump($_POST);
+      space();
+
+      if ($response->success) {
          $receiver = "dominik.hillmann.website@gmail.com";
          $subject = $_POST["subject"];
          $message = $_POST["message"];
 
          echo "TO: " . $receiver;
-         foreach ($_POST as $ele)
-            echo $ele . "<br>";
+         foreach ($_POST as $ele) echo $ele . "<br>";
 
          $message .= "\nvon " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
          $message .= "Telefonnummer: " . $_POST["telnum"];
@@ -69,6 +76,8 @@
          }
 
          echo "<h1>" . ($success ? "JA" : "NEIN") . "</h1>";
+      } else {
+         echo "reCaptcha concluded that you are a bot. If this is a misunderstanding, please try again."
       }
    ?>
 </body>
