@@ -77,7 +77,7 @@
 
          echo "<h1>" . ($success ? "JA" : "NEIN") . "</h1>";
       } else {
-         echo "reCaptcha concluded that you are a bot. If this is a misunderstanding, please try again."
+         echo "reCaptcha concluded that you are a bot. If this is a misunderstanding, please try again.";
       }
    ?>
 </body>

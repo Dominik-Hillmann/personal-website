@@ -454,12 +454,12 @@
             --><p>
                   <h3 class="formHeading">Nachricht</h3>
                   <textarea id="message" name="message"></textarea>
-               </p><!--
-            --><p>
-                  <input id="submit" class="nonWriteInput" type="submit">
+               </p>
+               <p>
+                  <div class="g-recaptcha" data-sitekey="6LfN2VcUAAAAAJkZ542qnEj2SmZ0adjE-w18YWtU"></div>
+                  <input id="submit" type="submit">
                   <!--<a href="#">Resumé</a>-->
                </p>
-               <div class="g-recaptcha" data-sitekey="6LfN2VcUAAAAAJkZ542qnEj2SmZ0adjE-w18YWtU"></div>
             </form>
          </div>
 

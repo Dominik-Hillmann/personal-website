@@ -175,8 +175,6 @@ header {
 
    font-family: 'Raleway', sans-serif;
    clear: both;
-
-
 }
 
 /* email form on the right side */
@@ -205,13 +203,11 @@ header {
 .formHeading {
    font-size: 10px;
    display: block;
-   margin: 0;
+   margin: 0 auto 0 auto;
    padding: 0;
    text-align: left;
    width: 95%;
    align: center;
-   margin-left: auto;
-   margin-right: auto;
 }
 
 #contactForm form input {
@@ -234,7 +230,7 @@ header {
 @keyframes writing {
    from {
       background-color: lightgrey;
-
+      box-shadow: 0 0 0 0;
    } to {
       background-color: grey;
       box-shadow: 0 1px 2px 0;
@@ -305,24 +301,15 @@ header {
 
 }
 
-#submit {
+input[type=submit] {
    display: inline;
    color: black;
    height: 100px;
+   margin: 0 0 100px
 }
 
-
-#contactOther {
-   color: red;
-   background-color: blue;
-   float: left;
-   display: inline-block;
-   margin-left: 120px;
-   width: calc(38% - 120px);
-}
-
-#contactOther div img {
-   height: 50px;
+.g-recaptcha {
+   margin: 15px !important;
 }
 
 
@@ -355,6 +342,7 @@ header {
 
    height: 130px;
    width: 90%;
+   min-width: 400px;
    margin: 0px 5% 25px 5%;
    border-radius: 10px;
 }
@@ -375,20 +363,17 @@ header {
 .repoContainer div:first-child {
    float: left;
    display: block;
-   /*background-image: url("../images/backgrounds/background_web.png");*/
    background-repeat: no-repeat;
    background-size: cover;
    font-size: 0px;
-
    border-top-left-radius: 10px;
    border-bottom-left-radius: 10px;
-
    width: 38.2%;
    height: 100%;
 }
 
 .repoContainer h1 {
-   font-size: 17px;
+   font-size: 18px;
    margin: 2px 5px 5px 5px;
 }
 
@@ -397,15 +382,12 @@ header {
 }
 
 .repoContainer p {
-   margin: 0px 5px 5px 5px;
+   margin: 0px 5px 0px 5px;
+   font-size: 15px;
 }
 
 .repoContainer p:last-child {
    font-family: 'Open Sans', sans-serif;
-   font-size: 11px;
-   bottom: 0;
-   border-top: 1px solid black;
-   margin-top: 10px;
 }
 
 /***** SKILLS --> SLIDERS *****/
