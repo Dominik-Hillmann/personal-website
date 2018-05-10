@@ -97,13 +97,7 @@ header {
    animation-duration: 0.5s;
 }
 
-@keyframes shown {
-   from {
-      opacity: 0.0;
-   } to {
-      opacity: 1.0;
-   }
-}
+@keyframes shown { from { opacity: 0.0; } to { opacity: 1.0; } }
 
 #menuwrapper img {
    height: 21px;
@@ -433,21 +427,20 @@ input[type=submit] {
 }
 
 .slide {
-  width: 130px;
-
-  margin: 2% auto 2% calc(30% - 130px); /* left margin is the third of slider minus its own width */
+   width: 130px;
+   margin: 2% auto 2% calc(30% - 130px); /* left margin is the third of slider minus its own width */
 }
 
 .slidername {
-  color: black;
-  background-color: white;
-  width: 100%;
+   color: black;
+   background-color: white;
+   width: 100%;
 
-  border-top: 4px solid lightsalmon;
-  box-shadow: 0 3px 10px 0;
+   border-top: 4px solid lightsalmon;
+   box-shadow: 0 3px 10px 0;
 
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+   border-bottom-left-radius: 20px;
+   border-bottom-right-radius: 20px;
 }
 
 /*.slidername h1 {
@@ -468,7 +461,6 @@ input[type=submit] {
 
 .slideShown {
    display: inline-block;
-
 }
 
 .notShown {
@@ -491,17 +483,10 @@ input[type=submit] {
    }
 }
 
-@keyframes slideOut {
-   from {
-      opacity : 1;
-   } to {
-      opacity: 0;
-   }
-}
+@keyframes slideOut { from { opacity : 1; } to { opacity: 0; } }
 
 .sliderWrapper div:last-of-type {
    display: inline-block;
-
    height: 100%;
 }
 

@@ -1,0 +1,40 @@
+@media only screen and (max-width: 1805px) {
+   * {
+      background-color: ;
+   }
+
+   header {
+      clear: both;
+      display: none;
+   }
+
+   #sketch {
+      display: none;
+      clear: both;
+      box-shadow: 0px 10px 10px 0px black;
+      width: 100%;
+      z-index: -1;
+   }
+
+   #main {
+
+      clear: both !important;
+      width: 100%;
+   }
+}
+
+@media only screen and (max-width: 1105px) {
+   #skills {
+      clear: both;
+   }
+   #skills * {
+      clear: both;
+   }
+   #skillSlider {
+      clear: both !important;
+   }
+
+  #repos {
+
+  }
+}

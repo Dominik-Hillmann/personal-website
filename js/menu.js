@@ -52,7 +52,7 @@ menuLinks[2].addEventListener("click", function () {
 });
 
 
-/***** Preloading images *****/
+/***** PRELOADING IMAGES *****/
 function preload(url) {
    var img = new Image();
    img.src = url;
@@ -61,7 +61,6 @@ function preload(url) {
 
 var fullCircle = preload("images/circle_full.png");
 var hollowCircle = preload("images/hollow_circle.png");
-
 
 // change picture
 var menuDivs = menu.getElementsByTagName("div");
