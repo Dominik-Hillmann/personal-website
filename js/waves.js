@@ -19,8 +19,8 @@ class Slider {
       // returns current value and updates its position between min and max
       if (this.curFrame != frame) {
          this.current += this.down ? -this.step : this.step;
-         if (this.current < this.min || this.current > this.max)
-            this.down = !this.down;
+         /*if (this.current < this.min || this.current > this.max) this.down = !this.down;*/
+         this.down = (this.current < this.min || this.current > this.max) ? !this.down : this.down;
          this.curFrame = frame;
       }
       return this.current;
@@ -30,27 +30,55 @@ class Slider {
 
 class Wave {
 
-   constructor() {
-      
+   constructor(speed, meanHeight) {
+      this.vert = Math.random()/* * NOCHWASEINTRAGEN*/;
+
+      this.spike = Math.random() /**/;
+      this.wind = Math.random();
+
+      this.speed = speed;
+      this.meanHeight = meanHeight;
    }
 
-   sin() {
-
+   sin(x, wind, spike, hori, vert) {
+      return hori + spike * Math.sin(wind * x + vert);
    }
 
-   drawWave() {
+   drawWave(frameCnt) {
+      this.vert += this.speed;
 
+      for (let x = 1; x <= width; x++) {
+         let y = sin(x, this.wind, this.spike, this.meanHeight, this.vert);
+         let yPlus = sin(x + 1, this.wind, this.spike, this.meanHeight, this.vert);
+         line(x, y, x + 1, yPlus);
+      }
    }
 }
 
-function setup() {
 
+
+var cnv;
+const PERC_WIDTH = 0.38;
+var waves = [];
+
+function setup() {
+   cnv = createCanvas(Math.round(PERC_WIDTH * displayWidth), displayHeight);
+   cnv.parent("sketch");
+   waves.push(new Wave());
 }
 
 function draw() {
+   background(255, 255, 255);
+   //fill(255, 255, 255);
+   for (let x = 1; x <= width; x++) {
+      line(x, Math.sin(x) + 200, x + 1, Math.sin(x + 1) + 200);
+   }
 
+   for (wave of waves) {
+
+   }
 }
 
 function resize() {
-
+   resizeCanvas(Math.round(PERC_WIDTH * windowWidth), windowHeight);
 }

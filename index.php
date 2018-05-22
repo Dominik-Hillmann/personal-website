@@ -507,6 +507,6 @@
 <script type="text/javascript" src="js/slides.js"></script>
 
 <script type="text/javascript" src="js/libraries/p5.js"></script>
-<script type="text/javascript" src="js/sketches.js"></script>
+<script type="text/javascript" src="js/waves.js"></script>
 
 </html>
