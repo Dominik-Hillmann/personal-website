@@ -62,20 +62,21 @@ const PERC_WIDTH = 0.38;
 var waves = [];
 
 function setup() {
+   frameRate(30);
    cnv = createCanvas(Math.round(PERC_WIDTH * displayWidth), displayHeight);
    cnv.parent("sketch");
-   waves.push(new Wave());
+   waves.push(new Wave(1, height / 2));
 }
 
 function draw() {
    background(255, 255, 255);
    //fill(255, 255, 255);
    for (let x = 1; x <= width; x++) {
-      line(x, Math.sin(x) + 200, x + 1, Math.sin(x + 1) + 200);
+      line(x, 100 * Math.sin(x) + (height/2), x + 1, 100 * Math.sin(x + 1) + (height/2));
    }
 
    for (wave of waves) {
-
+      wave.drawWave(frameCount);
    }
 }
 

@@ -35,7 +35,6 @@ header {
    height: 100%;
    width: 30%;
 
-   color: white;
    padding-left: 10px;
    padding-right: 10px;
 
@@ -44,6 +43,7 @@ header {
 #weather {
    height: 22px;
    margin-top: 10px;
+   color: black;
 }
 #weather img {
    height: 22px;
