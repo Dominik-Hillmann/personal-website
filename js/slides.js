@@ -21,6 +21,7 @@ function switchClass(slide, inClass, outClass) {
 
 function getNextSlides(type) {
    // next row of imgs that come after those currently displayed
+   // Yes, I know it's ugly!
    let slides = document.getElementsByClassName(type);
    console.log("Es gibt ", slides.length, " Bildelemente");
 
@@ -133,6 +134,7 @@ function firstSlides(type) {
    return;
 }
 
+/***** EXECUTION OF SOME FUNCTIONS *****/
 
 var types = ["web", "data", "theo", "general"];
 var webStop = NUM_ROW - 1;
@@ -143,43 +145,3 @@ var generalStop = NUM_ROW - 1;
 for (type of types) {
    firstSlides(type);
 }
-
-/***** More Information on skills *****/
-// currently irrelevant
-/*
-function showTypeInfo(type) {
-   // if infoText shown then animate Slide else show infoText
-   let infoText = document.getElementById(type + "Info");
-   if (infoText.classList.contains("slideShown")) {
-      animateSlide(type);
-   } else {
-      // show text that describes what kind of skills are shown here
-      let slider = document.getElementsByClassName(type + "-slider-wrapper")[0];
-      let question = slider.getElementsByClassName("question")[0];
-      let allSlides = slider.getElementsByClassName("slide");
-      // let infoText = slider.getElementsByClassName("infoText")[0];
-      let currSlides = slider.getElementsByClassName("slideShown");
-      let navButtons = slider.getElementsByClassName("navSlider");
-
-      console.log("Type", type);
-      console.log("Slider", slider);
-      console.log("Question", question);
-      console.log("allSlides", allSlides);
-
-      // möglicherweise immer wieder Elemente auswählen, weil sich die current elements ändern
-      for (slide of currSlides) {
-         switchClass(slide, "slideOut", "slideIn");
-      }
-
-      setTimeout(function () {
-         for (allSlide of allSlides) {
-            switchClass(allSlide, "notShown", "slideShown");
-         }
-
-         switchClass(infoText, "slideShown", "notShown");
-         switchClass(infoText, "slideIn", "slideOut");
-      }, 500);
-   }
-   return; //currSlides
-}
-*/

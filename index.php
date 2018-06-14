@@ -7,8 +7,8 @@
    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'UA-118780357-1');
+      gtag("js", new Date());
+      gtag("config", "UA-118780357-1");
    </script>
 
 <!-- Basic Page Needs -->
@@ -49,18 +49,18 @@
          }
       }
 
+      /*** SPATER ANFRAGE IM HINTERGRUND MITTELS XMLHTTP Request! ***/
 
       function contactAPI($url, $token) {
-         // accesses wather and github API via curl
+         // accesses weather and github API via curl
          $curl = curl_init($url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-         if (isset($token))
-            curl_setopt($curl, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $token]);
+         if (isset($token)) curl_setopt($curl, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $token]);
 
-         $outputs = curl_exec($curl);
+         $output = curl_exec($curl);
          curl_close($curl);
-         return $outputs;
+         return $output;
       }
 
 
@@ -88,6 +88,7 @@
          $nowTime = time() / (60 * 60);
 
          if ($nowTime - $lastTime > 30 * 24) {
+            // 30 * 24 => every month
             $curl = curl_init($adress);
             $file = fopen($savePath, "wb");
 
@@ -104,14 +105,17 @@
 
 
       function echoRepo($repo, $imgStr) {
-         /*<div class="repoContainer">
+         /*
+         This echoes HTML that has the following structure:
+         <div class="repoContainer">
             <div>hide me</div>
             <div>
                <h1>Titel</h1>
                <p>Beschreibung</p>
             </div>
             <p>Anteile der Sprachen</p>
-         </div> */
+         </div>
+         */
          echo '<div class="repoContainer"><div  style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
          echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
          echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung") . '</p><p>';
@@ -144,8 +148,15 @@
          echo '<p class="infoText" id="'. $sliderClass .'Info">'. $text .'</p></div></div>';
       }
 
-      /***** OPENWEATHERMAP API *****/
-      $appid = $weatherKey;
+      function getLocally($path) {
+         return json_decode(file_get_contents($path, "r"));
+      }
+
+      function putLocally($path, $fileName, $obj) {
+         file_put_contents($path . $fileName . ".json", json_encode($obj));
+      }
+
+      /***** OPENWEATHERMAP API *****/;
       // check the last time the weather.json file was updated
       $nowTime = time() / (60 * 60);
       $weatherUpd = getTime("./data/timeWeather.txt") / (60 * 60);
@@ -156,11 +167,11 @@
       if (($nowTime - $weatherUpd) <= $weatherTimeDif) {
          $weather = json_decode(file_get_contents("./data/weather.json", "r"));
       } else {
-         $jsonW = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $appid, NULL);
+         $weatherJSON = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $weatherKey, NULL);
          $wAPI = true;
 
-         if (isset($jsonW)) {
-            $weather = json_decode($jsonW);
+         if (isset($weatherJSON)) {
+            $weather = json_decode($weatherJSON);
             file_put_contents("./data/weather.json", json_encode($weather));
             putTime("./data/timeWeather.txt");
          } else {
@@ -232,28 +243,24 @@
       }
 
 
-      /***** CONSTRUCTIONG WEATHER SYMBOLS *****/
+      /***** CONSTRUCTIONG STRINGS FOR WEATHER SYMBOLS *****/
       $weatherPicStr = "./images/weather/bright_";
       $hour = (int) date("G", time());
 
-      if ($hour >= 20 || $hour <= 6) {
-         $weatherPicStr .= "night_";
-      } else {
-         $weatherPicStr .= "day_";
-      }
+      $weatherPicStr .= ($hour >= $darkHours[0] || $hour <= $darkHours[1]) ? "night_" : "day_";
 
       $id = $weather->weather[0]->id;
-      if ((($id >= 200) && ($id < 300)) || ($id >= 900)) {
+      if (($id >= 200 && $id < 300) || $id >= 900) {
          $weatherPicStr .= "storm.png";
-      } else if (($id >= 300) && ($id < 600)) {
+      } else if ($id >= 300 && $id < 600) {
          $weatherPicStr .= "rain.png";
-      } else if (($id >= 600) && ($id < 701)) {
+      } else if ($id >= 600 && $id < 701) {
          $weatherPicStr .= "snow.png";
-      } else if (($id >= 701) && ($id < 800)) {
+      } else if ($id >= 701 && $id < 800) {
          $weatherPicStr .= "mist.png";
       } else if ($id == 800) {
          $weatherPicStr .= "clear.png";
-      } else if (($id >= 801) && ($id < 900)) {
+      } else if ($id >= 801 && $id < 900) {
          $weatherPicStr .= "cloud.png";
       } else {
          $weatherPicStr .= "cloud.png";

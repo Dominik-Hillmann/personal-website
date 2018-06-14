@@ -1,4 +1,5 @@
 class Slider {
+   // A slider ping-pongs a value between its min and its max.
    constructor(min, max, step) {
       this.min = min;
       this.max = max;
@@ -30,50 +31,55 @@ class Slider {
 
 class Wave {
 
-   constructor(speed, meanHeight) {
-      this.vert = Math.random()/* * NOCHWASEINTRAGEN*/;
-
-      this.spike = Math.random() /**/;
-      this.wind = Math.random();
-
+   constructor(speed, meanHeight, wind, spike) {
       this.speed = speed;
-      this.meanHeight = meanHeight;
-   }
+      this.vert = 0;
 
-   sin(x, wind, spike, hori, vert) {
-      return hori + spike * Math.sin(wind * x + vert);
+      this.meanHeight = meanHeight;
+
+      this.wind = new Slider(wind - 5, wind + 5, 0.01);
+      this.spike = spike;
    }
 
    drawWave(frameCnt) {
-      this.vert += this.speed;
-
+      // this.vert += this.speed;
       for (let x = 1; x <= width; x++) {
-         let y = sin(x, this.wind, this.spike, this.meanHeight, this.vert);
-         let yPlus = sin(x + 1, this.wind, this.spike, this.meanHeight, this.vert);
-         line(x, y, x + 1, yPlus);
+         line(
+            x,
+            this.spike * Math.sin(this.wind.getCurr(frameCnt) * x + this.vert) + this.meanHeight,
+            x + 1,
+            this.spike * Math.sin(this.wind.getCurr(frameCnt) * (x + 1) + this.vert) + this.meanHeight
+         );
       }
    }
 }
 
 
 
-var cnv;
+let cnv;
 const PERC_WIDTH = 0.38;
-var waves = [];
+let waves = [];
 
 function setup() {
    frameRate(30);
    cnv = createCanvas(Math.round(PERC_WIDTH * displayWidth), displayHeight);
    cnv.parent("sketch");
-   waves.push(new Wave(1, height / 2));
+
+   waves.push(new Wave(0.01, height / 3, 40, 50));
+   // waves.push(new Wave(1, height / 2, 100, 300));
 }
 
 function draw() {
    background(255, 255, 255);
    //fill(255, 255, 255);
-   for (let x = 1; x <= width; x++) {
-      line(x, 100 * Math.sin(x) + (height/2), x + 1, 100 * Math.sin(x + 1) + (height/2));
-   }
+   // for (let x = 1; x <= width; x++) {
+      // line(
+      //    x,
+      //    100 * Math.sin(x) + (height/2),
+      //    x + 1,
+      //    100 * Math.sin(x + 1) + (height/2)
+      // );
+   // }
 
    for (wave of waves) {
       wave.drawWave(frameCount);
