@@ -244,7 +244,7 @@
 
 
       /***** CONSTRUCTIONG STRINGS FOR WEATHER SYMBOLS *****/
-      $weatherPicStr = "./images/weather/bright_";
+      $weatherPicStr = "./images/weather/" . ($useBrightSymbols ? "bright" : "dark") . "_";
       $hour = (int) date("G", time());
 
       $weatherPicStr .= ($hour >= $darkHours[0] || $hour <= $darkHours[1]) ? "night_" : "day_";
