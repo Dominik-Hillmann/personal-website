@@ -23,7 +23,7 @@ function getNextSlides(type) {
    // next row of imgs that come after those currently displayed
    // Yes, I know it's ugly!
    let slides = document.getElementsByClassName(type);
-   console.log("Es gibt ", slides.length, " Bildelemente");
+   // console.log("Es gibt ", slides.length, " Bildelemente");
 
    let currSlidesInd = [];
    switch (type) {
@@ -75,8 +75,8 @@ function getNextSlides(type) {
    // currSlidesInd.sort(function (a, b) { return a - b; });
    let currSlides = indToImg(currSlidesInd, slides);
 
-   console.log("CurrentSlides: ", currSlides, currSlidesInd);
-   console.log("NextStop: ", webStop, dataStop, generalStop, theoStop);
+   // console.log("CurrentSlides: ", currSlides, currSlidesInd);
+   // console.log("NextStop: ", webStop, dataStop, generalStop, theoStop);
 
    return currSlides;
 }

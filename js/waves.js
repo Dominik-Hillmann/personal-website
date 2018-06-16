@@ -1,3 +1,9 @@
+const NUM_WAVES = 3;
+const PERC_WIDTH = 0.38;
+// const SPEED_WINDOW = { upper: .01, lower: .01, step: .0001 };
+// const WIND_WINDOW = { upper: .00001, lower: .01, step: .0001 };
+// const SPEED_WINDOW = { upper: .01, lower: .01, step: .0001 };
+
 class Slider {
    // A slider ping-pongs a value between its min and its max.
    constructor(min, max, step) {
@@ -6,7 +12,7 @@ class Slider {
       this.mean = Math.round((min + max) / 2);
 
       this.step = step;
-      this.current = this.mean; // RANDOM STARTER EINBAUEN
+      this.current = this.randBetween(min, max); // RANDOM STARTER EINBAUEN
 
       this.down = true;
       this.curFrame = 0;
@@ -21,13 +27,16 @@ class Slider {
       }
       return this.current;
    }
+
+   randBetween(min, max) {
+      return Math.random() * (max - min) + min;
+   }
 }
 
 
 class Wave {
-
    constructor(speed, meanHeight, wind, spike) {
-      // I know this is ugly, but these parameters need to be put in by hand in order to see what looks good.
+      // later replacement of magic numbers
       this.speed = new Slider(speed - 0.01, speed + 0.01, 0.0001);
       this.vert = 0;
 
@@ -37,24 +46,17 @@ class Wave {
       this.spike = new Slider(spike - 20, spike + 20, 0.1);
    }
 
-   drawWave(frameCnt) {
+   drawWave(frameCnt, thickness) {
       this.vert += this.speed.curr(frameCnt);
       for (let x = 1; x <= width; x++) {
-         line(
-            x,
-            this.spike.curr(frameCnt) * Math.sin(this.wind.curr(frameCnt) * x + this.vert) + this.meanHeight,
-            x + 1,
-            this.spike.curr(frameCnt) * Math.sin(this.wind.curr(frameCnt) * (x + 1) + this.vert) + this.meanHeight
-         );
+         let y = this.spike.curr(frameCnt) * Math.sin(this.wind.curr(frameCnt) * x + this.vert) + this.meanHeight;
+         ellipse(x, y, thickness);
       }
    }
-
 } // Wave
 
 
-
 let cnv;
-const PERC_WIDTH = 0.38;
 let waves = [];
 
 function setup() {
@@ -62,15 +64,16 @@ function setup() {
    cnv = createCanvas(Math.round(PERC_WIDTH * displayWidth), displayHeight);
    cnv.parent("sketch");
 
-   waves.push(new Wave(0.01, height / 3, 0.01, 40));
-   // waves.push(new Wave(0.06, 2 * height / 2, 0.02, 40));
+   for (let i = 0; i < NUM_WAVES; i++) {
+      waves.push(new Wave(.01, height / 2, .01, 40));
+   }
 }
 
 function draw() {
-   background(255, 255, 255);
+   background(255, 255, 255, 10);
 
    for (wave of waves) {
-      wave.drawWave(frameCount);
+      wave.drawWave(frameCount, 2);
    }
 }
 
