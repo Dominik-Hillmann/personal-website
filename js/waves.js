@@ -4,6 +4,14 @@ const PERC_WIDTH = 0.38;
 // const WIND_WINDOW = { upper: .00001, lower: .01, step: .0001 };
 // const SPEED_WINDOW = { upper: .01, lower: .01, step: .0001 };
 
+class Color {
+   constructor(r, g, b) {
+      this.r = r;
+      this.g = g;
+      this.b = b;
+   }
+}
+
 class Slider {
    // A slider ping-pongs a value between its min and its max.
    constructor(min, max, step) {
@@ -31,7 +39,7 @@ class Slider {
    randBetween(min, max) {
       return Math.random() * (max - min) + min;
    }
-}
+} // Slider
 
 
 class Wave {
@@ -48,6 +56,7 @@ class Wave {
 
    drawWave(frameCnt, thickness) {
       this.vert += this.speed.curr(frameCnt);
+
       for (let x = 1; x <= width; x++) {
          let y = this.spike.curr(frameCnt) * Math.sin(this.wind.curr(frameCnt) * x + this.vert) + this.meanHeight;
          ellipse(x, y, thickness);
@@ -58,6 +67,11 @@ class Wave {
 
 let cnv;
 let waves = [];
+let colors = [
+   new Color(255, 0, 0),
+   new Color(0, 255, 0),
+   new Color(0, 0, 255)
+]; // same # of colors as  NUM_WAVES
 
 function setup() {
    frameRate(30);
@@ -72,8 +86,10 @@ function setup() {
 function draw() {
    background(255, 255, 255, 10);
 
-   for (wave of waves) {
-      wave.drawWave(frameCount, 2);
+   for (let i = 0; i < NUM_WAVES; i++) {
+      let curCol = colors[i];
+      fill(curCol.r, curCol.g, curCol.b);
+      waves[i].drawWave(frameCount, 2);
    }
 }
 
