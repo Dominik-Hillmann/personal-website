@@ -246,7 +246,6 @@
       /***** CONSTRUCTIONG STRINGS FOR WEATHER SYMBOLS *****/
       $weatherPicStr = "./images/weather/" . ($useBrightSymbols ? "bright" : "dark") . "_";
       $hour = (int) date("G", time());
-
       $weatherPicStr .= ($hour >= $darkHours[0] || $hour <= $darkHours[1]) ? "night_" : "day_";
 
       $id = $weather->weather[0]->id;
@@ -306,89 +305,47 @@
          <div id="skillSlider">
             <h1 class="mainHeader">Skills</h1>
 
-            <!--<div id="web-wrapper" class="sliderWrapper web-slider-wrapper">
-               <div class="slider">
-                  <?php/*
-                     echoSkills("/images/logo/", "web", [
-                        "html5",
-                        "css3",
-                        "js",
-                        "p5",
-                        "php",
-                        "processing",
-                        "R",
-                        "stata"
-                     ]);
-                  */?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('web')" class="webNavSlider arrow navSlider">
-               <div class="slidername">
-                  <h1>Web-Programmierung</h1>
-                  <p class="infoText" id="webInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
-               </div>
-            </div>-->
             <?php
                $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
-               echoSkills("/images/logo/", "web", "Web-Programmierung", $text, [
-                  "html5",
-                  "css3",
+               echoSkills("/images/logo/", "web", "Web-Programming", $text, [
                   "js",
-                  "p5",
                   "php",
-                  "processing",
+                  "css3",
+                  "html5",
+                  "p5"
+               ]);
+
+               echoSkills("/images/logo/", "data", "Statistics", $text, [
                   "R",
+                  "python",
                   "stata"
                ]);
-            ?>
 
-            <!--<div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
-               <div class="slider">
-                  <?php/*
-                     echoSkills("/images/", "data", [
-                        "github_black",
-                        "github_black",
-                        "linkedin_black",
-                        "linkedin_black"
-                     ]);
-                  */?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider">
-               <div class="slidername">
-                  <h1>Data-Engineering</h1>
-                  <p class="infoText" id="dataInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
-               </div>
-            </div>-->
-            <?php
-               echoSkills("/images/logo/", "data", "Data-Engineering", $text, [
-                  "html5",
-                  "css3",
-                  "js",
-                  "p5",
-                  "php",
-                  "processing",
+               echoSkills("/images/logo/", "general", "General Programming", $text, [
                   "R",
+                  "python",
                   "stata"
                ]);
             ?>
 
 
-            <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
+            <!-- <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
                <div class="slider">
                   <?php
-                     echoSkills("/images/", "general", [
-                        "xing_black",
-                        "github_black",
-                        "linkedin_black"
-                     ]);
+                     // echoSkills("/images/", "general", [
+                     //    "xing_black",
+                     //    "github_black",
+                     //    "linkedin_black"
+                     // ]);
                   ?>
                </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider">
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider"> -->
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
-               <div class="slidername">
+               <!-- <div class="slidername">
                   <h1>General Programming</h1>
                   <p class="infoText" id="generalInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
-            </div>
+            </div> -->
 
 
             <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
@@ -512,8 +469,5 @@
 
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/slides.js"></script>
-
-<script type="text/javascript" src="js/libraries/p5.js"></script>
-<script type="text/javascript" src="js/waves.js"></script>
 
 </html>

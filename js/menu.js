@@ -4,7 +4,7 @@
 // first: positioning the menu correctly
 var menu = document.getElementById("menuwrapper");
 function adaptMenu() {
-   menu.style.marginTop = ((window.innerHeight / 2) - (menu.offsetHeight / 2) - (document.getElementById("weather").offsetHeight / 2)) + "px";
+   menu.style.marginTop = ((window.innerHeight / 2) - (menu.offsetHeight / 2) - document.getElementById("weather").offsetHeight) + "px";
 }
 
 adaptMenu(); // adapting for the first time after loading
@@ -66,9 +66,9 @@ var hollowCircle = preload("images/hollow_circle.png");
 var menuDivs = menu.getElementsByTagName("div");
 var imgs = [];
 
-for(var i = 0; i < menuDivs.length; i++)
+for (var i = 0; i < menuDivs.length; i++) {
    imgs.push(menuDivs[i].getElementsByTagName("img"));
-
+}
 // why not just loop over the array index? Problems with creating functions within loop referencing wrong index
 /***** WICHTIG: das hier ändern, sodass eine Klasse geaendert wird, damit der Uebergang smooth geschehen kann *****/
 menuDivs[0].addEventListener("mouseover", function () { imgs[0][0].src = "images/circle_full.png"; });
