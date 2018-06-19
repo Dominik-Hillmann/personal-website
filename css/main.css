@@ -15,7 +15,7 @@ a:link { text-decoration: none; }
 }
 
 #main {
-   float: right;
+   margin: auto;
    width: 61.8%;
 }
 
@@ -42,7 +42,6 @@ header {
 }
 #weather {
    height: 22px;
-   margin-top: 10px;
    color: black;
 }
 #weather img {
@@ -182,7 +181,16 @@ header {
    border-radius: 10px;
    border-top: 3px red;
 
-  border-top: 5px solid lightsalmon;
+   border-top: 5px solid lightsalmon;
+}
+
+#contactForm h1 {
+   margin: 15px;
+   text-align: center;
+}
+
+#contactForm p {
+   margin: 15px;
 }
 
 #contactForm form {
@@ -215,7 +223,7 @@ header {
 }
 
 #contactForm form input:focus {
-   background-color: grey;
+   background-color: #a6a6a6;
    box-shadow: 0 1px 2px 0;
    animation-name: writing;
    animation-duration: 0.5s;
@@ -226,7 +234,7 @@ header {
       background-color: lightgrey;
       box-shadow: 0 0 0 0;
    } to {
-      background-color: grey;
+      background-color: #a6a6a6;
       box-shadow: 0 1px 2px 0;
    }
 }
@@ -280,7 +288,7 @@ header {
 }
 
 #message:focus {
-   background-color: grey;
+   background-color: #a6a6a6;
    animation-name: writing;
    animation-duration: 0.5s;
    box-shadow: 0 1px 2px 0;
@@ -549,4 +557,11 @@ input[type=submit] {
 }
 #socialMedia img:hover {
   box-shadow: 0px 3px 10px 0px black;
+}
+
+#lang img {
+   height: 40px;
+   z-index: 3;
+   float: right;
+   margin-right: 10px;
 }

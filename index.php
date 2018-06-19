@@ -267,6 +267,9 @@
    ?>
 
 <!-- Page Layout -->
+   <div id="lang">
+      <a href="de.php"><img src="images\de.png"></a>
+   </div>
    <header>
       <div id="weather">
          <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
@@ -322,13 +325,10 @@
                ]);
 
                echoSkills("/images/logo/", "general", "General Programming", $text, [
-                  "R",
-                  "python",
-                  "stata"
+                  "java",
+                  "c"
                ]);
             ?>
-
-
             <!-- <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
                <div class="slider">
                   <?php
@@ -348,22 +348,22 @@
             </div> -->
 
 
-            <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
-               <div class="slider">
+            <!-- <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
+               <div class="slider"> -->
                   <?php
-                     echoSkills("/images/", "theo", [
-                        "github_black",
-                        "xing_black"
-                     ]);
+                     // echoSkills("/images/", "theo", [
+                     //    "github_black",
+                     //    "xing_black"
+                     // ]);
                   ?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider">
+               <!-- </div>
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider"> -->
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
-               <div class="slidername">
+               <!-- <div class="slidername">
                   <h1>Theory</h1>
                   <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
-            </div>
+            </div> -->
 
          </div>
 
