@@ -131,16 +131,15 @@ function firstSlides(type) {
       switchClass(slide, "slideShown", "notShown");
       switchClass(slide, "slideIn", "slideOut");
    }
-   return;
 }
 
 /***** EXECUTION OF SOME FUNCTIONS *****/
 
-var types = ["web", "data", "theo", "general"];
-var webStop = NUM_ROW - 1;
-var dataStop = NUM_ROW - 1;
-var theoStop = NUM_ROW - 1;
-var generalStop = NUM_ROW - 1;
+let types = ["web", "data", "general"]; // "theo", "general"];
+let webStop = NUM_ROW - 1;
+let dataStop = NUM_ROW - 1;
+let theoStop = NUM_ROW - 1;
+let generalStop = NUM_ROW - 1;
 
 for (type of types) {
    firstSlides(type);

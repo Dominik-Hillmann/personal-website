@@ -33,7 +33,7 @@ header {
    position: fixed;
    background-color: none;
    height: 100%;
-   width: 30%;
+   width: 20%;
 
    padding-left: 10px;
    padding-right: 10px;
@@ -372,6 +372,7 @@ input[type=submit] {
    border-bottom-left-radius: 10px;
    width: 38.2%;
    height: 100%;
+   cursor: pointer;
 }
 
 .repoContainer h1 {

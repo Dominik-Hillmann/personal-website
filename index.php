@@ -104,7 +104,7 @@
       }
 
 
-      function echoRepo($repo, $imgStr) {
+      function echoRepo($repo, $imgStr, $exampleURL) {
          /*
          This echoes HTML that has the following structure:
          <div class="repoContainer">
@@ -116,7 +116,7 @@
             <p>Anteile der Sprachen</p>
          </div>
          */
-         echo '<div class="repoContainer"><div  style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
+         echo '<div class="repoContainer"><div onclick="window.open(\''. $exampleURL .'\', \'_blank\');" style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
          echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
          echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung") . '</p><p>';
 
@@ -165,7 +165,7 @@
 
       // less than one hour ago --> use the JSON
       if (($nowTime - $weatherUpd) <= $weatherTimeDif) {
-         $weather = json_decode(file_get_contents("./data/weather.json", "r"));
+         $weather = getLocally("./data/weather.json");
       } else {
          $weatherJSON = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $weatherKey, NULL);
          $wAPI = true;
@@ -175,7 +175,7 @@
             file_put_contents("./data/weather.json", json_encode($weather));
             putTime("./data/timeWeather.txt");
          } else {
-            $weather = json_decode(file_get_contents("./data/weather.json", "r"));
+            $weather = getLocally("./data/weather.json");
          }
       }
 
@@ -220,7 +220,7 @@
          unset($files[1]);
 
          foreach ($files as $file) {
-            array_push($repos, json_decode(file_get_contents("./data/repos/" . $file)));
+            array_push($repos, getLocally("./data/repos/" . $file));
          }
       }
 
@@ -295,7 +295,7 @@
             <img src="./images/me.png">
             <!-- SPAETER TIMELINE -->
             <div>
-               <h1>Willkommen</h1>
+               <h1>Welcome</h1>
                <p>
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ebergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
                </p>
@@ -323,39 +323,14 @@
                   "python",
                   "stata"
                ]);
-
-               echoSkills("/images/logo/", "general", "General Programming", $text, [
-                  "java",
-                  "c"
+               echoSkills("/images/logo/", "general", "General Programming Skills", $text, [
+                  "c",
+                  "java"
                ]);
             ?>
-            <!-- <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
-               <div class="slider">
-                  <?php
-                     // echoSkills("/images/", "general", [
-                     //    "xing_black",
-                     //    "github_black",
-                     //    "linkedin_black"
-                     // ]);
-                  ?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider"> -->
-               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
-               <!-- <div class="slidername">
-                  <h1>General Programming</h1>
-                  <p class="infoText" id="generalInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
-               </div>
-            </div> -->
-
 
             <!-- <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
                <div class="slider"> -->
-                  <?php
-                     // echoSkills("/images/", "theo", [
-                     //    "github_black",
-                     //    "xing_black"
-                     // ]);
-                  ?>
                <!-- </div>
                <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider"> -->
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
@@ -372,13 +347,16 @@
                <div>
                   <?php
                      for ($i = 0; $i < count($featRepos); $i++) {
-                        echoRepo($featRepos[$i], $featReposImgs[$i]);
+                        echoRepo($featRepos[$i], $featReposImgs[$i], $featExps[$i]);
                      }
                   ?>
                </div>
                <h1 class="repoHeading">Repository I last worked on</h1>
                <div>
-                  <?php echoRepo($currRepo, "images/backgrounds/background_web.png"); ?>
+                  <?php
+                     // these have no predefined examples like the featured repos --> use their own GitHub page as subsitute
+                     echoRepo($currRepo, "images/backgrounds/background_web.png", $currRepo->url);
+                  ?>
                </div>
          </div>
 
@@ -462,6 +440,9 @@
          ?>
       </div>
 
+   </div>
+   <div id="impressum">
+      <
    </div>
 
 <!-- End of Page Layout -->
