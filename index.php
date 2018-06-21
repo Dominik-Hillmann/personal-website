@@ -105,8 +105,7 @@
 
 
       function echoRepo($repo, $imgStr, $exampleURL) {
-         /*
-         This echoes HTML that has the following structure:
+         /* This echoes HTML that has the following structure:
          <div class="repoContainer">
             <div>hide me</div>
             <div>
@@ -114,8 +113,7 @@
                <p>Beschreibung</p>
             </div>
             <p>Anteile der Sprachen</p>
-         </div>
-         */
+         </div> */
          echo '<div class="repoContainer"><div onclick="window.open(\''. $exampleURL .'\', \'_blank\');" style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
          echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
          echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung") . '</p><p>';
@@ -402,6 +400,7 @@
                   <!--<a href="#">Resumé</a>-->
                </p>
             </form>
+            <a id="impressum" href="http://www.dominik-hillmann.com/impressum.html"><p>Impressum</p></a>
          </div>
 
          <div id="socialMedia">
@@ -420,31 +419,27 @@
             </div>
          </div>
          <?php
-            echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
-            echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
-            echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
-            echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
-            echo "current conditions in " . $weatherCity . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
-            echo "<br>";
-            var_dump($weather);
-            echo "<br><br>";
-            var_dump($currRepo);
-            echo "<br><br>";
-            var_dump($featRepos);
-            echo "<br>";
-
-            foreach ($repos as $repo) {
-               echo "<br>";
-               var_dump($repo->langs);
-            }
+            // echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
+            // echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
+            // echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
+            // echo "contacted GitHub API: " . ($gAPI ? "YES" : "NO") . "<br>";
+            // echo "current conditions in " . $weatherCity . ": " . $weather->weather[0]->description . " with " . round($weather->main->temp - 273.15) . " °C.";
+            // echo "<br>";
+            // var_dump($weather);
+            // echo "<br><br>";
+            // var_dump($currRepo);
+            // echo "<br><br>";
+            // var_dump($featRepos);
+            // echo "<br>";
+            //
+            // foreach ($repos as $repo) {
+            //    echo "<br>";
+            //    var_dump($repo->langs);
+            // }
          ?>
       </div>
 
    </div>
-   <div id="impressum">
-      <
-   </div>
-
 <!-- End of Page Layout -->
 </body>
 
