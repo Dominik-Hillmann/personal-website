@@ -4,7 +4,7 @@
 // first: positioning the menu correctly
 var menu = document.getElementById("menuwrapper");
 function adaptMenu() {
-   menu.style.marginTop = ((window.innerHeight / 2) - (menu.offsetHeight / 2) - document.getElementById("weather").offsetHeight) + "px";
+   menu.style.marginTop = ((window.innerHeight / 2) - (menu.offsetHeight / 2) /*- document.getElementById("weather").offsetHeight*/) + "px";
 }
 
 adaptMenu(); // adapting for the first time after loading

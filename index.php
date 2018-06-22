@@ -269,10 +269,10 @@
       <a href="de.php"><img src="images\de.png"></a>
    </div>
    <header>
-      <div id="weather">
-         <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
-         <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
-      </div>
+      <!-- <div id="weather">
+         <img src= <?php // echo '"' . $weatherPicStr . '"'; ?> >
+         <p><?php // echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
+      </div> -->
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
          <div><img src="images/hollow_circle.png"><p class="unshown">Start</p></div>
@@ -287,11 +287,14 @@
 
 
    <div id="main">
+      <div id="weather">
+         <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
+         <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
+      </div>
       <div id="start">
          <div id="hello">
             <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
             <img src="./images/me.png">
-            <!-- SPAETER TIMELINE -->
             <div>
                <h1>Welcome</h1>
                <p>

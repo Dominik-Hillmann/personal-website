@@ -20,6 +20,9 @@
    #lang img {
       display: none;
    }
+   #weather {
+      display: none;
+   }
 }
 
 @media only screen and (max-width: 1105px) {

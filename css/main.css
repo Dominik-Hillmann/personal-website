@@ -43,6 +43,10 @@ header {
 #weather {
    height: 22px;
    color: black;
+   width: 62.8%;
+   margin: 15px auto -10px auto;
+   padding-left: 4px;
+   border-left: 3px solid lightsalmon;
 }
 #weather img {
    height: 22px;
