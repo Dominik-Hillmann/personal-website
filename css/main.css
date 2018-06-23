@@ -46,7 +46,7 @@ header {
    width: 62.8%;
    margin: 15px auto -10px auto;
    padding-left: 4px;
-   border-left: 3px solid lightsalmon;
+   border-left: 2px solid lightsalmon;
 }
 #weather img {
    height: 22px;
@@ -178,8 +178,8 @@ header {
 #contactForm {
    background-color: white;
    display: block;
-   margin: 0 auto 50px 5%;
-   width: calc(56.8% - 2.5%); /* 61.8 - 5, 5 like always margin left and right */
+   margin: 0 auto 50px 3%;
+   width: calc(/*56.8% - 2.5%*/58.8%); /* 61.8 - 5, 5 like always margin left and right */
    float: left;
    box-shadow: 0 3px 10px 0;
    border-radius: 10px;
@@ -536,8 +536,8 @@ input[type=submit] {
   font-size: 15px;
 }
 #socialMedia {
-  width: 33.2%; /* 38.2 - 5 */
-  margin: 0 5% 50px 2.5%; /* always 5% margin on left and right */
+  width: 34.2%; /* 38.2 - 5 */
+  margin: 0 2% 50px 0; /* always 5% margin on left and right */
   box-shadow: 0 3px 10px 0;
   border-radius: 10px;
   float: right;

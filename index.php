@@ -49,7 +49,6 @@
          }
       }
 
-      /*** SPATER ANFRAGE IM HINTERGRUND MITTELS XMLHTTP Request! ***/
 
       function contactAPI($url, $token) {
          // accesses weather and github API via curl
@@ -269,10 +268,6 @@
       <a href="de.php"><img src="images\de.png"></a>
    </div>
    <header>
-      <!-- <div id="weather">
-         <img src= <?php // echo '"' . $weatherPicStr . '"'; ?> >
-         <p><?php // echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
-      </div> -->
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
          <div><img src="images/hollow_circle.png"><p class="unshown">Start</p></div>
@@ -297,8 +292,10 @@
             <img src="./images/me.png">
             <div>
                <h1>Welcome</h1>
-               <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ebergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+               <p><!--
+                  -->Hi, my name is Dominik Hillmann and I am currently studying Economics and Computer Science. <!--
+                  -->My free time is mostly spent on programming. You can view some featured projects further below or take a look at my GitHub profile to see all of them. <!--
+                  -->Besides programming and studying I try to do sports and read as often as I can.
                </p>
             </div>
          </div>
@@ -311,7 +308,7 @@
 
             <?php
                $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
-               echoSkills("/images/logo/", "web", "Web-Programming", $text, [
+               echoSkills("/images/logo/", "web", "Web Development", $text, [
                   "js",
                   "php",
                   "css3",
@@ -324,7 +321,7 @@
                   "python",
                   "stata"
                ]);
-               echoSkills("/images/logo/", "general", "General Programming Skills", $text, [
+               echoSkills("/images/logo/", "general", "General Programming", $text, [
                   "c",
                   "java"
                ]);
