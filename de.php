@@ -264,14 +264,14 @@
 
 <!-- Page Layout -->
    <div id="lang">
-      <a href="./de.php"><img src="images\de.png"></a>
+      <a href="./index.php"><img src="images\eng.png"></a>
    </div>
    <header>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
-         <div><img src="images/hollow_circle.png"><p class="unshown">Welcome</p></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Willkommen</p></div>
          <div><img src="images/hollow_circle.png"><p class="unshown">Skills</p></div>
-         <div><img src="images/hollow_circle.png"><p class="unshown">Contact</p></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Kontakt</p></div>
          <!--später blank.png, mit css hollow und full änder per CSS-->
       </div>
    </header>
@@ -290,11 +290,11 @@
             <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
             <img src="./images/me.png">
             <div>
-               <h1>Welcome</h1>
+               <h1>Willkommen</h1>
                <p>
-                  Hi, my name is Dominik Hillmann and I am currently studying Economics and Computer Science.
-                  My free time is mostly spent on programming. You can view some featured projects further below or take a look at my GitHub profile to see all of them.
-                  Besides programming and studying I do sports and read as often as I can.
+                  Hi, mein Name ist Dominik Hillmann und ich studiere zur zurzeit Volkswirtschaftslehre und Informatik.
+                  Den Großteil meiner Freizeit verbringe ich mit dem Programmieren. Sie können sich einige Projekte weiter unten ansehen oder alternativ mein GitHub-Profil besuchen, wo Sie alle Projekte sehen können.
+                  Neben dem Studieren und Programmieren mache ich sooft wie möglich Sport und lese.
                </p>
             </div>
          </div>
@@ -307,7 +307,7 @@
 
             <?php
                $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
-               echoSkills("/images/logo/", "web", "Web Development", $webText, [
+               echoSkills("/images/logo/", "web", "Web-Entwicklung", $webText, [
                   "js",
                   "php",
                   "css3",
@@ -315,12 +315,12 @@
                   "p5"
                ]);
 
-               echoSkills("/images/logo/", "data", "Statistics", $dataText, [
+               echoSkills("/images/logo/", "data", "Statistik & Ökonometrie", $dataText, [
                   "R",
                   "python",
                   "stata"
                ]);
-               echoSkills("/images/logo/", "general", "General Programming", $generalText, [
+               echoSkills("/images/logo/", "general", "Generelles Programmieren", $generalText, [
                   "c",
                   "java"
                ]);
@@ -340,7 +340,7 @@
          </div>
 
          <div id="repos">
-            <h1 class="repoHeading">Featured repositories</h1>
+            <h1 class="repoHeading">Vorgestellte Projekte</h1>
                <div>
                   <?php
                      for ($i = 0; $i < count($featRepos); $i++) {
@@ -348,7 +348,7 @@
                      }
                   ?>
                </div>
-               <h1 class="repoHeading">Repository I last worked on</h1>
+               <h1 class="repoHeading">Zuletzt bearbeitetes Repository</h1>
                <div>
                   <?php
                      // these have no predefined examples like the featured repos --> use their own GitHub page as subsitute
@@ -362,34 +362,34 @@
 
       <div id="contact">
          <div id="socialHeaders">
-            <h1>Contact</h1>
+            <h1>Kontakt</h1>
             <h1>Social Media</h1>
          </div>
          <div id="contactForm">
             <form action = "contact.php" method="post">
                <div>
                   <div class="twoinrow">
-                     <h3 class="formHeading">First name</h3>
+                     <h3 class="formHeading">Vorname</h3>
                      <input type="text" name="firstname">
                   </div><div class="twoinrow"><!-- to avoid whitespace -->
-                     <h3 class="formHeading">Last name</h3>
+                     <h3 class="formHeading">Nachname</h3>
                      <input type="text" name="lastname">
                   </div>
                </div>
                <p>
-                  <h3 class="formHeading">E-Mail address</h3>
+                  <h3 class="formHeading">E-Mail-Adresse</h3>
                   <input type="text" name="address">
                </p><!--
             --><p>
-                  <h3 class="formHeading">Telephone</h3>
+                  <h3 class="formHeading">Telefonnummer</h3>
                   <input type="text" name="telnum">
                </p><!--
             --><p>
-                  <h3 class="formHeading">Subject</h3>
+                  <h3 class="formHeading">Betreff</h3>
                   <input type="text" name="subject">
                </p><!--
             --><p>
-                  <h3 class="formHeading">Message</h3>
+                  <h3 class="formHeading">Nachricht</h3>
                   <textarea id="message" name="message"></textarea>
                </p>
                <p>

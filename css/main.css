@@ -45,13 +45,13 @@ header {
    color: black;
    width: 62.8%;
    margin: 15px auto -10px auto;
-   padding-left: 4px;
-   border-left: 2px solid lightsalmon;
 }
 #weather img {
    height: 22px;
    margin-right: 5px;
    float: left;
+   border-right: 2px solid lightsalmon;
+   padding-right: 5px;
 }
 #weather p {
    font-size: 15px;
