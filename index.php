@@ -318,6 +318,7 @@
                echoSkills("/images/logo/", "data", "Statistics", $dataText, [
                   "R",
                   "python",
+                  "sql",
                   "stata"
                ]);
                echoSkills("/images/logo/", "general", "General Programming", $generalText, [

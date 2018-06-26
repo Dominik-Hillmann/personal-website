@@ -70,10 +70,33 @@ for (var i = 0; i < menuDivs.length; i++) {
    imgs.push(menuDivs[i].getElementsByTagName("img"));
 }
 // why not just loop over the array index? Problems with creating functions within loop referencing wrong index
-/***** WICHTIG: das hier ändern, sodass eine Klasse geaendert wird, damit der Uebergang smooth geschehen kann *****/
 menuDivs[0].addEventListener("mouseover", function () { imgs[0][0].src = "images/circle_full.png"; });
 menuDivs[0].addEventListener("mouseleave", function () { imgs[0][0].src = "images/hollow_circle.png"; });
 menuDivs[1].addEventListener("mouseover", function () { imgs[1][0].src = "images/circle_full.png"; });
 menuDivs[1].addEventListener("mouseleave", function () { imgs[1][0].src = "images/hollow_circle.png"; });
 menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images/circle_full.png"; });
 menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
+
+document.body.onscroll = function () {
+    console.log(this.scrollY); //check the number in console
+}
+
+function getPos(e) {
+    // source: https://stackoverflow.com/questions/288699/get-the-position-of-a-div-span-tag
+    for (
+      var lx = 0, ly = 0;
+      e != null;
+      lx += e.offsetLeft, ly += e.offsetTop, e = e.offsetParent
+   );
+    return {x: lx, y: ly};
+}
+
+let e_1 = document.getElementById("hello");
+let e_2 = document.getElementById("skillSlider");
+let e_3 = document.getElementById("repos");
+let e_4 = document.getElementById("socialHeaders");
+let e = [e_1, e_2, e_3, e_4];
+for (e_i of e) {
+   console.log(e_i, getPos(e_i));
+}
+// IDEE: prozentualer Anteil bis zum Anfang des nächsten Teils als Benchmark für jede Bildschirmgröße --> in absolute Werte übertragen

@@ -307,7 +307,7 @@
 
             <?php
                $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
-               echoSkills("/images/logo/", "web", "Web-Entwicklung", $webText, [
+               echoSkills("/images/logo/", "web", "Web-Entwicklung", $webTextGER, [
                   "js",
                   "php",
                   "css3",
@@ -315,12 +315,12 @@
                   "p5"
                ]);
 
-               echoSkills("/images/logo/", "data", "Statistik & Ökonometrie", $dataText, [
+               echoSkills("/images/logo/", "data", "Statistik & Ökonometrie", $dataTextGER, [
                   "R",
                   "python",
                   "stata"
                ]);
-               echoSkills("/images/logo/", "general", "Generelles Programmieren", $generalText, [
+               echoSkills("/images/logo/", "general", "Generelles Programmieren", $generalTextGER, [
                   "c",
                   "java"
                ]);
