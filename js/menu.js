@@ -77,26 +77,88 @@ menuDivs[1].addEventListener("mouseleave", function () { imgs[1][0].src = "image
 menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images/circle_full.png"; });
 menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
 
-document.body.onscroll = function () {
-    console.log(this.scrollY); //check the number in console
+
+let body = document.body;
+let html = document.documentElement;
+
+let docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+
+
+// document.body.onscroll = function () {
+//     console.log(this.scrollY); //check the number in console
+// }
+
+
+// let e = [e_1, e_2, e_3, e_4];
+// for (e_i of e) {
+//    console.log(e_i, getPos(e_i));
+// }
+// // IDEE: prozentualer Anteil bis zum Anfang des nächsten Teils als Benchmark für jede Bildschirmgröße --> in absolute Werte übertragen
+//
+// let relativeDivStarts = [];
+// for (e_i of e) {
+//    console.log("relaitve height: ", e_i, getPos(e_i).y / docHeight);
+// }
+
+console.log("ScreenHeight: ", {x: screen.width, y: screen.height});
+
+// on window resize, calculate relative heights anew
+// wenn obere Kante des Elements über die "Mittellinie des Bildschirms gerät", wird das Bild gewechselt
+
+let line = Math.round(screen.height / 2);
+// console.log("HelloHeight: ", e_1.height);
+/*
+if (line > e_2) {
+   zweites Bild;
+} else if (line > e_3) {
+   drittes Bild;
+} else {
+   erstes Bild;
+}
+*/
+function resetMenu() {
+   // set all of the menu images to hollow circles
+   imgs[0][0].src = "images/hollow_circle.png";
+   imgs[1][0].src = "images/hollow_circle.png";
+   imgs[2][0].src = "images/hollow_circle.png";
+}
+
+function setFullCircle(i) {
+   // set image full circle at image i
+   imgs[i][0].src = "images/circle_full.png";
 }
 
 function getPos(e) {
-    // source: https://stackoverflow.com/questions/288699/get-the-position-of-a-div-span-tag
-    for (
+   // source: https://stackoverflow.com/questions/288699/get-the-position-of-a-div-span-tag
+   for (
       var lx = 0, ly = 0;
       e != null;
       lx += e.offsetLeft, ly += e.offsetTop, e = e.offsetParent
    );
-    return {x: lx, y: ly};
+   return {x: lx, y: ly};
 }
 
-let e_1 = document.getElementById("hello");
-let e_2 = document.getElementById("skillSlider");
-let e_3 = document.getElementById("repos");
-let e_4 = document.getElementById("socialHeaders");
-let e = [e_1, e_2, e_3, e_4];
-for (e_i of e) {
-   console.log(e_i, getPos(e_i));
+let screenHeight = screen.height;
+let helloDivStart = getPos(document.getElementById("hello")).y;
+let skillSliderStart = getPos(document.getElementById("skillSlider")).y;
+let contactStart = getPos(document.getElementById("contact")).y;
+
+document.body.onscroll = function () {
+   console.log(this.scrollY);
+
+   let currentLine = this.scrollY + Math.round(screenHeight / 2);
+
+   resetMenu();
+
+   if (currentLine > skillSliderStart && currentLine < contactStart) {
+      setFullCircle(1);
+      console.log({test: 1});
+   } else if (currentLine > skillSliderStart && currentLine != 0) {
+      setFullCircle(2);
+      console.log({test: 2});
+   } else {
+      setFullCircle(0);
+      console.log({test: 0});
+   }
 }
-// IDEE: prozentualer Anteil bis zum Anfang des nächsten Teils als Benchmark für jede Bildschirmgröße --> in absolute Werte übertragen
