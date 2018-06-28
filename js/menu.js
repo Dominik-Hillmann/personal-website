@@ -78,6 +78,27 @@ menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images
 menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let body = document.body;
 let html = document.documentElement;
 
@@ -106,7 +127,7 @@ console.log("ScreenHeight: ", {x: screen.width, y: screen.height});
 // on window resize, calculate relative heights anew
 // wenn obere Kante des Elements über die "Mittellinie des Bildschirms gerät", wird das Bild gewechselt
 
-let line = Math.round(screen.height / 2);
+
 // console.log("HelloHeight: ", e_1.height);
 /*
 if (line > e_2) {
@@ -140,6 +161,8 @@ function getPos(e) {
 }
 
 let screenHeight = screen.height;
+let line = Math.round(screen.height / 2);
+
 let helloDivStart = getPos(document.getElementById("hello")).y;
 let skillSliderStart = getPos(document.getElementById("skillSlider")).y;
 let contactStart = getPos(document.getElementById("contact")).y;
@@ -147,18 +170,16 @@ let contactStart = getPos(document.getElementById("contact")).y;
 document.body.onscroll = function () {
    console.log(this.scrollY);
 
-   let currentLine = this.scrollY + Math.round(screenHeight / 2);
-
+   let currentLine = this.scrollY;
    resetMenu();
 
-   if (currentLine > skillSliderStart && currentLine < contactStart) {
-      setFullCircle(1);
-      console.log({test: 1});
-   } else if (currentLine > skillSliderStart && currentLine != 0) {
-      setFullCircle(2);
-      console.log({test: 2});
-   } else {
+   if (currentLine <= helloDivStart) {
       setFullCircle(0);
       console.log({test: 0});
+   } else {
+      setFullCircle(1);
+      console.log({test: 1});
    }
 }
+
+// das ganz in eigene Funktion und bei Verlassen des Bereichs ausführen

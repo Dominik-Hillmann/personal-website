@@ -306,24 +306,26 @@
             <h1 class="mainHeader">Skills</h1>
 
             <?php
-               $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
-               echoSkills("/images/logo/", "web", "Web-Entwicklung", $webTextGER, [
-                  "js",
-                  "php",
-                  "css3",
-                  "html5",
-                  "p5"
-               ]);
+            echoSkills("/images/logo/", "web", "Web Development", $webText, [
+               "js",
+               "php",
+               "css3",
+               "html5",
+               "p5"
+            ]);
 
-               echoSkills("/images/logo/", "data", "Statistik & Ökonometrie", $dataTextGER, [
-                  "R",
-                  "python",
-                  "stata"
-               ]);
-               echoSkills("/images/logo/", "general", "Generelles Programmieren", $generalTextGER, [
-                  "c",
-                  "java"
-               ]);
+            echoSkills("/images/logo/", "data", "Statistics", $dataText, [
+               "R",
+               "python",
+               "sql",
+               "stata"
+            ]);
+
+            echoSkills("/images/logo/", "general", "General Programming", $generalText, [
+               "c",
+               "java",
+               "processing"
+            ]);
             ?>
 
             <!-- <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">

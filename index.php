@@ -306,7 +306,6 @@
             <h1 class="mainHeader">Skills</h1>
 
             <?php
-               $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
                echoSkills("/images/logo/", "web", "Web Development", $webText, [
                   "js",
                   "php",
@@ -321,9 +320,11 @@
                   "sql",
                   "stata"
                ]);
+
                echoSkills("/images/logo/", "general", "General Programming", $generalText, [
                   "c",
-                  "java"
+                  "java",
+                  "processing"
                ]);
             ?>
 
@@ -337,7 +338,6 @@
                   <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div> -->
-
          </div>
 
          <div id="repos">
