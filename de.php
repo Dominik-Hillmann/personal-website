@@ -306,7 +306,7 @@
             <h1 class="mainHeader">Skills</h1>
 
             <?php
-            echoSkills("/images/logo/", "web", "Web Development", $webText, [
+            echoSkills("/images/logo/", "web", "Web-Entwicklung", $webTextGER, [
                "js",
                "php",
                "css3",
@@ -314,14 +314,14 @@
                "p5"
             ]);
 
-            echoSkills("/images/logo/", "data", "Statistics", $dataText, [
+            echoSkills("/images/logo/", "data", "Statistik und Ökonometrie", $dataTextGER, [
                "R",
                "python",
                "sql",
                "stata"
             ]);
 
-            echoSkills("/images/logo/", "general", "General Programming", $generalText, [
+            echoSkills("/images/logo/", "general", "Generelles Programmieren", $generalTextGER, [
                "c",
                "java",
                "processing"

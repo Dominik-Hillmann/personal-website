@@ -71,73 +71,36 @@ for (var i = 0; i < menuDivs.length; i++) {
 }
 // why not just loop over the array index? Problems with creating functions within loop referencing wrong index
 menuDivs[0].addEventListener("mouseover", function () { imgs[0][0].src = "images/circle_full.png"; });
-menuDivs[0].addEventListener("mouseleave", function () { imgs[0][0].src = "images/hollow_circle.png"; });
+menuDivs[0].addEventListener("mouseleave", function () {
+   imgs[0][0].src = "images/hollow_circle.png";
+   setMenuImg();
+});
 menuDivs[1].addEventListener("mouseover", function () { imgs[1][0].src = "images/circle_full.png"; });
-menuDivs[1].addEventListener("mouseleave", function () { imgs[1][0].src = "images/hollow_circle.png"; });
+menuDivs[1].addEventListener("mouseleave", function () {
+   imgs[1][0].src = "images/hollow_circle.png";
+   setMenuImg();
+});
 menuDivs[2].addEventListener("mouseover", function () { imgs[2][0].src = "images/circle_full.png"; });
-menuDivs[2].addEventListener("mouseleave", function () { imgs[2][0].src = "images/hollow_circle.png"; });
+menuDivs[2].addEventListener("mouseleave", function () {
+   imgs[2][0].src = "images/hollow_circle.png";
+   setMenuImg();
+});
 
+/* Everything concerning the switch of images because of scrolling */
+function setMenuImg() {
+   // checks for scrolling position and set the right image in the menu
+   let currentLine = this.scrollY;
+   resetMenu();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let body = document.body;
-let html = document.documentElement;
-
-let docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-
-
-
-// document.body.onscroll = function () {
-//     console.log(this.scrollY); //check the number in console
-// }
-
-
-// let e = [e_1, e_2, e_3, e_4];
-// for (e_i of e) {
-//    console.log(e_i, getPos(e_i));
-// }
-// // IDEE: prozentualer Anteil bis zum Anfang des nächsten Teils als Benchmark für jede Bildschirmgröße --> in absolute Werte übertragen
-//
-// let relativeDivStarts = [];
-// for (e_i of e) {
-//    console.log("relaitve height: ", e_i, getPos(e_i).y / docHeight);
-// }
-
-console.log("ScreenHeight: ", {x: screen.width, y: screen.height});
-
-// on window resize, calculate relative heights anew
-// wenn obere Kante des Elements über die "Mittellinie des Bildschirms gerät", wird das Bild gewechselt
-
-
-// console.log("HelloHeight: ", e_1.height);
-/*
-if (line > e_2) {
-   zweites Bild;
-} else if (line > e_3) {
-   drittes Bild;
-} else {
-   erstes Bild;
+   if (currentLine <= helloDivStart) {
+      setFullCircle(0);
+   } else if (currentLine < contactStart) {
+      setFullCircle(1);
+   } else {
+      setFullCircle(2);
+   }
 }
-*/
+
 function resetMenu() {
    // set all of the menu images to hollow circles
    imgs[0][0].src = "images/hollow_circle.png";
@@ -150,36 +113,24 @@ function setFullCircle(i) {
    imgs[i][0].src = "images/circle_full.png";
 }
 
-function getPos(e) {
+function getY(e) {
    // source: https://stackoverflow.com/questions/288699/get-the-position-of-a-div-span-tag
    for (
-      var lx = 0, ly = 0;
+      var y = 0;
       e != null;
-      lx += e.offsetLeft, ly += e.offsetTop, e = e.offsetParent
+      y += e.offsetTop, e = e.offsetParent
    );
-   return {x: lx, y: ly};
+   return y;
 }
 
+
+let docHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
 let screenHeight = screen.height;
-let line = Math.round(screen.height / 2);
+let line = Math.round(screenHeight / 2);
+// position in px where a certain div starts within the document
+let helloDivStart = getY(document.getElementById("hello"));
+let skillSliderStart = getY(document.getElementById("skillSlider"));
+let contactStart = getY(document.getElementById("contact"));
 
-let helloDivStart = getPos(document.getElementById("hello")).y;
-let skillSliderStart = getPos(document.getElementById("skillSlider")).y;
-let contactStart = getPos(document.getElementById("contact")).y;
-
-document.body.onscroll = function () {
-   console.log(this.scrollY);
-
-   let currentLine = this.scrollY;
-   resetMenu();
-
-   if (currentLine <= helloDivStart) {
-      setFullCircle(0);
-      console.log({test: 0});
-   } else {
-      setFullCircle(1);
-      console.log({test: 1});
-   }
-}
-
-// das ganz in eigene Funktion und bei Verlassen des Bereichs ausführen
+document.body.onscroll = setMenuImg;
+setMenuImg();
