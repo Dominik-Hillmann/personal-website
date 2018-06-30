@@ -14,7 +14,7 @@
 <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Dominik Hillmann</title>
-    <meta name="description" content=""> <!-- DO NOT FORGET DESCRIPTION-->
+    <meta name="description" content="Hi, my name is Dominik Hillmann and I am currently studying Economics and Computer Science. My free time is mostly spent on programming. You can view some featured projects further below or take a look at my GitHub profile to see all of them. Besides programming and studying I do sports and read as often as I can.">
     <meta name="author" content="Dominik Hillmann">
 
 <!-- Mobile Specific Metas -->
@@ -49,7 +49,6 @@
          }
       }
 
-      /*** SPATER ANFRAGE IM HINTERGRUND MITTELS XMLHTTP Request! ***/
 
       function contactAPI($url, $token) {
          // accesses weather and github API via curl
@@ -69,7 +68,6 @@
          $lastTime = fopen($path, "w");
          fputs($lastTime, (string) time());
          fclose($lastTime);
-         return;
       }
 
 
@@ -104,9 +102,8 @@
       }
 
 
-      function echoRepo($repo, $imgStr) {
-         /*
-         This echoes HTML that has the following structure:
+      function echoRepo($repo, $imgStr, $exampleURL) {
+         /* This echoes HTML that has the following structure:
          <div class="repoContainer">
             <div>hide me</div>
             <div>
@@ -114,11 +111,10 @@
                <p>Beschreibung</p>
             </div>
             <p>Anteile der Sprachen</p>
-         </div>
-         */
-         echo '<div class="repoContainer"><div  style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
+         </div> */
+         echo '<div class="repoContainer"><div onclick="window.open(\''. $exampleURL .'\', \'_blank\');" style="background-position:center;background-size:cover;background-image:url(\''. $imgStr .'\');">hide me</div><div>';
          echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
-         echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung") . '</p><p>';
+         echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung.") . '</p><p>';
 
          $total = 0.0;
          foreach ($repo->langs as $amount) $total += $amount;
@@ -165,7 +161,7 @@
 
       // less than one hour ago --> use the JSON
       if (($nowTime - $weatherUpd) <= $weatherTimeDif) {
-         $weather = json_decode(file_get_contents("./data/weather.json", "r"));
+         $weather = getLocally("./data/weather.json");
       } else {
          $weatherJSON = contactAPI("http://api.openweathermap.org/data/2.5/weather?q=" . $weatherCity . "&appid=" . $weatherKey, NULL);
          $wAPI = true;
@@ -175,7 +171,7 @@
             file_put_contents("./data/weather.json", json_encode($weather));
             putTime("./data/timeWeather.txt");
          } else {
-            $weather = json_decode(file_get_contents("./data/weather.json", "r"));
+            $weather = getLocally("./data/weather.json");
          }
       }
 
@@ -220,7 +216,7 @@
          unset($files[1]);
 
          foreach ($files as $file) {
-            array_push($repos, json_decode(file_get_contents("./data/repos/" . $file)));
+            array_push($repos, getLocally("./data/repos/" . $file));
          }
       }
 
@@ -267,16 +263,15 @@
    ?>
 
 <!-- Page Layout -->
+   <div id="lang">
+      <a href="./de.php"><img src="images\de.png"></a>
+   </div>
    <header>
-      <div id="weather">
-         <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
-         <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
-      </div>
       <div id="menuwrapper">
          <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
-         <div><img src="images/hollow_circle.png"><p class="unshown">Start</p></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Welcome</p></div>
          <div><img src="images/hollow_circle.png"><p class="unshown">Skills</p></div>
-         <div><img src="images/hollow_circle.png"><p class="unshown">Kontakt</p></div>
+         <div><img src="images/hollow_circle.png"><p class="unshown">Contact</p></div>
          <!--später blank.png, mit css hollow und full änder per CSS-->
       </div>
    </header>
@@ -286,15 +281,20 @@
 
 
    <div id="main">
+      <div id="weather">
+         <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
+         <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
+      </div>
       <div id="start">
          <div id="hello">
             <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
             <img src="./images/me.png">
-            <!-- SPAETER TIMELINE -->
             <div>
-               <h1>Willkommen</h1>
+               <h1>Welcome</h1>
                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy ebergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  Hi, my name is Dominik Hillmann and I am currently studying Economics and Computer Science.
+                  My free time is mostly spent on programming. You can view some featured projects further below or take a look at my GitHub profile to see all of them.
+                  Besides programming and studying I do sports and read as often as I can.
                </p>
             </div>
          </div>
@@ -306,86 +306,38 @@
             <h1 class="mainHeader">Skills</h1>
 
             <?php
-               $text = "Das ist ein Text, der beschreiben soll, was das Thema ueberhaupt ist.";
-               echoSkills("/images/logo/", "web", "Web-Programmierung", $text, [
-                  "html5",
-                  "css3",
+               echoSkills("/images/logo/", "web", "Web Development", $webText, [
                   "js",
-                  "p5",
                   "php",
-                  "processing",
+                  "css3",
+                  "html5",
+                  "p5"
+               ]);
+
+               echoSkills("/images/logo/", "data", "Statistics", $dataText, [
                   "R",
+                  "python",
+                  "sql",
                   "stata"
+               ]);
+
+               echoSkills("/images/logo/", "general", "General Programming", $generalText, [
+                  "c",
+                  "java",
+                  "processing"
                ]);
             ?>
 
-            <!--<div id="data-wrapper" class="sliderWrapper data-slider-wrapper">
-               <div class="slider">
-                  <?php/*
-                     echoSkills("/images/", "data", [
-                        "github_black",
-                        "github_black",
-                        "linkedin_black",
-                        "linkedin_black"
-                     ]);
-                  */?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('data')" class="dataNavSlider arrow navSlider">
-               <div class="slidername">
-                  <h1>Data-Engineering</h1>
-                  <p class="infoText" id="dataInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
-               </div>
-            </div>-->
-            <?php
-               echoSkills("/images/logo/", "data", "Data-Engineering", $text, [
-                  "html5",
-                  "css3",
-                  "js",
-                  "p5",
-                  "php",
-                  "processing",
-                  "R",
-                  "stata"
-               ]);
-            ?>
-
-
-            <div id="general-wrapper" class="sliderWrapper general-slider-wrapper">
-               <div class="slider">
-                  <?php
-                     echoSkills("/images/", "general", [
-                        "xing_black",
-                        "github_black",
-                        "linkedin_black"
-                     ]);
-                  ?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('general')" class="dataNavSlider arrow navSlider">
+            <!-- <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
+               <div class="slider"> -->
+               <!-- </div>
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider"> -->
                <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
-               <div class="slidername">
-                  <h1>General Programming</h1>
-                  <p class="infoText" id="generalInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
-               </div>
-            </div>
-
-
-            <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
-               <div class="slider">
-                  <?php
-                     echoSkills("/images/", "theo", [
-                        "github_black",
-                        "xing_black"
-                     ]);
-                  ?>
-               </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider">
-               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
-               <div class="slidername">
+               <!-- <div class="slidername">
                   <h1>Theory</h1>
                   <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
-            </div>
-
+            </div> -->
          </div>
 
          <div id="repos">
@@ -393,18 +345,20 @@
                <div>
                   <?php
                      for ($i = 0; $i < count($featRepos); $i++) {
-                        echoRepo($featRepos[$i], $featReposImgs[$i]);
+                        echoRepo($featRepos[$i], $featReposImgs[$i], $featExps[$i]);
                      }
                   ?>
                </div>
                <h1 class="repoHeading">Repository I last worked on</h1>
                <div>
-                  <?php echoRepo($currRepo, "images/backgrounds/background_web.png"); ?>
+                  <?php
+                     // these have no predefined examples like the featured repos --> use their own GitHub page as subsitute
+                     echoRepo($currRepo, "images/backgrounds/background_web.png", $currRepo->url);
+                  ?>
                </div>
          </div>
 
       </div>
-
 
       <div id="contact">
          <div id="socialHeaders">
@@ -425,7 +379,7 @@
                curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
                curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
                curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
-               $response = curl_exec($verify);
+               $response = json_decode(curl_exec($verify));
 
                $formFilled = true;
                foreach ($_POST as $ele) {
@@ -434,20 +388,17 @@
                      break;
                   }
                }
-               echo '<p id="response">';
+
+               echo '<p id="response">';;
                if ($response->success) {
                   if ($formFilled) {
                      $receiver = "dominik.hillmann.website@gmail.com";
                      $subject = $_POST["subject"];
+
                      $message = $_POST["message"];
-
-                     echo "TO: " . $receiver;
-                     foreach ($_POST as $ele) {
-                        echo $ele . "<br>";
-                     }
-
                      $message .= "\nvon " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
                      $message .= "Telefonnummer: " . $_POST["telnum"];
+
                      $headers = "Reply-To: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
                      $headers .= "Return-Path: " . $_POST["firstname"] . " " . $_POST["lastname"] . " <" .  $_POST["address"] . ">\r\n";
                      $headers .= "MIME-Version: 1.0\r\n";
@@ -457,6 +408,7 @@
 
                      $success = mail($receiver, $subject, $message, $headers);
                      echo ($success ? "Mail successfully sent." : "Error: Mail was not sent.");
+                     mail("dominik.hillmann@gmx.de", $subject, $message, $headers);
                   } else {
                      echo "Not every field was filled in. The mail was not sent.";
                   }
@@ -485,15 +437,13 @@
       </div>
 
    </div>
-   <script>
-      document.querySelector("#contact").scrollIntoView({
-         behavior: "smooth"
-      });
-   </script>
-
 <!-- End of Page Layout -->
 </body>
-
+<script>
+   document.querySelector("#contact").scrollIntoView({
+      behavior: "smooth"
+   });
+</script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/slides.js"></script>
 

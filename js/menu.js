@@ -92,7 +92,7 @@ function setMenuImg() {
    let currentLine = this.scrollY;
    resetMenu();
 
-   if (currentLine <= helloDivStart) {
+   if (currentLine <= helloDivStart + 10) {
       setFullCircle(0);
    } else if (currentLine < contactStart) {
       setFullCircle(1);
