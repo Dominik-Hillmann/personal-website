@@ -55,7 +55,9 @@
          $curl = curl_init($url);
          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-         if (isset($token)) curl_setopt($curl, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $token]);
+         if (isset($token)) {
+            curl_setopt($curl, CURLOPT_HTTPHEADER, ["User-Agent: Dominik-Hillmann", $token]);
+         }
 
          $output = curl_exec($curl);
          curl_close($curl);
@@ -133,8 +135,16 @@
 
          $len = count($skillList);
          $lenPlus = $len;
-         while ($lenPlus % 3 != 0) $lenPlus++;
+         while ($lenPlus % 3 != 0) {
+            $lenPlus++;
+         }
+
          for ($i = 0; $i < $lenPlus; $i++) {
+            // echo $i >= $len ? NULL : '<div class="skillWrapper slide notShown ' . $sliderClass . '">';
+            // echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png">';
+            // echo $i >= $len ? NULL : '<p>' . $skillList[$i] . '</p></div>';
+            // richtige Namen Bilder fuer Technologien
+
             echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
          }
 
@@ -314,7 +324,7 @@
                   "p5"
                ]);
 
-               echoSkills("/images/logo/", "data", "Statistics", $dataText, [
+               echoSkills("/images/logo/", "data", "Statistics, Econometrics, Machine Learning", $dataText, [
                   "R",
                   "python",
                   "sql",
@@ -329,11 +339,10 @@
             ?>
 
             <!-- <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
-               <div class="slider"> -->
-               <!-- </div>
-               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider"> -->
-               <!--<img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">-->
-               <!-- <div class="slidername">
+               <div class="slider"></div>
+               <img src="./images/arrow_in_circle.png" onclick="animateSlide('theo')" class="dataNavSlider arrow navSlider"> 
+               <img src="./images/question.png" onclick="showTypeInfo('data');" class="dataNavSlider navSlider question">
+                <div class="slidername">
                   <h1>Theory</h1>
                   <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
