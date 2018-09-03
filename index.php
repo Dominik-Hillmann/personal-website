@@ -140,12 +140,11 @@
          }
 
          for ($i = 0; $i < $lenPlus; $i++) {
-            // echo $i >= $len ? NULL : '<div class="skillWrapper slide notShown ' . $sliderClass . '">';
-            // echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png">';
+            // echo '<div class="slide notShown '. $sliderClass .'Wrapper">'; // wichtig: sliderClass und Wrapper ohne Whitespace
+            echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
+            // echo '</div>';
             // echo $i >= $len ? NULL : '<p>' . $skillList[$i] . '</p></div>';
             // richtige Namen Bilder fuer Technologien
-
-            echo '<img src="' . $path . ($i >= $len ? "empty" : $skillList[$i]) . '.png" class="slide notShown ' . $sliderClass . '">';
          }
 
          echo '</div>';

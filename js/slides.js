@@ -128,14 +128,24 @@ function animateSlide(type) {
 function firstSlides(type) {
    // to be executed before animateSlide so that there are slides having class slideShown
    for (slide of getNextSlides(type)) {
+      // let nextWrapper = getNextSlides(type + 'Wrapper');
       switchClass(slide, "slideShown", "notShown");
       switchClass(slide, "slideIn", "slideOut");
    }
+   // let nextSlides = getNextSlides(type);
+   // let nextWrappers = getNextSlides(type + 'Wrapper');
+   
+   // for (let i = 0; i < nextSlides.length; i++) {
+   //    switchClass(nextSlides[i], "slideShown", "notShown");
+   //    switchClass(nextWrappers[i], "slideShown", "notShown");
+   //    switchClass(nextSlides[i], "slideIn", "slideOut");
+   //    switchClass(nextWrappers[i], "slideIn", "slideOut");
+   // }
 }
 
 /***** EXECUTION OF SOME FUNCTIONS *****/
 
-let types = ["web", "data", "general"]; // "theo", "general"];
+let types = ["web", "data", "general"]; 
 let webStop = NUM_ROW - 1;
 let dataStop = NUM_ROW - 1;
 let theoStop = NUM_ROW - 1;
