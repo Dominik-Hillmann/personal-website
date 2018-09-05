@@ -90,10 +90,10 @@ function animateSlide(type) {
 
    // if infoText open, close it before showing next types
    let infoText = document.getElementById(type + "Info");
+   
    if (infoText.classList.contains("slideShown")) {
       // first, let the infoText vanish, then put in the new slides
       switchClass(infoText, "slideOut", "slideIn");
-
       setTimeout(function () {
          switchClass(infoText, "notShown", "slideShown");
 
