@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <?php
     class Repo {
         // stores all needed data for the GitHub projects I want to display

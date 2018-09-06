@@ -323,6 +323,5 @@
 
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/slides.js"></script>
-<script type="test/javascript" src="js/requests.js"></script>
-
+<script type="text/javascript" src="js/requests.js"></script>
 </html>

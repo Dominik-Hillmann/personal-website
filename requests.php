@@ -1,13 +1,78 @@
-<!DOCTYPE html>
 <?php
+     header('Content-type: application/json');
      require "config/config.inc.php";
      require "libraries/functions.inc.php";
 
      $type = $_GET['type'];
 
-     //if ($type === "github") {
+     if ($type != "weather") {
 
-     //} else /* if (type === "weather") */ {
+          $reposUrl = "https://api.github.com/users/Dominik-Hillmann/repos";
+          $curlToken = "Authorization: token " . $githubToken;
+    
+          $githubUpd = getTime("./data/timeGithub.txt") / (60 * 60);
+          // contact the API if the GitHub-json files are older than one day
+          $repos = [];
+          $gAPI = false;
+    
+          if ($nowTime - $githubUpd >= $githubTimeDif) {
+               $repoData = json_decode(contactAPI($reposUrl, $curlToken));
+               foreach ($repoData as $repo) {
+                    // put all relevant data into objects
+                    array_push($repos, new Repo(
+                         $repo->name,
+                         $repo->pushed_at,
+                         $repo->description,
+                         json_decode(contactAPI($repo->languages_url, $curlToken)),
+                         $repo->html_url
+                    ));
+               }
+             // (over)write files
+               foreach ($repos as $repo) {
+                    file_put_contents(
+                    "./data/repos/" . $repo->name . ".json",
+                    json_encode($repo)
+               );
+          }
+    
+          putTime("./data/timeGithub.txt"); // update time because the data got updated
+          $gAPI = true;
+          } else {    
+               // get repo data locally, the last update did not happen too long ago
+               $files = scandir("./data/repos/");
+               unset($files[0]); // delete ".", ".."
+               unset($files[1]);
+    
+               foreach ($files as $file) {
+                    array_push($repos, getLocally("./data/repos/" . $file));
+               }
+          }
+    
+          // select project with most recent update
+          $currRepo = $repos[0];
+          for ($i = 1; $i < count($repos); $i++) {
+               if ($repos[$i]->lastUpdate > $currRepo->lastUpdate) {
+                    $currRepo = $repos[$i];
+               }
+          }
+    
+          // select featured repos
+          $featRepos = [];
+          foreach ($repos as $repo) {
+             foreach ($featNames as $name) {
+                if ($repo->name == $name) {
+                   array_push($featRepos, $repo);
+                }
+             }
+          }
+
+          if ($type == "currentRepo")
+               echo json_encode($currRepo);
+          else
+               echo json_encode($featRepos);
+
+     } else /* if (type === "weather") */ {
+
           /***** OPENWEATHERMAP API *****/
           // check the last time the weather.json file was updated
           $nowTime = time() / (60 * 60);
@@ -30,6 +95,7 @@
                     $weather = getLocally("./data/weather.json");
                }
           }
-          echo "TESTTESTTESTTESTTESTTESTTEST";
-     //}
+          
+          echo json_encode($weather);
+     }
 ?>
