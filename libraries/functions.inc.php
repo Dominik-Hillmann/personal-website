@@ -68,20 +68,20 @@
 
            putTime($timePath);
         }
-     }
+    }
 
     function toStrList($stringArr) {
         $reString = "";
         $len = count($stringArr);
 
         for ($i = 0; $i < $len; $i++) {
-           if ($i == 0) {
-              $reString .= $stringArr[$i];
-           } else if ($i == $len - 1) {
-              $reString .= " and " . $stringArr[$i];
-           } else {
-              $reString .= ", " . $stringArr[$i];
-           }
+            if ($i == 0) {
+                $reString.=$stringArr[$i];
+            } else if ($i == $len - 1) {
+                $reString .= " and " . $stringArr[$i];
+            } else {
+                $reString .= ", " . $stringArr[$i];
+            }
         }
 
         return $reString;
@@ -104,8 +104,12 @@
         $total = 0.0;
         foreach ($repo->langs as $amount) $total += $amount;
 
-        foreach ($repo->langs as $lang => $amount) {
-           echo round(100 * $amount / $total) . '% ' . $lang . ' ';
+        //$percentages = '';
+        // var_dump($repo->langs);
+        foreach ($repo->langs as $lang => $amount) /* for ($i = 0; $i < count($repo->langs); $i++) */ {
+            // echo round(100 * $amount / $total) . '% ' . $lang . ' ';
+            // echo '$lang' . ' ' . $repo->langs[count($repo->langs) - 1];
+            echo round(100 * $amount / $total) . '% ' . $lang . ' ';
         }
         echo '</p></div></div>';
     }

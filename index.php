@@ -143,69 +143,72 @@
    ?>
 
 <!-- Page Layout -->
-   <div id="lang">
-      <a href="./de.php"><img src="images\de.png"></a>
-   </div>
-   <header>
-      <div id="menuwrapper">
-         <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
-         <div><img src="images/hollow_circle.png"><p class="unshown">Welcome</p></div>
-         <div><img src="images/hollow_circle.png"><p class="unshown">Skills</p></div>
-         <div><img src="images/hollow_circle.png"><p class="unshown">Contact</p></div>
-         <!--später blank.png, mit css hollow und full änder per CSS-->
-      </div>
-   </header>
+    <div id="lang">
+        <a href="./de.php"><img src="images\de.png"></a>
+    </div>
+    <header>
+        <div id="menuwrapper">
+            <!-- Teile: "Ganz oben mit p5-Sketch", Kontakt, Skills, Resumé, brief history [reading, ], notebook (quasi blog)-->
+            <div><img src="images/hollow_circle.png"><p class="unshown">Welcome</p></div>
+            <div><img src="images/hollow_circle.png"><p class="unshown">Skills</p></div>
+            <div><img src="images/hollow_circle.png"><p class="unshown">Contact</p></div>
+            <!--später blank.png, mit css hollow und full änder per CSS-->
+        </div>
+    </header>
 
 
-   <div id="sketch"></div>
+    <div id="sketch"></div>
 
 
-   <div id="main">
-      <div id="weather">
-         <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
-         <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
-      </div>
-      <div id="start">
-         <div id="hello">
-            <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
-            <img src="./images/me.png">
-            <div>
-               <h1>Welcome</h1>
-               <p>
-                  Hi, my name is Dominik Hillmann and I am currently studying Economics and Computer Science.
-                  My free time is mostly spent on programming. You can view some featured projects further below or take a look at my GitHub profile to see all of them.
-                  Besides programming and studying I do sports and read as often as I can.
-               </p>
+    <div id="main">
+        <div id="weather">
+            <!--<img src= <?php // echo '"' . $weatherPicStr . '"'; ?> >-->
+            <!--<img src="/images/weather/loading.png">
+            <p><?php // echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>-->
+            <!--<p id="weatherLoading">...</p>-->
+            <img style="height:19px;border-right:none;margin-bottom:-10px;" src="/images/loading/circle.gif" id="loadingWeather">
+        </div>
+        <div id="start">
+            <div id="hello">
+                <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>
+                <img src="./images/me.png">
+                <div>
+                    <h1>Welcome</h1>
+                    <p>
+                        Hi, my name is Dominik Hillmann and I am currently studying Economics and Computer Science.
+                        My free time is mostly spent on programming. You can view some featured projects further below or take a look at my GitHub profile to see all of them.
+                        Besides programming and studying I do sports and read as often as I can.
+                    </p>
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-      <div id="skills">
+        <div id="skills">
 
-         <div id="skillSlider">
+            <div id="skillSlider">
             <h1 class="mainHeader">Skills</h1>
 
             <?php
-               echoSkills("/images/logo/", "web", "Web Development", $webText, $introToListENG, [
-                  "JavaScript",
-                  "PHP",
-                  "CSS3",
-                  "HTML5",
-                  "P5.js"
-               ]);
+                echoSkills("/images/logo/", "web", "Web Development", $webText, $introToListENG, [
+                    "JavaScript",
+                    "PHP",
+                    "CSS3",
+                    "HTML5",
+                    "P5.js"
+                ]);
 
-               echoSkills("/images/logo/", "data", "Statistics, Econometrics, Machine Learning", $dataText, $introToListENG, [
-                  "R",
-                  "Python",
-                  "SQL",
-                  "Stata"
-               ]);
+                echoSkills("/images/logo/", "data", "Statistics, Econometrics, Machine Learning", $dataText, $introToListENG, [
+                    "R",
+                    "Python",
+                    "SQL",
+                    "Stata"
+                ]);
 
-               echoSkills("/images/logo/", "general", "General Programming", $generalText, $introToListENG, [
-                  "C",
-                  "Java",
-                  "Processing"
-               ]);
+                echoSkills("/images/logo/", "general", "General Programming", $generalText, $introToListENG, [
+                    "C",
+                    "Java",
+                    "Processing"
+                ]);
             ?>
 
             <!-- <div id="theo-wrapper" class="sliderWrapper theo-slider-wrapper">
@@ -217,86 +220,88 @@
                   <p class="infoText" id="theoInfo">Das ist ein Text, der beschreiben soll, was das Thema überhaupt ist</p>
                </div>
             </div> -->
-         </div>
+        </div>
 
-         <div id="repos">
+        <div id="repos">
             <h1 class="repoHeading">Featured repositories</h1>
-               <div>
-                  <?php
-                     for ($i = 0; $i < count($featRepos); $i++) {
-                        echoRepo($featRepos[$i], $featReposImgs[$i], $featExps[$i]);
-                     }
-                  ?>
-               </div>
-               <h1 class="repoHeading">Repository I last worked on</h1>
-               <div>
-                  <?php
-                     // these have no predefined examples like the featured repos --> use their own GitHub page as subsitute
-                     echoRepo($currRepo, "images/backgrounds/background_web.png", $currRepo->url);
-                  ?>
-               </div>
-         </div>
+                <div>
+                    <?php
+                        // for ($i = 0; $i < count($featRepos); $i++) {
+                        //     echoRepo($featRepos[$i], $featReposImgs[$i], $featExps[$i]);
+                        // }
+                    ?>
+                    <img class="loadingRepo" src="/images/loading/circle.gif">
+                </div>
+                <h1 class="repoHeading">Repository I last worked on</h1>
+                <div>
+                    <?php
+                        // these have no predefined examples like the featured repos --> use their own GitHub page as subsitute
+                        // echoRepo($currRepo, "images/backgrounds/background_web.png", $currRepo->url);
+                    ?>
+                    <img class="loadingRepo" src="/images/loading/circle.gif">
+                </div>
+        </div>
 
-      </div>
+    </div>
 
 
-      <div id="contact">
-         <div id="socialHeaders">
+    <div id="contact">
+        <div id="socialHeaders">
             <h1>Contact</h1>
             <h1>Social Media</h1>
-         </div>
-         <div id="contactForm">
+        </div>
+        <div id="contactForm">
             <form action = "contact.php" method="post">
-               <div>
-                  <div class="twoinrow">
-                     <h3 class="formHeading">First name</h3>
-                     <input type="text" name="firstname">
-                  </div><div class="twoinrow"><!-- to avoid whitespace -->
-                     <h3 class="formHeading">Last name</h3>
-                     <input type="text" name="lastname">
-                  </div>
-               </div>
-               <p>
-                  <h3 class="formHeading">E-Mail address</h3>
-                  <input type="text" name="address">
-               </p><!--
-            --><p>
-                  <h3 class="formHeading">Telephone</h3>
-                  <input type="text" name="telnum">
-               </p><!--
-            --><p>
-                  <h3 class="formHeading">Subject</h3>
-                  <input type="text" name="subject">
-               </p><!--
-            --><p>
-                  <h3 class="formHeading">Message</h3>
-                  <textarea id="message" name="message"></textarea>
-               </p>
-               <p>
-                  <div class="g-recaptcha" data-sitekey="6LfN2VcUAAAAAJkZ542qnEj2SmZ0adjE-w18YWtU"></div>
-                  <input id="submit" type="submit">
-                  <!--<a href="#">Resumé</a>-->
-               </p>
+                <div>
+                    <div class="twoinrow">
+                        <h3 class="formHeading">First name</h3>
+                        <input type="text" name="firstname">
+                    </div><div class="twoinrow"><!-- to avoid whitespace -->
+                        <h3 class="formHeading">Last name</h3>
+                        <input type="text" name="lastname">
+                    </div>
+                </div>
+                <p>
+                    <h3 class="formHeading">E-Mail address</h3>
+                    <input type="text" name="address">
+                </p><!--
+             --><p>
+                    <h3 class="formHeading">Telephone</h3>
+                    <input type="text" name="telnum">
+                </p><!--
+             --><p>
+                    <h3 class="formHeading">Subject</h3>
+                    <input type="text" name="subject">
+                </p><!--
+             --><p>
+                    <h3 class="formHeading">Message</h3>
+                    <textarea id="message" name="message"></textarea>
+                </p>
+                <p>
+                    <div class="g-recaptcha" data-sitekey="6LfN2VcUAAAAAJkZ542qnEj2SmZ0adjE-w18YWtU"></div>
+                    <input id="submit" type="submit">
+                    <!--<a href="#">Resumé</a>-->
+                </p>
             </form>
             <a id="impressum" href="http://www.dominik-hillmann.com/impressum.html"><p>Impressum</p></a>
-         </div>
+        </div>
 
-         <div id="socialMedia">
+        <div id="socialMedia">
 
             <div>
-               <a href="https://github.com/Dominik-Hillmann"><img src="/images/github_black.png"></a>
-               <h1>GITHUB</h1>
+                <a href="https://github.com/Dominik-Hillmann"><img src="/images/github_black.png"></a>
+                <h1>GITHUB</h1>
             </div>
             <div>
-               <a href="https://www.linkedin.com/in/dominik-hillmann-a0a21015a/"><img src="/images/linkedin_black.png"></a>
-               <h1>LINKEDIN</h1>
+                <a href="https://www.linkedin.com/in/dominik-hillmann-a0a21015a/"><img src="/images/linkedin_black.png"></a>
+                <h1>LINKEDIN</h1>
             </div>
             <div>
-               <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
-               <h1>XING</h1>
+                <a href="https://www.xing.com/profile/Dominik_Hillmann/"><img src="images/xing_black.png"></a>
+                <h1>XING</h1>
             </div>
-         </div>
-         <?php
+        </div>
+        <?php
             // echo "difference in time concerning weather: " . ($nowTime - (getTime("./data/timeWeather.txt") / (60 * 60))) . "<br>";
             // echo "difference in time concerning github repositories: " . ($nowTime - (getTime("./data/timeGithub.txt") / (60 * 60))) . "<br>";
             // echo "contacted OpenWeatherMap API: " . ($wAPI ? "YES" : "NO") . "<br>";
@@ -314,10 +319,10 @@
             //    echo "<br>";
             //    var_dump($repo->langs);
             // }
-         ?>
-      </div>
+        ?>
+    </div>
 
-   </div>
+</div>
 <!-- End of Page Layout -->
 </body>
 

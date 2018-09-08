@@ -5,46 +5,50 @@
 // To do this, I will make an XMLHttpRequest to the website's server, where PHP scripts get the
 // information from the APIs and return it to the requesting browser.
 
+// **************************************
+// GANZE repos ersetzen durch LADEZEICHEN
+// **************************************
 window.onload = function () {
-     try {
-          let requestWeather, requestCurrRepo, requestFeatRepos;
+    try  {
 
-          if (window.XMLHttpRequest) {
-               requestWeather = new XMLHttpRequest(); // IE7+, Firefox, Chrome, Opera, Safari
-               requestCurrRepo = new XMLHttpRequest();
-               requestFeatRepos = new XMLHttpRequest();
-          } else {  
-               requestWeather = new ActiveXObject("Microsoft.XMLHTTP"); // IE6, IE5
-               requestCurrRepo = new ActiveXObject("Microsoft.XMLHTTP");
-               requestFeatRepos = new ActiveXObject("Microsoft.XMLHTTP");
-          }
+        let requestWeather, requestCurrRepo, requestFeatRepos;
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari
+            requestWeather = new XMLHttpRequest(); 
+            requestCurrRepo = new XMLHttpRequest();
+            requestFeatRepos = new XMLHttpRequest();
+        } else { 
+            // IE6, IE5
+            requestWeather = new ActiveXObject("Microsoft.XMLHTTP");
+            requestCurrRepo = new ActiveXObject("Microsoft.XMLHTTP");
+            requestFeatRepos = new ActiveXObject("Microsoft.XMLHTTP");
+        }
 
-          // onreadystatechange: a function has to be defined that is excuted if the requestWeather's ready state changes
-          // ready state changes from 0 to 4, 0 = not initialized, 4 = response is ready
-          function onreadystatechange() {
-               if (this.readyState == 4 && this.status == 200) {
-                    // if requestWeather is ready and the HTTP status says the message is okay
-                    console.log(JSON.parse(this.responseText));
-               }
-          }
+        // onreadystatechange: a function has to be defined that is excuted if the requestWeather's ready state changes
+        // ready state changes from 0 to 4, 0 = not initialized, 4 = response is ready
+        function onreadystatechange() {
+            if (this.readyState == 4 && this.status == 200) {
+                // if requestWeather is ready and the HTTP status says the message is okay
+                console.log(JSON.parse(this.responseText));
+            }
+        }
 
-          requestWeather.onreadystatechange = onreadystatechange;
-          requestCurrRepo.onreadystatechange = onreadystatechange;
-          requestFeatRepos.onreadystatechange = onreadystatechange;
+        requestWeather.onreadystatechange = onreadystatechange;
+        requestCurrRepo.onreadystatechange = onreadystatechange;
+        requestFeatRepos.onreadystatechange = onreadystatechange;
 
-          let script = "http://www.dominik-hillmann.com/requests.php?type=";
-          requestWeather.open("GET", script + "weather", true); // specify properties of requestWeather
-          requestCurrRepo.open("GET", script + "currentRepo", true);
-          requestFeatRepos.open("GET", script + "featRepos", true);
+        let script = "http://www.dominik-hillmann.com/requests.php?type=";
+        requestWeather.open("GET", script + "weather", true); // specify properties of requestWeather
+        requestCurrRepo.open("GET", script + "currentRepo", true);
+        requestFeatRepos.open("GET", script + "featRepos", true);
 
-          requestWeather.send()
-          requestCurrRepo.send();
-          requestFeatRepos.send();
+        requestWeather.send()
+        requestCurrRepo.send();
+        requestFeatRepos.send();
 
-     } catch (e) {
-          console.log(e);
-
-          // weiterhin im betroffenen Teil der Website ausdrücken, dass etwas schief gelaufen ist.
-     }
+    } catch (e) {
+        console.error(e);
+        // weiterhin im betroffenen Teil der Website ausdrücken, dass etwas schief gelaufen ist.
+    }
 };
 
