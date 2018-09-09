@@ -95,7 +95,33 @@
                 $weather = getLocally("./data/weather.json");
             }
         }
+
+        $weatherPicStr = "./images/weather/" . ($useBrightSymbols ? "bright" : "dark") . "_";
+        $hour = (int) date("G", time());
+        $weatherPicStr .= ($hour >= $darkHours[0] || $hour <= $darkHours[1]) ? "night_" : "day_";
+  
+        $id = $weather->weather[0]->id;
+        if (($id >= 200 && $id < 300) || $id >= 900) {
+           $weatherPicStr .= "storm.png";
+        } else if ($id >= 300 && $id < 600) {
+           $weatherPicStr .= "rain.png";
+        } else if ($id >= 600 && $id < 701) {
+           $weatherPicStr .= "snow.png";
+        } else if ($id >= 701 && $id < 800) {
+           $weatherPicStr .= "mist.png";
+        } else if ($id == 800) {
+           $weatherPicStr .= "clear.png";
+        } else if ($id >= 801 && $id < 900) {
+           $weatherPicStr .= "cloud.png";
+        } else {
+           $weatherPicStr .= "cloud.png";
+        }
+
+        // this allows me to define new properties which I need to send the weatherPicStr with the JSON
+        $re = new stdClass;
+        $re->weather = $weather;
+        $re->weatherPicStr = $weatherPicStr;
           
-        echo json_encode($weather);
+        echo json_encode($re);
     }
 ?>

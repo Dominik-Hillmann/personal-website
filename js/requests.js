@@ -5,9 +5,6 @@
 // To do this, I will make an XMLHttpRequest to the website's server, where PHP scripts get the
 // information from the APIs and return it to the requesting browser.
 
-// **************************************
-// GANZE repos ersetzen durch LADEZEICHEN
-// **************************************
 window.onload = function () {
     try  {
 
@@ -26,16 +23,54 @@ window.onload = function () {
 
         // onreadystatechange: a function has to be defined that is excuted if the requestWeather's ready state changes
         // ready state changes from 0 to 4, 0 = not initialized, 4 = response is ready
-        function onreadystatechange() {
+        function getRepoTemplate() {           
+            return;
+        }
+
+        function onWeatherReady() {
+            if (this.readyState == 4 && this.status == 200) {
+                let weatherInfo = JSON.parse(this.responseText);
+                console.log(weatherInfo);
+
+                // remove gif signalling that information is being loaded
+                let weatherNode = document.getElementById("weather");
+                weatherNode.getElementsByTagName("img")[0].remove();
+
+                // weather symbol
+                let weatherSymbol = document.createElement("img");
+                weatherSymbol.src = weatherInfo.weatherPicStr;
+                weatherNode.appendChild(weatherSymbol);
+
+                // want to create node in #weather looking like <p>City XX.X°C</p>
+                let cityAndTemp = document.createTextNode(
+                    weatherInfo.weather.name +
+                    " " +
+                    Math.round(weatherInfo.weather.main.temp - 273.15) +
+                    "°C"
+                );
+                let cityNode = document.createElement("p");
+                cityNode.appendChild(cityAndTemp);
+                weatherNode.appendChild(cityNode);
+            }
+        }
+
+        function onCurrRepoReady() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("currrepo");
+                console.log(JSON.parse(this.responseText));
+            }
+        }
+
+        let onFeatReposReady = function () {
             if (this.readyState == 4 && this.status == 200) {
                 // if requestWeather is ready and the HTTP status says the message is okay
                 console.log(JSON.parse(this.responseText));
             }
         }
 
-        requestWeather.onreadystatechange = onreadystatechange;
-        requestCurrRepo.onreadystatechange = onreadystatechange;
-        requestFeatRepos.onreadystatechange = onreadystatechange;
+        requestWeather.onreadystatechange = onWeatherReady;
+        requestCurrRepo.onreadystatechange = onCurrRepoReady;
+        requestFeatRepos.onreadystatechange = onFeatReposReady;
 
         let script = "http://www.dominik-hillmann.com/requests.php?type=";
         requestWeather.open("GET", script + "weather", true); // specify properties of requestWeather

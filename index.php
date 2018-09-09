@@ -165,7 +165,6 @@
             <!--<img src= <?php // echo '"' . $weatherPicStr . '"'; ?> >-->
             <!--<img src="/images/weather/loading.png">
             <p><?php // echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>-->
-            <!--<p id="weatherLoading">...</p>-->
             <img style="height:19px;border-right:none;margin-bottom:-10px;" src="/images/loading/circle.gif" id="loadingWeather">
         </div>
         <div id="start">
