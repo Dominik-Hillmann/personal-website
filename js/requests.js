@@ -29,35 +29,79 @@ window.onload = function () {
 
         function onWeatherReady() {
             if (this.readyState == 4 && this.status == 200) {
-                let weatherInfo = JSON.parse(this.responseText);
-                console.log(weatherInfo);
+                try {
+                    let weatherInfo = JSON.parse(this.responseText);
+                    console.log(weatherInfo);
 
-                // remove gif signalling that information is being loaded
-                let weatherNode = document.getElementById("weather");
-                weatherNode.getElementsByTagName("img")[0].remove();
+                    // remove gif signalling that information is being loaded
+                    let weatherNode = document.getElementById("weather");
+                    weatherNode.getElementsByTagName("img")[0].remove();
 
-                // weather symbol
-                let weatherSymbol = document.createElement("img");
-                weatherSymbol.src = weatherInfo.weatherPicStr;
-                weatherNode.appendChild(weatherSymbol);
+                    // weather symbol
+                    let weatherSymbol = document.createElement("img");
+                    weatherSymbol.src = weatherInfo.weatherPicStr;
+                    weatherNode.appendChild(weatherSymbol);
 
-                // want to create node in #weather looking like <p>City XX.X°C</p>
-                let cityAndTemp = document.createTextNode(
-                    weatherInfo.weather.name +
-                    " " +
-                    Math.round(weatherInfo.weather.main.temp - 273.15) +
-                    "°C"
-                );
-                let cityNode = document.createElement("p");
-                cityNode.appendChild(cityAndTemp);
-                weatherNode.appendChild(cityNode);
+                    // want to create node in #weather looking like <p>City XX.X°C</p>
+                    let cityAndTemp = document.createTextNode(
+                        weatherInfo.weather.name +
+                        " " +
+                        Math.round(weatherInfo.weather.main.temp - 273.15) +
+                        "°C"
+                    );
+                    let cityNode = document.createElement("p");
+                    cityNode.appendChild(cityAndTemp);
+                    weatherNode.appendChild(cityNode);
+                } catch (e) {
+                    console.error(e);
+                    // später rote Anzeige
+                }
             }
         }
 
         function onCurrRepoReady() {
             if (this.readyState == 4 && this.status == 200) {
+                /*
+                <div class="repoContainer">
+                    <div onclick="window.open('http://www.dominik-hillmann.com/sketches/sphere/sphere.html', '_blank');" style="background-position:center;background-size:cover;background-image:url('./images/sphere.JPG');">
+                        hide me
+                    </div>
+
+                    <div>
+                        <h1>
+                            <a href="https://github.com/Dominik-Hillmann/Sphere">Sphere</a>
+                        </h1>
+                        <p>Keine Beschreibung.</p>
+                        <p>92% JavaScript 8% HTML</p>
+                    </div>
+                </div>
+                */
+
                 console.log("currrepo");
                 console.log(JSON.parse(this.responseText));
+                let repo = JSON.parse(this.responseText);
+
+                // whole repo
+                let repoNode = document.createElement("div");
+                repoNode.classList.add("repoContainer");
+
+                // picture on left-hand side
+                let picNode = document.createElement("div");
+                let picStyle = "background-position:center;background-size:cover;background-image:url('./images/backgrounds/background_web.png')"; // always same pic here
+                picNode.setAttribute("style", picStyle);
+                picNode.onclick = function () {
+                    window.open(repo.url, '_blank');
+                }
+                repoNode.appendChild(picNode);
+
+                // text on the right-hand side
+                let textNode = document.createElement("div");
+                let headerNode = document.createElement("h1");
+                let repoLink = document.createElement("a").appendChild(document.createTextNode(repo.name));
+                
+                textNode.appendChild(headerNode.appendChild(repoLink));
+
+
             }
         }
 
