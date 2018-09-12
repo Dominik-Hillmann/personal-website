@@ -6,7 +6,7 @@
 // information from the APIs and return it to the requesting browser.
 
 window.onload = function () {
-    try  {
+    try {
 
         let requestWeather, requestCurrRepo, requestFeatRepos;
         if (window.XMLHttpRequest) {
@@ -61,8 +61,8 @@ window.onload = function () {
 
         function onCurrRepoReady() {
             if (this.readyState == 4 && this.status == 200) {
-                /*
-                <div class="repoContainer">
+
+                /*<div class="repoContainer">
                     <div onclick="window.open('http://www.dominik-hillmann.com/sketches/sphere/sphere.html', '_blank');" style="background-position:center;background-size:cover;background-image:url('./images/sphere.JPG');">
                         hide me
                     </div>
@@ -74,41 +74,62 @@ window.onload = function () {
                         <p>Keine Beschreibung.</p>
                         <p>92% JavaScript 8% HTML</p>
                     </div>
-                </div>
-                */
+                </div>*/
 
-                console.log("currrepo");
-                console.log(JSON.parse(this.responseText));
-                let repo = JSON.parse(this.responseText);
+                try {
+                    // SPÄTER ZU FUNKTION
+                    console.log("currrepo");
+                    console.log(JSON.parse(this.responseText));
+                    let repo = JSON.parse(this.responseText);
+                    
+                    // top level
+                    let repoNode = document.createElement("div");
+                    repoNode.classList.add("repoContainer");
 
-                // whole repo
-                let repoNode = document.createElement("div");
-                repoNode.classList.add("repoContainer");
+                    // left-hand side pic
+                    let picNode = document.createElement("div");
+                    picNode.appendChild(document.createTextNode("hide me"));
+                    picNode.style = "background-position:center;background-size:cover;background-image:url('./images/sphere.JPG');"; // always the same
+                    picNode.onclick = function () { window.open(repo.url, '_blank'); };
+                    repoNode.appendChild(picNode);
 
-                // picture on left-hand side
-                let picNode = document.createElement("div");
-                let picStyle = "background-position:center;background-size:cover;background-image:url('./images/backgrounds/background_web.png')"; // always same pic here
-                picNode.setAttribute("style", picStyle);
-                picNode.onclick = function () {
-                    window.open(repo.url, '_blank');
+                    // right-hand side with text
+                    let textNode = document.createElement("div");
+                    // heading
+                    let headerNode = document.createElement("h1");
+                    let name = document.createTextNode(repo.name);
+                    let linkNode = document.createElement("a").appendChild(name);
+                    linkNode.href = repo.url;
+                    headerNode.appendChild(linkNode);
+                    textNode.appendChild(headerNode);
+                    // text below
+
+                    
+                    repoNode.appendChild(textNode);
+                    console.log(repoNode);
+                    // wieder reinhängen, davor Ladezeichen weg
+                    let currRepoNode = document.getElementsByClassName("repoHelper")[1];
+                    currRepoNode.getElementsByTagName("img")[0].remove();
+                    currRepoNode.appendChild(repoNode);
+
+                } catch (e) {
+                    console.error(e);
                 }
-                repoNode.appendChild(picNode);
-
-                // text on the right-hand side
-                let textNode = document.createElement("div");
-                let headerNode = document.createElement("h1");
-                let repoLink = document.createElement("a").appendChild(document.createTextNode(repo.name));
-                
-                textNode.appendChild(headerNode.appendChild(repoLink));
-
-
             }
         }
 
         let onFeatReposReady = function () {
             if (this.readyState == 4 && this.status == 200) {
-                // if requestWeather is ready and the HTTP status says the message is okay
-                console.log(JSON.parse(this.responseText));
+                try {
+                    console.log(JSON.parse(this.responseText));
+                    let response = JSON.parse(this.response);
+
+                    for (let i = 0; i < response.length; i++) {
+                        // code
+                    }
+                } catch (e) {
+                    // print red error
+                } finally { }
             }
         }
 

@@ -223,7 +223,7 @@
 
         <div id="repos">
             <h1 class="repoHeading">Featured repositories</h1>
-                <div>
+                <div class="repoHelper">
                     <?php
                         // for ($i = 0; $i < count($featRepos); $i++) {
                         //     echoRepo($featRepos[$i], $featReposImgs[$i], $featExps[$i]);
@@ -232,7 +232,7 @@
                     <img class="loadingRepo" src="/images/loading/circle.gif">
                 </div>
                 <h1 class="repoHeading">Repository I last worked on</h1>
-                <div>
+                <div class="repoHelper">
                     <?php
                         // these have no predefined examples like the featured repos --> use their own GitHub page as subsitute
                         // echoRepo($currRepo, "images/backgrounds/background_web.png", $currRepo->url);

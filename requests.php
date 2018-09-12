@@ -38,7 +38,7 @@
         putTime("./data/timeGithub.txt"); // update time because the data got updated
         $gAPI = true;
         } else {    
-               // get repo data locally, the last update did not happen too long ago
+            // get repo data locally, the last update did not happen too long ago
             $files = scandir("./data/repos/");
             unset($files[0]); // delete ".", ".."
             unset($files[1]);
