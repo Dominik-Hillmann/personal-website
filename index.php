@@ -140,7 +140,7 @@
       } else {
          $weatherPicStr .= "cloud.png";
       }
-   ?>
+?>
 
 <!-- Page Layout -->
     <div id="lang">

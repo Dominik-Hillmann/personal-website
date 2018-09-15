@@ -66,10 +66,25 @@
             }
         }
 
-        if ($type == "currentRepo")
-            echo json_encode($currRepo);
-        else
-            echo json_encode($featRepos);
+        if ($type == "currentRepo") {
+            $re = new stdClass;
+            $re->data = $currRepo;
+            $re->langStr = langsToString($currRepo);
+
+            echo json_encode($re);
+        } else /* featured repositories */ {
+            $re = [];
+            for ($i = 0; $i < count($featRepos); $i++) {
+                $repo = new stdClass;
+                $repo->data = $featRepos[$i];
+                $repo->picPath = $featReposImgs[$i];
+                $repo->exampleURL = $featExps[$i];
+                $repo->langStr = langsToString($featRepos[$i]);
+                array_push($re, $repo);
+            }
+
+            echo json_encode($re);
+        }
 
     } else /* if (type === "weather") */ {
 

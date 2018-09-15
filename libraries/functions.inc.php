@@ -87,6 +87,18 @@
         return $reString;
     }
 
+    function langsToString($repo) {
+        $total = 0.0;
+        foreach ($repo->langs as $amount) $total += $amount;
+        $percentages = '';
+
+        foreach ($repo->langs as $lang => $amount) {
+            $percentages .=  (round(100 * $amount / $total) . '% ' . $lang . ' ');
+        }
+
+        return $percentages;
+    }
+
     function echoRepo($repo, $imgStr, $exampleURL) {
         /* This echoes HTML that has the following structure:
         <div class="repoContainer">
@@ -101,16 +113,17 @@
         echo '<h1><a href="' . $repo->url . '">' . $repo->name . '</a></h1>';
         echo '<p>' . ($repo->description ? $repo->description : "Keine Beschreibung.") . '</p><p>';
 
-        $total = 0.0;
-        foreach ($repo->langs as $amount) $total += $amount;
+        // $total = 0.0;
+        // foreach ($repo->langs as $amount) $total += $amount;
 
         //$percentages = '';
         // var_dump($repo->langs);
-        foreach ($repo->langs as $lang => $amount) /* for ($i = 0; $i < count($repo->langs); $i++) */ {
+        // foreach ($repo->langs as $lang => $amount) /* for ($i = 0; $i < count($repo->langs); $i++) */ {
             // echo round(100 * $amount / $total) . '% ' . $lang . ' ';
             // echo '$lang' . ' ' . $repo->langs[count($repo->langs) - 1];
-            echo round(100 * $amount / $total) . '% ' . $lang . ' ';
-        }
+            // echo round(100 * $amount / $total) . '% ' . $lang . ' ';
+        // }
+        echo langsToString($repo);
         echo '</p></div></div>';
     }
 

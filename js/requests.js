@@ -5,6 +5,50 @@
 // To do this, I will make an XMLHttpRequest to the website's server, where PHP scripts get the
 // information from the APIs and return it to the requesting browser.
 
+let getRepo = function (repoData, picPath, picLinkURL) {
+    let repoNode = document.createElement("div");
+    repoNode.classList.add("repoContainer");
+
+    // left-hand side pic
+    let picNode = document.createElement("div");
+    picNode.appendChild(document.createTextNode("hide me"));
+    picNode.style = "background-position:center;background-size:cover;background-image:url('" + picPath + "');"; // always the same
+    picNode.onclick = function () { window.open(picLinkURL, '_blank'); };
+    repoNode.appendChild(picNode);
+
+    // right-hand side with text
+    let textNode = document.createElement("div");
+    // heading
+    let headerNode = document.createElement("h1");
+    let name = document.createTextNode(repoData.data.name);
+    let linkNode = document.createElement("a");
+    linkNode.appendChild(name);
+    linkNode.href = repoData.data.url; // ***
+    headerNode.appendChild(linkNode);
+    textNode.appendChild(headerNode);
+    // text below
+    let descriptionNode = document.createElement("p");
+    let langsNode = document.createElement("p");
+    let description = document.createTextNode(
+        repoData.data.description == null ? "No description" : repoData.data.description
+    );
+    let langs = document.createTextNode(repoData.langStr);
+    descriptionNode.appendChild(description);
+    langsNode.appendChild(langs);
+
+    textNode.appendChild(descriptionNode);
+    textNode.appendChild(langsNode);
+    
+    repoNode.appendChild(textNode);
+    // console.log(repoNode);
+    // wieder reinhängen, davor Ladezeichen weg
+    // let currRepoNode = document.getElementsByClassName("repoHelper")[1];
+    // currRepoNode.getElementsByTagName("img")[0].remove();
+    // currRepoNode.appendChild(repoNode);
+
+    return repoNode;
+}
+
 window.onload = function () {
     try {
 
@@ -82,35 +126,10 @@ window.onload = function () {
                     console.log(JSON.parse(this.responseText));
                     let repo = JSON.parse(this.responseText);
                     
-                    // top level
-                    let repoNode = document.createElement("div");
-                    repoNode.classList.add("repoContainer");
-
-                    // left-hand side pic
-                    let picNode = document.createElement("div");
-                    picNode.appendChild(document.createTextNode("hide me"));
-                    picNode.style = "background-position:center;background-size:cover;background-image:url('./images/sphere.JPG');"; // always the same
-                    picNode.onclick = function () { window.open(repo.url, '_blank'); };
-                    repoNode.appendChild(picNode);
-
-                    // right-hand side with text
-                    let textNode = document.createElement("div");
-                    // heading
-                    let headerNode = document.createElement("h1");
-                    let name = document.createTextNode(repo.name);
-                    let linkNode = document.createElement("a").appendChild(name);
-                    linkNode.href = repo.url;
-                    headerNode.appendChild(linkNode);
-                    textNode.appendChild(headerNode);
-                    // text below
-
-                    
-                    repoNode.appendChild(textNode);
-                    console.log(repoNode);
-                    // wieder reinhängen, davor Ladezeichen weg
+                    // remove loading symbol first
                     let currRepoNode = document.getElementsByClassName("repoHelper")[1];
                     currRepoNode.getElementsByTagName("img")[0].remove();
-                    currRepoNode.appendChild(repoNode);
+                    currRepoNode.appendChild(getRepo(repo, "./images/backgrounds/background_web.png", repo.data.url));
 
                 } catch (e) {
                     console.error(e);
@@ -121,12 +140,16 @@ window.onload = function () {
         let onFeatReposReady = function () {
             if (this.readyState == 4 && this.status == 200) {
                 try {
-                    console.log(JSON.parse(this.responseText));
-                    let response = JSON.parse(this.response);
 
-                    for (let i = 0; i < response.length; i++) {
-                        // code
-                    }
+                    console.log(JSON.parse(this.responseText));
+                    let featRepos = JSON.parse(this.response);
+                    // remove loading symbol first
+                    let featReposNode = document.getElementsByClassName("repoHelper")[0];
+                    featReposNode.getElementsByTagName("img")[0].remove();
+
+                    for (featRepo of featRepos) 
+                        featReposNode.appendChild(getRepo(featRepo, featRepo.picPath, featRepo.exampleURL));
+
                 } catch (e) {
                     // print red error
                 } finally { }
