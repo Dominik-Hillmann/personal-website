@@ -72,12 +72,7 @@ function getNextSlides(type) {
          break;
    }
 
-   // currSlidesInd.sort(function (a, b) { return a - b; });
    let currSlides = indToImg(currSlidesInd, slides);
-
-   // console.log("CurrentSlides: ", currSlides, currSlidesInd);
-   // console.log("NextStop: ", webStop, dataStop, generalStop, theoStop);
-
    return currSlides;
 }
 
@@ -121,7 +116,6 @@ function animateSlide(type) {
          }
       }, 500);
    }
-   return;
 }
 
 
