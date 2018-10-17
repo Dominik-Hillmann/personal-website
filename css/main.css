@@ -1,598 +1,206 @@
-/*font-family:"Avenir-Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway:700');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-* { margin: 0; }
-
-body { margin: 0; }
-
-a:link { text-decoration: none; }
-
-#sketch {
-   display: block;
-   float: left;
-   position: fixed;
-   box-shadow: 0px 10px 10px 0px black;
+* {
+    margin: 0;
 }
-
-#main {
-   margin: auto;
-   width: 61.8%;
-}
-
-/***** TEXTE *****/
-
-h1 { font-family: 'Raleway', sans-serif; }
-
-p { font-family: 'Open Sans', sans-serif; }
-
-/***** HEADER *****/
-
+/*** FIRST LINE HEADER ***/
 header {
-   float: left;
-   z-index: 2;
-   position: fixed;
-   background-color: none;
-   height: 100%;
-   width: 20%;
-
-   padding-left: 10px;
-   padding-right: 10px;
-
-   transition: opacity 0.25s ease-in-out;
-}
-#weather {
-   height: 22px;
-   color: black;
-   width: 62.8%;
-   margin: 15px auto -10px auto;
-}
-#weather img {
-   height: 22px;
-   margin-right: 5px;
-   float: left;
-   border-right: 2px solid lightsalmon;
-   padding-right: 5px;
-}
-#weather p {
-   font-size: 15px;
-   font-family: 'Open Sans', sans-serif;
-   float: left;
-   display: inline-block;
-   margin-top: 0px;
-}
-#menuwrapper {
-   font-size: 15px;
-}
-#menuwrapper div {
-   margin-top: 8px;
-}
-#menuwrapper div:first-child {
-   margin-top: 0;
-}
-#menuwrapper div p.unshown {
-   vertical-align: middle;
-   display: inline-block;
-   font-family: 'Raleway', sans-serif;
-   font-size: 20px;
-
-   opacity: 0.0;
-   animation-name: unshown;
-   animation-duration: 0.6s;
-}
-@keyframes unshown {
-   from {
-      opacity: 1.0;
-   } to {
-      opacity: 0.0;
-   }
-}
-
-/* animation class added via JS*/
-#menuwrapper div p.shown {
-   vertical-align: middle;
-   display: inline-block;
-   cursor: pointer;
-   font-family: 'Raleway', sans-serif;
-   font-size: 20px;
-
-   opacity: 1.0;
-   animation-name: shown;
-   animation-duration: 0.5s;
-}
-
-@keyframes shown { from { opacity: 0.0; } to { opacity: 1.0; } }
-
-#menuwrapper img {
-   height: 21px;
-   margin-right: 10px;
-   vertical-align: middle;
-}
-
-
-/***** START *****/
-
-
-#start {
-   background-color: white;
-   margin: 30px 0px 30px 0px;
-}
-
-#start img {
-   width: 200px;
-   height: 200px;
-   border-radius: 10px;
-   margin: 10px 10px 10px 10px;
-}
-
-#hello {
-   display: flex;
-   /*border-top: 5px solid lightsalmon;*/
-   width: 62.8%;
-   margin: 0 auto 0 auto;
-   box-shadow: 0px 3px 10px 0px black;
-   border-radius: 10px;
-}
-
-#hello div {
-   height: auto;
-   padding-left: 10px;
-   float: right;
-   text-align: left;
-   width: calc(100% - (200px + 20px + 10px + 3px + 10px));
-   margin: 10px 10px 10px 0px;
-   border-left: 3px solid lightsalmon;
-   /*100% - imgwidth - leftrightmargins - margins of text*/
-}
-
-#hello h1 {
-   margin-bottom: 10px;
-}
-
-/***** CONTACT *****/
-
-#socialHeaders * {
-   display: inline-block;
-   margin-bottom: 20px;
-   margin-top: 20px;
-}
-
-#socialHeaders h1:first-child {
-   margin-left: 27.5%;
-}
-
-#socialHeaders h1:last-child {
-   float: right;
-   margin-right: 13%;
-}
-
-#contact {
-   background-color: white;
-   width: 100%;
-   overflow: hidden;
-
-   font-family: 'Raleway', sans-serif;
-   clear: both;
-}
-
-/* email form on the right side */
-#contactForm {
-   background-color: white;
-   display: block;
-   margin: 0 auto 50px 3%;
-   width: calc(/*56.8% - 2.5%*/58.8%); /* 61.8 - 5, 5 like always margin left and right */
-   float: left;
-   box-shadow: 0 3px 10px 0;
-   border-radius: 10px;
-   border-top: 3px red;
-   border-top: 5px solid lightsalmon;
-}
-
-#contactForm h1 {
-   margin: 15px;
-   text-align: center;
-}
-
-#contactForm p {
-   margin: 15px;
-}
-
-#contactForm form {
-   display: block;
-   text-align: center;
-}
-
-#contactForm form p {
-   margin: 0px 0px 15px 0px;
-}
-
-.formHeading {
-   font-size: 10px;
-   display: block;
-   margin: 0 auto 0 auto;
-   padding: 0;
-   text-align: left;
-   width: 95%;
-   align: center;
-}
-
-#contactForm form input {
-   width: 95%;
-   height: 25px;
-   margin: 0;
-   border: none;
-   background-color: lightgrey;
-   border-radius: 4px;
-
-}
-
-#contactForm form input:focus {
-   background-color: #a6a6a6;
-   box-shadow: 0 1px 2px 0;
-   animation-name: writing;
-   animation-duration: 0.5s;
-}
-
-@keyframes writing {
-   from {
-      background-color: lightgrey;
-      box-shadow: 0 0 0 0;
-   } to {
-      background-color: #a6a6a6;
-      box-shadow: 0 1px 2px 0;
-   }
-}
-
-#contactForm form:first-of-type div {
-   /*background-color: green;*/
-   width: 95.5%;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 0;
-}
-
-#contactForm form:first-of-type div.twoinrow {
-   /*background-color: pink;*/
-   height: 10px;
-   width: 49%;
-   height: 45px;
-   display: inline-block;
-   margin: 0px 0px 12px 0px;
-}
-
-#contactForm form:first-of-type div.twoinrow:first-child {
-   float: left;
-   text-align: left;
-}
-
-#contactForm form:first-of-type div.twoinrow:last-child {
-   float: right;
-}
-
-#contactForm form:first-of-type div.twoinrow input {
-   display: block;
-   height: 25px;
-   width: 100%;
-   margin: 0;
-}
-
-.twoinrow h3 {
-   width: 100%;
-}
-
-/* textarea of form */
-#message {
-   resize: none;
-   background-color: lightgrey;
-   border-radius: 4px;
-   width: 95%;
-   height: 150px;
-   font-family: 'Open Sans', sans-serif;
-   border: none;
-}
-#message:focus {
-   background-color: #a6a6a6;
-   animation-name: writing;
-   animation-duration: 0.5s;
-   box-shadow: 0 1px 2px 0;
-}
-/* submit and reset buttons */
-#contactForm form p:last-of-type {
-   margin-bottom: 40px;
-   color: white;
-   margin-top: 20px;
-}
-input[type=submit] {
-   display: inline;
-   color: black;
-   height: 100px;
-   margin: 0 0 100px
-}
-.g-recaptcha {
-   margin: 15px !important;
-}
-
-
-/***** SKILLS *****/
-/***** SKILLS --> REPOS *****/
-
-#skills {
-   clear: both;
-   margin: 0;
-   overflow: hidden;
-}
-
-#repos {
-   float: right;
-   display: block;
-   width: 38.2%;
-   margin: 0 auto 0 auto;
-}
-
-.repoHeading {
-   text-align: center;
-   margin: 10px 0 20px 0; /* same as repoContainer */
-}
-
-.repoContainer {
-   display: block;
-   float: right;
-
-   box-shadow: 0 3px 10px 0;
-
-   height: 130px;
-   width: 90%;
-   min-width: 400px;
-   margin: 0px 5% 25px 5%;
-   border-radius: 10px;
-}
-
-.repoContainer div:last-child {
-   float: right;
-   display: block;
-   background-color: white;
-
-   width: calc(61.8% - 3px); /* minus thickness of left border */
-   height: 100%;
-
-   border-top-right-radius: 10px;
-   border-bottom-right-radius: 10px;
-   border-left: 3px solid lightsalmon;
-}
-
-.repoContainer div:first-child {
-   float: left;
-   display: block;
-   background-repeat: no-repeat;
-   background-size: cover;
-   font-size: 0px;
-   border-top-left-radius: 10px;
-   border-bottom-left-radius: 10px;
-   width: 38.2%;
-   height: 100%;
-   cursor: pointer;
-}
-
-.repoContainer h1 {
-   font-size: 18px;
-   margin: 2px 5px 5px 5px;
-}
-
-.repoContainer h1 a {
-  color: black;
-}
-
-.repoContainer p {
-   margin: 0px 5px 0px 5px;
-   font-size: 15px;
-}
-
-.repoContainer p:last-child {
-   font-family: 'Open Sans', sans-serif;
-}
-
-/***** SKILLS --> SLIDERS *****/
-.mainHeader {
-   text-align: center;
-   margin: 10px 0 20px 0;
-   /* same as repoContainer */
-}
-
-#skillSlider {
-   display: block;
-   float: left;
-   width: 61.8%;
-}
-
-.sliderWrapper {
-   clear: both;
-   margin-bottom: 25px;
-   margin-left: 5%; /* the same as right margin of #repo */
-   position: relative;
-   min-width: 450px;
-}
-
-
-#skills div:last-child {
-   margin-bottom: 15px;
-}
-
-
-.slider {
-   display: inline-block;
-   margin: 0 auto 0 auto;
-   min-width: 380px;
-   width: 100%;
-   /*background-image: url("../images/backgrounds/background_web.png");*/
-   background-repeat: no-repeat;
-   background-size: cover;
-
-   box-shadow: 0 3px 10px 0;
-
-   border-top-left-radius: 20px;
-   border-top-right-radius: 20px;
-}
-
-.slide {
-   width: 130px;
-   margin: 2% auto 2% calc(30% - 130px); /* left margin is the third of slider minus its own width */
-}
-
-.slidername {
-   color: black;
-   background-color: white;
-   width: 100%;
-
-   border-top: 4px solid lightsalmon;
-   box-shadow: 0 3px 10px 0;
-
-   border-bottom-left-radius: 20px;
-   border-bottom-right-radius: 20px;
-}
-
-/*.slidername h1 {
-   margin-left: 20px;
-}*/
-
-.slidername p {
-   margin: 0px 10px 20px 10px;
-   font-size: 16px;
-}
-
-.slidername h1 {
-   text-align: left;
-   display: inline-block;
-   margin: 10px 10px 10px 10px;
-   font-size: 25px;
-}
-
-.slideShown {
-   display: inline-block;
-}
-
-.notShown {
-   display: none;
-}
-
-.slideIn {
-   animation: slideIn 0.5s;
-}
-
-.slideOut {
-   animation: slideOut 0.5s;
-}
-
-@keyframes slideIn {
-   from {
-      opacity: 0;
-   } to {
-      opacity: 1;
-   }
-}
-
-@keyframes slideOut { from { opacity : 1; } to { opacity: 0; } }
-
-.sliderWrapper div:last-of-type {
-   display: inline-block;
-   height: 100%;
-}
-
-.navSlider {
-   float: right;
-   position: absolute;
-   top: calc(130px + 5%); /* slides height + both 2% margins of slides + 1% */
-   right: 2%;
-
-
-   height: 40px;
-   cursor: pointer;
-}
-
-.navSliderHidden {
-   margin-left: -15.5px;
-
-   height: 25px;
-
-   cursor: pointer;
-   opacity: 0;
-   animation: hideSlider 1.0s;
-}
-@keyframes hideSlider {
-   from {
-      opacity: 1;
-   } to {
-      opacity: 0;
-   }
-}
-.arrow {/*
-   vertical-align: bottom;
-   margin: 0 0 -10px -10px;
-*/}
-.question {
-   vertical-align: top;
-   margin: -10px 0 0 -35px;
-}
-.infoText {
-  width: 100%;
-  font-size: 15px;
-}
-#socialMedia {
-  width: 34.2%; /* 38.2 - 5 */
-  margin: 0 2% 50px 0; /* always 5% margin on left and right */
-  box-shadow: 0 3px 10px 0;
-  border-radius: 10px;
-  float: right;
-
-  border-top: 5px solid lightsalmon;
-}
-#socialMedia div {
-  text-align: center;
-  margin: 15px
-}
-#socialMedia img {
-  width: 98px;
-  display: inline;
-  border-radius: 100%;
-}
-#socialMedia img:hover {
-  box-shadow: 0px 3px 10px 0px black;
-}
-#lang img {
-   height: 50px;
-   z-index: 3;
-   float: right;
-   margin-right: 10px;
-}
-#impressum {
-   margin: 0px;
-   font-size: 12px;
-   color: black;
-   text-decoration: underline;
-}
-
-
-.skillWrapper {
-   background-color: red;
-}
-.skillWrapper img {
-   width: 120px;
-}
-
-.skillWrapper p {
-   color: white;
-   vertical-align: middle;
-   margin-left: auto;
-   margin-right: auto;
-}
-
-.loadingRepo {
+    background-color: lightcoral;
     display: block;
-    margin: auto;
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;
+    vertical-align: center;
+}
+#firstmenu {
+    padding: 10px 0;
+    font-size: 12px;
+}
+#path {
+    float: left;
+    margin-left: 20px;
+}
+#path * {
+    display: inline-block;
+}
+#path h1, #number h1 {
+    vertical-align: middle;
+}
+#path img {
+    height: 20px;
+    margin-right: 20px;
+    margin-bottom: -8px;
+}
+#number {
+    float: right;
+    margin-right: 20px;
+    /*margin-left: 20px; /* to push brain back from other side */
+}
+#number div {
+    margin-left: 20px;
+}
+#number div p {
+    display: inline-block;
+    font-size: 20px;
+    vertical-align: middle;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+#number * {
+    display: inline;
+}
+header img {
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    display: block;
 }
 
-/* gradient border
-   -webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgb(34,144,207)), to(rgb(51,18,122))) 1 100%; 
-   -webkit-border-image: -webkit-linear-gradient( rgb(34,144,207), rgb(51,18,122)) 1 100%; 
-   -moz-border-image: -moz-linear-gradient( rgb(34,144,207), rgb(51,18,122)) 1 100%; 
-   -o-border-image: -o-linear-gradient(rgb(34,144,207), rgb(51,18,122)) 1 100%; 
-   border-image: linear-gradient(to bottom, rgb(34,144,207), rgb(51,18,122)) 1 100%;
-*/
+/*** SECOND LINE HEADER ***/
+#heading {
+    background-color: lightblue;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: center;
+    padding: 10px 0;
+    width: calc(100% - 40px); /* to let border end where above margin begins */
+    margin: 0 auto;
+    border-top: 1px solid black;
+}
+#heading * {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+/*** FOOTER ***/
+footer {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: lightgreen;
+    text-align: center;
+}
+footer img {
+    height: 50px;
+    background-color: black;
+    border-radius: 25px;
+    margin: 5px;
+}
+footer div p {
+    display: inline-block;
+    padding: 10px 3%;
+    border-top: 1px solid black;    
+}
+#facebook:hover {
+    background-color: #3b5998;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+#instagram:hover {
+    background-color: #dd2a7b;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+#twitter:hover {
+    background-color: #1da1f2;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+#youtube:hover {
+    background-color: #ff0000;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+#love {
+    color: red;
+}
+#madewith {
+    float: right;
+    margin: 0 0.5% 0 0;
+    border: none;
+    padding: 10px 0;
+    width: 168px;
+}
+#madewith img {
+    border-radius: 0;
+    background-color: inherit;
+    display: inline;
+    height: 12px;
+    margin: 0;
+}
+#madewith-pushback {
+    float: left;
+    margin: 0 0 0.5% 0;
+    border: none;
+    padding: 10px 0;
+    width: 168px;
+}
+
+/*** MIDDLE PART ***/
+#main {
+    background-color: lightseagreen;
+    width: calc(100% - 40px);
+    margin: 2% auto;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+#main div {
+    display: inline-block;
+    color: white;
+    background-color: black;
+    text-align: center;
+    width: 17%;
+
+    background-image: url('../img/cube.gif');
+    background-size: cover;
+    height: 500px;
+
+    vertical-align: middle;
+}
+#main div h1 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* if the 5 divisions have 17% width, the 
+   4 margins have to have (100% - 5 * 17%) / 4 */
+#drawings {
+    margin: 0 calc((100% - 5 * 17%) / 4);
+}
+#illustration {
+    margin-left: calc((100% - 5 * 17%) / 4);
+}
+#photography {
+    margin-right: calc((100% - 5 * 17%) / 4);
+}
+
+#about {
+    background-color: chartreuse;
+    margin: auto;
+    width: calc(100% - 40px);
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+
+#about * {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    margin: auto;
+    height: 50px;
+    vertical-align: middle;
+}
+#about img {
+    width: 30px;
+    background-color: white;
+}
+#about p {
+    width: calc((100% - 30px) / 2);
+    text-align: center;
+}
+#about p span {
+    margin-top: -5px;
+    height: 10px;
+}
+
+
