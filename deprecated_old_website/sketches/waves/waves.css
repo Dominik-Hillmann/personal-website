@@ -1,0 +1,12 @@
+* {
+   margin: 0;
+}
+
+#sketch {
+   margin: 0 auto 0 auto;
+}
+
+canvas {
+   margin: 0 auto 0 auto;
+   display: block;
+}

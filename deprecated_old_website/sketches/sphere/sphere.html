@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>Sphere</title>
+<!-- LIBRARIES -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+
+<!-- MY SCRIPTS -->
+   <script src="sphere.classes.js"></script>
+   <script src="sphere.sketch.js"></script>
+
+   <style>
+      body {
+         padding: 0;
+         margin: 0;
+         background-color: black;
+         color: white;
+         display: inline;
+      }
+      label {
+         font-family: monospace;
+         color: white;
+         margin-left: 5px;
+         font-size: 13px;
+      }
+      input {
+         margin-left: 10px;
+         margin-right: 3px;
+      }
+      input, label {
+         float: right;
+      }
+      #sketch-holder {
+         display: inline;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="sketch-holder"></div>
+   <input type="checkbox" name="follow" id="follow"><label for="follow">follow cursor (glitchy)</label>
+</body>
+
+</html>
