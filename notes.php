@@ -11,7 +11,8 @@
         <!-- <meta> -->
 
         <!-- CSS links -->
-        <link rel="stylesheet" href="./css/home.css">
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/notes.css">
         <!-- <link rel="stylesheet" href="css/mobile.css"> -->
 
         <!-- Favicon -->
@@ -20,11 +21,11 @@
     <body>
         <!-- Sticky side menu -->
         <div id="sidemenu">
-            <h1>Dominik Hillmann</h1>
+            <!-- <h1>Dominik Hillmann</h1> -->
 
             <!-- <div id="floater">floater</div> -->
 
-            <div>
+            <div id="menuoptions">
                 <div>
                     <img src="./img/dummy.png" alt="Dummy image.">
                     <a href="#">Home</a>
@@ -38,14 +39,20 @@
                     <a href="./imprint.php">Imprint</a>
                 </div>
             </div>
+
         </div>
 
         <!-- Main -->
         <div id="main">
-            
+            <div>
+                <div class="post">Das ist ein Test.</div>
+                <div class="post">Das ist ein Test.</div>
+                <div class="post">Das ist ein Test.</div>
+                <div class="post">Das ist ein Test.</div>
+                <div class="post">Das ist ein Test.</div>
+                <div class="post">Das ist ein Test.</div>
+            </div>
         </div>
-
-
     </body>
     <script>console.log('JavaScript');</script>
 </html>

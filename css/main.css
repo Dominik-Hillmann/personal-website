@@ -1,0 +1,110 @@
+/* This file contains styles applicable to all pages. */
+
+/*
+background-image: linear-gradient(top, rgb(18,41,92) 0%, rgb(0,77,164) 41%,
+     rgb(21,106,203) 100%);
+background-image: -moz-linear-gradient(center top, rgb(18,41,92) 0%,rgb(0,77,
+    164) 41%,rgb(21,106,203) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom,
+     color-stop(0.000, rgb(18,41,92)),color-stop(0.411, rgb(0,77,164)),
+    color-stop(1.000, rgb(21,106,203)));
+*/
+body, html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* body { margin: 0 0 20px 0 !important; } */
+
+
+/* Side menu */
+#sidemenu {
+    background-color: red;
+    height: 100%;
+    width: 15%;
+    overflow-x: hidden;
+    position: fixed;
+    display: table;
+    box-shadow: 10px 5px 5px black;
+}
+
+#sidemenu h1 {
+    margin: 0;
+    float: left;
+}
+
+#sidemenu div {
+    background-color: yellow;
+    display: table-cell;
+    vertical-align: middle;
+    
+}
+#sidemenu div div { 
+    margin: 0;
+    display: block;
+    background-color: salmon;
+}
+
+#sidemenu div div a {
+    background-color: blue;
+}
+
+#sidemenu div div img {
+    height: 35px;
+    width: 35px;
+}
+
+
+/* Main part */
+#main {
+    width: 85%;
+    float: right;
+
+    background-color: darkcyan;
+}
+
+#main div {
+    width: 77%;
+    margin: 0 auto;
+}
+
+#main div.post {
+    width: 100%;
+    margin: 20px 0 0 0;
+    background-color: blue;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px fuchsia;
+    display: block;
+}
+
+.post:last-child { margin-bottom: 20px !important; }
+
+.postheader {
+    width: 100% !important;
+    /* background-image: url('/img/wave_top.png'); */
+    /* background-size: cover; */
+    /* background-size: auto; */
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+
+
+    border-radius: 10px;
+    display: block;
+
+    /* height: 200px; */
+}
+.postheader svg {
+    float: left;
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    border-radius: 10px;
+}
+
+
+.postheader h2 {
+    position: absolute;
+    top: 30px;
+}
+.postheader h2, p {
+    background: white !important;
+    margin: 0;
+}
