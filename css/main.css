@@ -17,6 +17,17 @@ body, html {
 
 /* body { margin: 0 0 20px 0 !important; } */
 
+#logo {
+    position: fixed;
+    z-index: 3;
+    background-color: deepskyblue;
+    width: 15%;
+}
+
+#logo h1 {
+    margin: 0 auto 0 auto;
+    text-align: middle;
+}
 
 /* Side menu */
 #sidemenu {
@@ -27,6 +38,8 @@ body, html {
     position: fixed;
     display: table;
     box-shadow: 10px 5px 5px black;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #sidemenu h1 {
@@ -38,7 +51,8 @@ body, html {
     background-color: yellow;
     display: table-cell;
     vertical-align: middle;
-    
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 #sidemenu div div { 
     margin: 0;
@@ -46,13 +60,21 @@ body, html {
     background-color: salmon;
 }
 
-#sidemenu div div a {
-    background-color: blue;
+#sidemenu div div:nth-child(2) {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #sidemenu div div img {
     height: 35px;
     width: 35px;
+    vertical-align: middle;
+    margin: 0 10px 0 10px;
+}
+#sidemenu div div a {
+    vertical-align: middle;
+    /* vertical-align: middle;
+    display: inline-block; */
 }
 
 
@@ -78,33 +100,27 @@ body, html {
     display: block;
 }
 
-.post:last-child { margin-bottom: 20px !important; }
+.post:last-child {
+    margin-bottom: 20px !important;
+}
 
 .postheader {
     width: 100% !important;
-    /* background-image: url('/img/wave_top.png'); */
-    /* background-size: cover; */
-    /* background-size: auto; */
     background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-
-
     border-radius: 10px;
     display: block;
-
-    /* height: 200px; */
 }
+
 .postheader svg {
-    float: left;
     background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    z-index: 0;
 }
-
 
 .postheader h2 {
     position: absolute;
-    top: 30px;
-}
-.postheader h2, p {
-    background: white !important;
+    z-index: 2;
     margin: 0;
 }
