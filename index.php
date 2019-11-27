@@ -28,15 +28,18 @@
 
             <div id="menuoptions">
                 <div>
-                    <img src="./img/dummy.png" alt="Dummy image.">
+                    <h1>🏠</h1>
+                    <!-- <img src="./img/dummy.png" alt="Dummy image."> -->
                     <a href="#">Home</a>
                 </div>
                 <div>
-                    <img src="./img/dummy.png" alt="Dummy image.">
+                    <!-- <img src="./img/dummy.png" alt="Dummy image."> -->
+                    <h1>🗒️</h1>
                     <a href="./notes.php">Notes</a>
                 </div>
                 <div>
-                    <img src="./img/dummy.png" alt="Dummy image.">
+                    <!-- <img src="./img/dummy.png" alt="Dummy image."> -->
+                    <h1>⚖️</h1>
                     <a href="./imprint.php">Imprint</a>
                 </div>
             </div>

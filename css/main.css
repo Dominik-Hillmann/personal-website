@@ -1,14 +1,6 @@
 /* This file contains styles applicable to all pages. */
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
 
-/*
-background-image: linear-gradient(top, rgb(18,41,92) 0%, rgb(0,77,164) 41%,
-     rgb(21,106,203) 100%);
-background-image: -moz-linear-gradient(center top, rgb(18,41,92) 0%,rgb(0,77,
-    164) 41%,rgb(21,106,203) 100%);
-background-image: -webkit-gradient(linear, left top, left bottom,
-     color-stop(0.000, rgb(18,41,92)),color-stop(0.411, rgb(0,77,164)),
-    color-stop(1.000, rgb(21,106,203)));
-*/
 body, html {
     margin: 0;
     height: 100%;
@@ -20,24 +12,33 @@ body, html {
 #logo {
     position: fixed;
     z-index: 3;
-    background-color: deepskyblue;
     width: 15%;
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    text-align: center;
+    
+    /* border-bottom: 1px black; */
+    
 }
 
 #logo h1 {
-    margin: 0 auto 0 auto;
-    text-align: middle;
+    margin: 30px auto 0 auto;
+    /* text-align: middle; */
+    background-image: linear-gradient(90deg,blue,yellow,red,purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Side menu */
 #sidemenu {
-    background-color: red;
     height: 100%;
-    width: 15%;
+    width: calc(15% - 40px);
     overflow-x: hidden;
+    margin: 20px 0px 50px 20px;
     position: fixed;
     display: table;
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 5px 5px 5px 5px black;
+    border-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -48,7 +49,6 @@ body, html {
 }
 
 #sidemenu div {
-    background-color: yellow;
     display: table-cell;
     vertical-align: middle;
     border-bottom-right-radius: 10px;
@@ -57,7 +57,6 @@ body, html {
 #sidemenu div div { 
     margin: 0;
     display: block;
-    background-color: salmon;
 }
 
 #sidemenu div div:nth-child(2) {
@@ -65,7 +64,8 @@ body, html {
     margin-bottom: 20px;
 }
 
-#sidemenu div div img {
+/* #sidemenu div div img { */
+#sidemenu div div h1 {
     height: 35px;
     width: 35px;
     vertical-align: middle;
@@ -82,8 +82,6 @@ body, html {
 #main {
     width: 85%;
     float: right;
-
-    background-color: darkcyan;
 }
 
 #main div {
@@ -96,7 +94,7 @@ body, html {
     margin: 20px 0 0 0;
     background-color: blue;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px fuchsia;
+    box-shadow: 10px 5px 5px 10px black;
     display: block;
 }
 
@@ -106,7 +104,7 @@ body, html {
 
 .postheader {
     width: 100% !important;
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, white);/* rgba(252,70,107,1) 100%);*/
     border-radius: 10px;
     display: block;
 }
