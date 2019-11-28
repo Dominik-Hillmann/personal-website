@@ -1,5 +1,6 @@
 /* This file contains styles applicable to all pages. */
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700&display=swap');
 
 body, html {
     margin: 0;
@@ -24,9 +25,12 @@ body, html {
 #logo h1 {
     margin: 30px auto 0 auto;
     /* text-align: middle; */
-    background-image: linear-gradient(90deg,blue,yellow,red,purple);
+    background-color: red;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
+    border-bottom: 2px;
+    border-color: red;
 }
 
 /* Side menu */
@@ -37,10 +41,13 @@ body, html {
     margin: 20px 0px 50px 20px;
     position: fixed;
     display: table;
-    box-shadow: 5px 5px 5px 5px black;
+    box-shadow: 0px 5px 25px 5px gray;
     border-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+
+    background: rgb(2,0,36);
+    background: linear-gradient(186deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 82%, rgba(0,6,159,1) 100%);
 }
 
 #sidemenu h1 {
@@ -73,8 +80,6 @@ body, html {
 }
 #sidemenu div div a {
     vertical-align: middle;
-    /* vertical-align: middle;
-    display: inline-block; */
 }
 
 
@@ -92,9 +97,8 @@ body, html {
 #main div.post {
     width: 100%;
     margin: 20px 0 0 0;
-    background-color: blue;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px 10px black;
+    box-shadow: 0px 5px 25px 5px gray;
     display: block;
 }
 
@@ -104,21 +108,27 @@ body, html {
 
 .postheader {
     width: 100% !important;
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, white);/* rgba(252,70,107,1) 100%);*/
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, white);rgba(252,70,107,1) 100%); */
     border-radius: 10px;
     display: block;
 }
 
 .postheader svg {
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    background: rgb(2,0,36);
+    background: linear-gradient(153deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 61%, rgba(124,0,255,1) 100%);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     position: relative;
-    z-index: 0;
+    margin-bottom: -10px;
 }
 
 .postheader h2 {
     position: absolute;
     z-index: 2;
     margin: 0;
+    color: red;
+    font-family: 'Inconsolata', monospace;
+    font-size: 27px;
+    margin-top: 20px;
+    margin-left: 30px;
 }

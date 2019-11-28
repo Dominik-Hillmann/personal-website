@@ -53,7 +53,7 @@
                 <!-- Waves: https://getwaves.io/ -->
                 <div class="post" id="welcomepost">
                     <div class="postheader">
-                        <h2>Das ist ein Test in der Überschrift.</h2>
+                        <h2>Das ist ein Test in der Überschrift.yyyy</h2>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,288L40,272C80,256,160,224,240,208C320,192,400,192,480,176C560,160,640,128,720,96C800,64,880,32,960,58.7C1040,85,1120,171,1200,213.3C1280,256,1360,256,1400,256L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
                     </div>
 
