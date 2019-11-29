@@ -1,6 +1,7 @@
 /* This file contains styles applicable to all pages. */
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
 body, html {
     margin: 0;
@@ -24,13 +25,13 @@ body, html {
 
 #logo h1 {
     margin: 30px auto 0 auto;
-    /* text-align: middle; */
     background-color: red;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
     border-bottom: 2px;
     border-color: red;
+
 }
 
 /* Side menu */
@@ -46,8 +47,13 @@ body, html {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 
-    background: rgb(2,0,36);
-    background: linear-gradient(186deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 82%, rgba(0,6,159,1) 100%);
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        186deg, 
+        rgba(2, 0, 36, 1)    0%, 
+        rgba(9, 9, 121, 1)  82%, 
+        rgba(0, 6, 159, 1) 100%
+    );
 }
 
 #sidemenu h1 {
@@ -71,7 +77,6 @@ body, html {
     margin-bottom: 20px;
 }
 
-/* #sidemenu div div img { */
 #sidemenu div div h1 {
     height: 35px;
     width: 35px;
@@ -102,24 +107,38 @@ body, html {
     display: block;
 }
 
-.post:last-child {
-    margin-bottom: 20px !important;
+#main div.post p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    padding: 0 100px 20px 100px;
+    text-align: justify;
+    hyphens: auto;
 }
+
+#main div.post:not(:first-child) { margin-top: 30px; }
+
+.post:last-child { margin-bottom: 20px !important; }
 
 .postheader {
     width: 100% !important;
-    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, white);rgba(252,70,107,1) 100%); */
     border-radius: 10px;
     display: block;
 }
 
-.postheader svg {
-    background: rgb(2,0,36);
-    background: linear-gradient(153deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 61%, rgba(124,0,255,1) 100%);
+.postheader svg, .postheader img {
+    width: 100%;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        153deg, 
+        rgba(2, 0, 36, 1)      0%, 
+        rgba(9, 9, 121, 1)    61%, 
+        rgba(124, 0, 255, 1) 100%
+    );
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     position: relative;
-    margin-bottom: -10px;
+    padding-top: 100px;
+    margin-bottom: -5px;
 }
 
 .postheader h2 {
@@ -128,7 +147,18 @@ body, html {
     margin: 0;
     color: red;
     font-family: 'Inconsolata', monospace;
-    font-size: 27px;
-    margin-top: 20px;
-    margin-left: 30px;
+    font-size: 32px;
+    padding: 20px 0 0 100px;
+    letter-spacing: 5px;
 }
+
+.postheader h3 {
+    position: absolute;
+    z-index: 2;
+    margin-top: 60px;
+    padding-left: 100px;    
+    font-family: 'Inconsolata', monospace;
+    font-size: 15px;
+    color: white;
+}
+
