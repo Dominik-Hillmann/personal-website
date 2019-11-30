@@ -19,34 +19,26 @@
         <!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
     </head>
 
-    <div id="logo"><h1>Dominik Hillmann</h1></div>
+    <!-- <div id="logo"><h1>Dominik Hillmann</h1></div> -->
 
     <body>
-        <!-- Sticky side menu -->
-        <div id="sidemenu">
-            <!-- <h1>Dominik Hillmann</h1> -->
+        <?php
+            function randomDegrees() {
+                $randNum = rand(0, 360);
+                return floor($randNum);
+            }
+        ?>
+        <!-- Main -->
 
-            <div id="menuoptions">
-                <div>
-                    <h1>🏠</h1>
-                    <!-- <img src="./img/dummy.png" alt="Dummy image."> -->
-                    <a href="#">Home</a>
-                </div>
-                <div>
-                    <!-- <img src="./img/dummy.png" alt="Dummy image."> -->
-                    <h1>🗒️</h1>
-                    <a href="./notes.php">Notes</a>
-                </div>
-                <div>
-                    <!-- <img src="./img/dummy.png" alt="Dummy image."> -->
-                    <h1>⚖️</h1>
-                    <a href="./imprint.php">Imprint</a>
-                </div>
+        <div id="top-menu">
+            <div>
+                <h1><a href="">Home</a></h1>
+                <h1><a href="">Contact</a></h1>
+                <h1><a href="">Notes</a></h1>
+                <h1><a href="./imprint.php">Imprint</a></h1>
             </div>
-
         </div>
 
-        <!-- Main -->
         <div id="main">
 
             <div>
@@ -70,7 +62,9 @@
                         <img src="./img/waves.png" alt="">
                     </div>
 
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </p>
                 </div>
                 
                 <div class="post">
@@ -80,7 +74,9 @@
                         <img src="./img/waves.png" alt="">
                     </div>
 
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </p>
                 </div>
             </div>
 
