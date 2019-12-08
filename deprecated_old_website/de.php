@@ -162,10 +162,10 @@
 
 
    <div id="main">
-      <div id="weather">
+      <!-- <div id="weather">
          <img src= <?php echo '"' . $weatherPicStr . '"'; ?> >
          <p><?php echo $weatherCity . " " . round($weather->main->temp - 273.15) . "°C"; ?></p>
-      </div>
+      </div> -->
       <div id="start">
          <div id="hello">
             <?php getPic($picURL, "./images/me.png", "./data/timePic.txt"); ?>

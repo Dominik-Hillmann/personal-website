@@ -1,1 +1,14 @@
 /* This file contains all styles only applicable to the Notes page. */
+
+#nonotes {
+    font-size: 20px;
+    color: gray;
+    display: block;
+    margin: 0 auto;
+    font-family: 'Inconsolata', monospace;
+    padding-top: 100px;
+}
+
+#nonotes p {
+    text-align: center;
+}

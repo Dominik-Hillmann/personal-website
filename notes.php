@@ -3,7 +3,7 @@
     <head>
         <!-- Basic Page Needs -->
         <meta charset="utf-8">
-        <title>BRAINRAIN</title>
+        <title>Dominik Hillmann</title>
         <meta name="description" content="Personal website of Dominik Hillmann.">
         <meta name="author" content="Dominik Hillmann">
 
@@ -13,46 +13,28 @@
         <!-- CSS links -->
         <link rel="stylesheet" href="./css/main.css">
         <link rel="stylesheet" href="./css/notes.css">
-        <!-- <link rel="stylesheet" href="css/mobile.css"> -->
-
-        <!-- Favicon -->
-        <!-- <link rel="icon" type="image/png" href="favicon.ico"> -->
     </head>
+
+    <!-- <div id="logo"><h1>Dominik Hillmann</h1></div> -->
+
     <body>
-        <!-- Sticky side menu -->
-        <div id="sidemenu">
-            <!-- <h1>Dominik Hillmann</h1> -->
-
-            <!-- <div id="floater">floater</div> -->
-
-            <div id="menuoptions">
-                <div>
-                    <img src="./img/dummy.png" alt="Dummy image.">
-                    <a href="#">Home</a>
-                </div>
-                <div>
-                    <img src="./img/dummy.png" alt="Dummy image.">
-                    <a href="./notes.php">Notes</a>
-                </div>
-                <div>
-                    <img src="./img/dummy.png" alt="Dummy image.">
-                    <a href="./imprint.php">Imprint</a>
-                </div>
-            </div>
-
-        </div>
-
         <!-- Main -->
-        <div id="main">
+
+        <div id="top-menu">
             <div>
-                <div class="post">Das ist ein Test.</div>
-                <div class="post">Das ist ein Test.</div>
-                <div class="post">Das ist ein Test.</div>
-                <div class="post">Das ist ein Test.</div>
-                <div class="post">Das ist ein Test.</div>
-                <div class="post">Das ist ein Test.</div>
+                <h1><a href="">Home</a></h1>
+                <h1><a href="">Contact</a></h1>
+                <h1><a href="./notes.php">Notes</a></h1>
+                <h1><a href="./imprint.php">Imprint</a></h1>
             </div>
         </div>
+
+        <div id="main">
+
+            <div id="nonotes"><p>No notes here for now.</p></div>
+
+        </div>
+
+
     </body>
-    <script>console.log('JavaScript');</script>
 </html>

@@ -22,19 +22,13 @@
     <!-- <div id="logo"><h1>Dominik Hillmann</h1></div> -->
 
     <body>
-        <?php
-            function randomDegrees() {
-                $randNum = rand(0, 360);
-                return floor($randNum);
-            }
-        ?>
         <!-- Main -->
 
         <div id="top-menu">
             <div>
                 <h1><a href="">Home</a></h1>
                 <h1><a href="">Contact</a></h1>
-                <h1><a href="">Notes</a></h1>
+                <h1><a href="./notes.php">Notes</a></h1>
                 <h1><a href="./imprint.php">Imprint</a></h1>
             </div>
         </div>

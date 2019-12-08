@@ -7,7 +7,7 @@
     <title>Dominik Hillmann</title>
     <meta name="description" content="Personal website of Dominik Hillmann.">
     <meta name="author" content="Dominik Hillmann">
-    
+
     <!-- CSS links -->
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/home.css">
@@ -22,7 +22,7 @@
         <div>
             <h1><a href="./index.php">Home</a></h1>
             <h1><a href="">Contact</a></h1>
-            <h1><a href="">Notes</a></h1>
+            <h1><a href="./notes.php">Notes</a></h1>
             <h1><a href="./imprint.php">Imprint</a></h1>
         </div>
     </div>

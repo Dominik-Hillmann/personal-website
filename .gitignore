@@ -2,3 +2,4 @@
 *.jpg
 *.gif
 secret.inc.php
+config.inc.php
