@@ -1,8 +1,6 @@
 /* This file contains styles applicable to all pages. */
-/* @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap'); */
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
-/* @import url('https://fonts.googleapis.com/css?family=Lato:700i&display=swap'); */
 @import url('https://fonts.googleapis.com/css?family=Chivo:700i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
@@ -32,7 +30,9 @@ body, html {
 
 #top-menu div h1 a:link:hover {
     color: red;
-    text-shadow: 4px 4px 1px rgba(139, 0, 0, 0.66), 8px 8px 2px rgba(255, 0, 0, 0.33);
+    text-shadow: 
+        4px 4px 1px rgba(139, 0, 0, 0.66), 
+        8px 8px 2px rgba(255, 0, 0, 0.33);
     animation: multiply 0.5s;
 }
 
@@ -43,9 +43,13 @@ body, html {
 
 @keyframes multiply {
     from {
-        text-shadow: 0px 0px 0px rgba(139, 0, 0, 0.66), 0px 0px 0px rgba(255, 0, 0, 0.33);
+        text-shadow: 
+            0px 0px 0px rgba(139, 0, 0, 0.66),
+            0px 0px 0px rgba(255, 0, 0, 0.33);
     } to {
-        text-shadow: 4px 4px 1px rgba(139, 0, 0, 0.66), 8px 8px 2px  rgba(255, 0, 0, 0.33);
+        text-shadow:
+            4px 4px 1px rgba(139, 0, 0, 0.66), 
+            8px 8px 2px rgba(255, 0, 0, 0.33);
     }
 }
 

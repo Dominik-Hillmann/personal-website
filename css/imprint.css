@@ -1,0 +1,23 @@
+.post h3,
+.post h2 {
+    margin: 0;
+    color: red;
+    font-family: 'Chivo', monospace;
+    padding: 0 0 0 200px;
+    letter-spacing: 2px;
+}
+
+.postheader h2 {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    color: red;
+    font-family: 'Chivo', monospace;
+    font-size: 32px;
+    padding: 40px 0 0 200px;
+    letter-spacing: 2px;
+}
+
+.post h2 { font-size: 32px; }
+
+.post h3 { font-size: 22px; }
